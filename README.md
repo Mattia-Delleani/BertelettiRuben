@@ -1,4 +1,4 @@
-# BertelettiRuben
+# Berteletti Ruben
 Simulatore playoff NBA
 
 L'applicazione ha il compito di decretare il campione della lega NBA a partire dai playoff utilizzando algoritmi di simulazione.
