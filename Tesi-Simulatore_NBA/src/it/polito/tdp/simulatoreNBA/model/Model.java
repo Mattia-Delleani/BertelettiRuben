@@ -86,6 +86,7 @@ public class Model {
 		Double points = 0.0;
 		Double assists = 0.0;
 		Double rebounds = 0.0;
+		Double steals = 0.0;
 		
 		for(PlayerAVGStats pas : this.prova) {
 			if(player.getName().equals(pas.getName())) {
@@ -93,10 +94,11 @@ public class Model {
 				points = points + pas.getPoint();
 				assists = assists + pas.getAssist();
 				rebounds = rebounds + pas.getRebounds();
+				steals = steals + pas.getSteal();
 			}
 		}
 		
-		PlayerAVGStats avg = new PlayerAVGStats(player.getName(), ngame, points / ngame, assists / ngame, rebounds / ngame);
+		PlayerAVGStats avg = new PlayerAVGStats(player.getName(), ngame, points / ngame, assists / ngame, rebounds / ngame, steals / ngame);
 		return avg;
 	}
 

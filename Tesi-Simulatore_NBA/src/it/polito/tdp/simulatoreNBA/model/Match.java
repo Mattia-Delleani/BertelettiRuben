@@ -86,10 +86,10 @@ public class Match {
 	
 	public void initStats() {
 		for(Player hp : home.getPlayers()) {
-			playerStats.add(new PlayerAVGStats(hp.getName(), 0, 0.0, 0.0, 0.0));
+			playerStats.add(new PlayerAVGStats(hp.getName(), 0, 0.0, 0.0, 0.0, 0.0));
 		}
 		for(Player ap : away.getPlayers()) {
-			playerStats.add(new PlayerAVGStats(ap.getName(), 0, 0.0, 0.0, 0.0));
+			playerStats.add(new PlayerAVGStats(ap.getName(), 0, 0.0, 0.0, 0.0, 0.0));
 		}
 	}
 

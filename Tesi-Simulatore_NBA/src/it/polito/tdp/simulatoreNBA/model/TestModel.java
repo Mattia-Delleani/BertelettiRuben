@@ -11,10 +11,10 @@ public class TestModel {
 		
 		//model.SimulationWinner(model.getWestTeams().get(4), model.getWestTeams().get(7));
 		
-		model.saveEastWinner(model.getWestTeams().get(4));
-		model.saveWestWinner( model.getEastTeams().get(7));
+		model.saveEastWinner(model.getWestTeams().get(5));
+		model.saveWestWinner( model.getEastTeams().get(6));
 		
-		model.SimulationWinner(model.getWestTeams().get(4), model.getEastTeams().get(7));
+		model.SimulationWinner(model.getWestTeams().get(5), model.getEastTeams().get(6));
 		
 		List<PlayerAVGStats> prova = new ArrayList<PlayerAVGStats>();
 		

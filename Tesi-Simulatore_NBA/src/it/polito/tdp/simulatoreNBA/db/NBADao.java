@@ -140,6 +140,7 @@ public class NBADao {
 						0,
 						0.0,
 						0.0,
+						0.0,
 						0.0);
 						
 				

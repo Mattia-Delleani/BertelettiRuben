@@ -3,9 +3,7 @@ package it.polito.tdp.simulatoreNBA.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -21,6 +19,8 @@ public class Simulatore {
 	private List<Player> playerRandom;
 	private Integer homePoints;
 	private Integer awayPoints;
+	private List<Player> hPlayers;
+	private List<Player> aPlayers;
 	private NBADao dao;
 	private List<Evento> eventList;
 	
@@ -45,8 +45,8 @@ public class Simulatore {
 		this.dao = new NBADao();
 		this.rand = new Random();
 		
-		List<Player> hPlayers = dao.getPlayerByTeam(home.getName());
-		List<Player> aPlayers = dao.getPlayerByTeam(away.getName());
+		this.hPlayers = dao.getPlayerByTeam(home.getName());
+		this.aPlayers = dao.getPlayerByTeam(away.getName());
 				
 		home.setPlayers(hPlayers);
 		away.setPlayers(aPlayers);
@@ -172,7 +172,47 @@ public class Simulatore {
 					}else {
 						this.awayPoints = this.awayPoints + 2;
 					}
-				}else {
+				}else {//se non fanno canestro il team avversario può prendere un rimbalzo o stoppare casi separati per team
+					System.out.println(this.aPlayers.size());
+					System.out.println(this.hPlayers.size());
+					if(team.equals(this.match.getHome())) {
+						if(rand.nextDouble() > 0.85) {//rimbalzo al 15%
+							//Double index = rand.nextDouble() * aPlayers.size(); 
+							Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+								if(pas.getName().equals(random.getName()) && pas.getRebounds() < (random.getRebounds() + 0.2 * rand.nextDouble())) {
+									pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+								}
+							}
+						}else if(rand.nextDouble() > 0.95) {//stoppata al 5%
+							//Double index = rand.nextDouble() * aPlayers.size(); 
+							Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+								if(pas.getName().equals(random.getName()) && pas.getSteal() < (random.getSteals() + 0.2 * rand.nextDouble())) {
+									pas.setSteal(pas.getSteal() + 1);
+								}
+							}
+						}						
+					}else {													
+							if(rand.nextDouble() > 0.85) {//rimbalzo al 30%
+								//Double index = rand.nextDouble() * hPlayers.size(); 
+								Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+									if(pas.getName().equals(random.getName()) && pas.getRebounds() < (random.getRebounds() + 0.2 * rand.nextDouble())) {
+										pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+									}
+								}
+							}else if(rand.nextDouble() > 0.95) {//stoppata al 10%
+								//Double index = rand.nextDouble() * hPlayers.size(); 
+								Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+									if(pas.getName().equals(random.getName()) && pas.getSteal() < (random.getSteals() + 0.2 * rand.nextDouble())) {
+										pas.setSteal(pas.getSteal() + 1);
+									}
+								}
+							}							
+						
+					}
 					
 				}
 				break;
@@ -192,6 +232,46 @@ public class Simulatore {
 						this.awayPoints = this.awayPoints + 3;
 					}
 				}else {
+					
+
+					if(team.equals(this.match.getHome())) {
+						if(rand.nextDouble() > 0.85) {//rimbalzo al 30%
+							//Double index = rand.nextDouble() * aPlayers.size(); 
+							Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+								if(pas.getName().equals(random.getName()) && pas.getRebounds() < (random.getRebounds() + 0.2 * rand.nextDouble())) {
+									pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+								}
+							}
+						}else if(rand.nextDouble() > 0.95) {//stoppata al 10%
+							//Double index = rand.nextDouble() * aPlayers.size(); 
+							Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+								if(pas.getName().equals(random.getName()) && pas.getSteal() < (random.getSteals() + 0.2 * rand.nextDouble())) {
+									pas.setSteal(pas.getSteal() + 1);
+								}
+							}
+						}						
+					}else {													
+							if(rand.nextDouble() > 0.85) {//rimbalzo al 30%
+								//Double index = rand.nextDouble() * hPlayers.size(); 
+								Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+									if(pas.getName().equals(random.getName()) && pas.getRebounds() < (random.getRebounds() + 0.2 * rand.nextDouble())) {
+										pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+									}
+								}
+							}else if(rand.nextDouble() > 0.95) {//stoppata al 10%
+								//Double index = rand.nextDouble() * hPlayers.size(); 
+								Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+									if(pas.getName().equals(random.getName()) && pas.getSteal() < (random.getSteals() + 0.2 * rand.nextDouble())) {
+										pas.setSteal(pas.getSteal() + 1);
+									}
+								}
+							}							
+						
+					}
 					
 				}
 				break;
