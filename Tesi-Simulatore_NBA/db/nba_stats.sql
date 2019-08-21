@@ -598,7 +598,7 @@ INSERT INTO `teams` (`abbreviation`, `name`, `conference`) VALUES
 	('HOU', 'Houston Rockets', 'west'),
 	('IND', 'Indiana Pacers', 'east'),
 	('LAC', 'Los Angeles Clippers', 'west'),
-	('LAL', ' Los Angeles Lakers', 'west'),
+	('LAL', 'Los Angeles Lakers', 'west'),
 	('MEM', 'Memphis Grizzlies', 'west'),
 	('MIA', 'Miami Heat', 'east'),
 	('MIL', 'Milwaukee Bucks', 'east'),
