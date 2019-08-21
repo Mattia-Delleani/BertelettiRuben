@@ -10,14 +10,14 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 	private Double steal;
 	private Double block;
 	
-	public PlayerAVGStats(String name, Integer nGames, Double point, Double assist, Double rebounds, Double steal) {
+	public PlayerAVGStats(String name, Integer nGames, Double point, Double assist, Double rebounds, Double block) {
 		super();
 		this.name = name;
 		this.nGames = nGames;
 		this.point = point;
 		this.assist = assist;
 		this.rebounds = rebounds;
-		this.steal = steal;
+		this.block = block;
 	}
 
 	public String getName() {

@@ -13,12 +13,6 @@ public class Evento implements Comparable<Evento>{
 		FIELD_GOAL_ATTEMPT,
 		
 		/*
-		 * esito tentativo
-		 */
-		SUCCESSFUL_ATTEMPT,
-		FAILED_ATTEMPT,
-		
-		/*
 		 * cambio giocatori
 		 */
 		ON_THE_BENCH,
@@ -34,14 +28,12 @@ public class Evento implements Comparable<Evento>{
 	private Player stopper;
 	
 	
-	public Evento(Integer time, TipoEvento type, Team team, Player player, Player assistman, Player stopper) {
+	public Evento(Integer time, TipoEvento type, Team team, Player player) {
 		super();
 		this.time = time;
 		this.type = type;
 		this.team = team;
 		this.player = player;
-		this.assistman = assistman;
-		this.stopper = stopper;
 	}
 
 	public Integer getTime() {
@@ -66,22 +58,6 @@ public class Evento implements Comparable<Evento>{
 
 	public void setPlayer(Player player) {
 		this.player = player;
-	}
-
-	public Player getAssistman() {
-		return assistman;
-	}
-
-	public void setAssistman(Player assistman) {
-		this.assistman = assistman;
-	}
-
-	public Player getStopper() {
-		return stopper;
-	}
-
-	public void setStopper(Player stopper) {
-		this.stopper = stopper;
 	}
 	
 	public Team getTeam() {

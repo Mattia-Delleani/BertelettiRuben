@@ -146,13 +146,13 @@ public class FinalsController {
         columnPointsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("point"));      
         columnAssistsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("assist"));
         columnStopWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("rebounds")); 
-        columnStealsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("steal")); 
+        columnStealsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("block")); 
         
         columnPlayerEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
         columnPointsEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("point"));      
         columnAssistsEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("assist"));
         columnStopEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("rebounds"));
-        columnStealsEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("steal")); 
+        columnStealsEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("block")); 
 
     }
     
