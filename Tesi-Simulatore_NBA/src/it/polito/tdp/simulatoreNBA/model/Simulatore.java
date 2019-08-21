@@ -165,9 +165,30 @@ public class Simulatore {
 			case FIELD_GOAL_ATTEMPT:
 				if(ev.getPlayer().getFieldGoalsPercentage() > rand.nextDouble()) {
 					//aggiorno lo score player globale
+					String name = "";
 					for(PlayerAVGStats pas : match.getPlayerStats()) {
 						if(pas.getName().equals(ev.getPlayer().getName())) {
 							pas.setPoint(pas.getPoint() + 2);
+							name = pas.getName();
+						}
+						if(!name.equals("") && !pas.getName().equals(name)) {//MODELLAZIONE ASSIST
+							//seleziono un giocatore dello stesso team
+							if(team.equals(match.getHome())) {
+								Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+									if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + 0.2 * rand.nextDouble())) {
+										pas2.setAssist(pas2.getAssist() + 1);
+									}
+								}
+								
+							}else {
+								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+								for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+									if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + 0.2 * rand.nextDouble())) {
+										pas2.setAssist(pas2.getAssist() + 1);
+									}
+								}
+							}
 						}
 					}
 					
@@ -175,7 +196,8 @@ public class Simulatore {
 						this.homePoints = this.homePoints + 2;
 					}else {
 						this.awayPoints = this.awayPoints + 2;
-					}
+					}//FINO A QUI TENTATIVO RIUSCITO
+					
 				}else {//se non fanno canestro il team avversario può prendere un rimbalzo o stoppare casi separati per team
 					if(team.equals(this.match.getHome())) {
 						if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 50%
@@ -217,10 +239,29 @@ public class Simulatore {
 				
 			case THREE_POINTS_ATTEMPT:
 				if(ev.getPlayer().getThreePointsPercentage() > rand.nextDouble()) {
+					String name = "";
 					//aggiorno lo score punti player globale
 					for(PlayerAVGStats pas : match.getPlayerStats()) {
 						if(pas.getName().equals(ev.getPlayer().getName())) {
 							pas.setPoint(pas.getPoint() + 3);
+						}
+						if(!name.equals("") && !pas.getName().equals(name)) {//MODELLAZIONE ASSIST
+							//seleziono un giocatore dello stesso team
+							if(team.equals(match.getHome())) {
+								Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+									if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + 0.2 * rand.nextDouble())) {
+										pas2.setAssist(pas2.getAssist() + 1);
+									}
+								}
+							}else {
+								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+								for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+									if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + 0.2 * rand.nextDouble())) {
+										pas2.setAssist(pas2.getAssist() + 1);
+									}
+								}
+							}
 						}
 					}
 					
@@ -228,7 +269,8 @@ public class Simulatore {
 						this.homePoints = this.homePoints + 3;
 					}else {
 						this.awayPoints = this.awayPoints + 3;
-					}
+					}//FINO A QUI TENTATIVO RIUSCITO
+					
 				}else {
 					/*
 					 * Se il giocatore sbaglia il tiro, un giocatore random del team avversario ha la possibilità di prendere un rimbalzo;
