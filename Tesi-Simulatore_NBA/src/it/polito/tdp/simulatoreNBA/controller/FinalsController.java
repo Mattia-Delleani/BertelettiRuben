@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.simulatoreNBA.model.Match;
 import it.polito.tdp.simulatoreNBA.model.Model;
 import it.polito.tdp.simulatoreNBA.model.Player;
 import it.polito.tdp.simulatoreNBA.model.PlayerAVGStats;
@@ -42,6 +43,9 @@ public class FinalsController {
 
     @FXML
     private TableColumn<PlayerAVGStats, String> columnPlayerWest;
+    
+    @FXML
+    private TableColumn<PlayerAVGStats, Integer> columnGameWest;
 
     @FXML
     private TableColumn<PlayerAVGStats, Double> columnPointsWest;
@@ -63,6 +67,9 @@ public class FinalsController {
 
     @FXML
     private TableColumn<PlayerAVGStats, String> columnPlayerEast;
+    
+    @FXML
+    private TableColumn<PlayerAVGStats, Integer> columnGameEast;
 
     @FXML
     private TableColumn<PlayerAVGStats, Double> columnPointsEast;
@@ -85,40 +92,62 @@ public class FinalsController {
     @FXML
     void doSimulaFinals(ActionEvent event) {
     	
-    	
-    	txtAreaResults.clear();
-    	txtChamp.clear();
-    	
-    	Team champ = model.SimulationWinner(model.getEastWinner(), model.getWestWinner());
-    	
-    	txtChamp.appendText(champ.getName());
-    	
-    	List<PlayerAVGStats> westStats = new ArrayList<PlayerAVGStats>();
-		
-		for(Player p : model.getWestWinner().getPlayers()) {
-			westStats.add(model.avgByPlayer(p));
-		}
-		
-		Collections.sort(westStats); //prima chi ha segnato più punti
-		
-		ObservableList<PlayerAVGStats> values = FXCollections.observableArrayList(westStats);
-		tableWest.setItems(values);
-		
-		List<PlayerAVGStats> eastStats = new ArrayList<PlayerAVGStats>();
-		
-		for(Player p : model.getEastWinner().getPlayers()) {
-			eastStats.add(model.avgByPlayer(p));
-		}
-		
-		Collections.sort(eastStats);//prima chi ha segnato più punti
-		
-		ObservableList<PlayerAVGStats> valuesE = FXCollections.observableArrayList(eastStats);
-		tableEast.setItems(valuesE);
+    	if(model.getGlobalWinner() == null) {
+    		
+    		txtAreaResults.clear();
+        	txtChamp.clear();
+        	
+        	Team champ = model.SimulationWinner(model.getWestWinner(), model.getEastWinner());
+        	
+        	model.setGlobalWinner(champ);
+        	
+        	txtChamp.appendText(champ.getName());
+        	
+        	List<PlayerAVGStats> westStats = new ArrayList<PlayerAVGStats>();
+    		
+    		for(Player p : model.getWestWinner().getPlayers()) {
+    			westStats.add(model.avgByPlayer(p));
+    		}
+    		
+    		Collections.sort(westStats); //prima chi ha segnato più punti
+    		
+    		ObservableList<PlayerAVGStats> values = FXCollections.observableArrayList(westStats);
+    		tableWest.setItems(values);
+    		
+    		List<PlayerAVGStats> eastStats = new ArrayList<PlayerAVGStats>();
+    		
+    		for(Player p : model.getEastWinner().getPlayers()) {
+    			eastStats.add(model.avgByPlayer(p));
+    		}
+    		
+    		Collections.sort(eastStats);//prima chi ha segnato più punti
+    		
+    		ObservableList<PlayerAVGStats> valuesE = FXCollections.observableArrayList(eastStats);
+    		tableEast.setItems(valuesE);
 
-    	
-    	for(String s : model.getResult()) {
-    		txtAreaResults.appendText(s + "\n");
+        	
+        	for(String s : model.getResult()) {
+        		txtAreaResults.appendText(s + "\n");
+        	}
+        	
+        	txtAreaResults.appendText("\nGiocatori infortunati:\n");{
+        		for(Match m : model.getMatchs()) {
+        			if(m.getHome().equals(model.getWestWinner()) && m.getAway().equals(model.getEastWinner())) {
+        				if(!m.getInjured().isEmpty()) {
+        					for(Player p : m.getInjured()) {
+        						txtAreaResults.appendText("- " + p.getName() + " ha subito un infortunio nel match "+
+        					(model.getMatchs().indexOf(m) + 1) + "\n");
+        					}
+        				}
+        			}
+        		}
+        	}
+    		
+    	}else {
+    		
+    		txtAreaResults.appendText("\nAttenzione: è già stato decretato il vincitore.");
     	}
+    	
     	
 
     }
@@ -128,6 +157,7 @@ public class FinalsController {
         assert txtWestWinner != null : "fx:id=\"txtWestWinner\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert tableWest != null : "fx:id=\"tableWest\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnPlayerWest != null : "fx:id=\"columnPlayerWest\" was not injected: check your FXML file 'GoToFinals.fxml'.";
+        assert columnGameWest != null : "fx:id=\"columnGameWest\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnPointsWest != null : "fx:id=\"columnPointsWest\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnAssistsWest != null : "fx:id=\"columnAssistsWest\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnStopWest != null : "fx:id=\"columnStopWest\" was not injected: check your FXML file 'GoToFinals.fxml'.";
@@ -135,6 +165,7 @@ public class FinalsController {
         assert txtEastWinner != null : "fx:id=\"txtEastWinner\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert tableEast != null : "fx:id=\"tableEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnPlayerEast != null : "fx:id=\"columnPlayerEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
+        assert columnGameEast != null : "fx:id=\"columnGameEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnPointsEast != null : "fx:id=\"columnPointsEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnAssistsEast != null : "fx:id=\"columnAssistsEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert columnStopEast != null : "fx:id=\"columnStopEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
@@ -143,12 +174,14 @@ public class FinalsController {
         assert txtAreaResults != null : "fx:id=\"txtAreaResults\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         
         columnPlayerWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
+        columnGameWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Integer>("ngames"));
         columnPointsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("point"));      
         columnAssistsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("assist"));
         columnStopWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("rebounds")); 
         columnStealsWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("block")); 
         
         columnPlayerEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
+        columnGameEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Integer>("ngames"));
         columnPointsEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("point"));      
         columnAssistsEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("assist"));
         columnStopEast.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("rebounds"));

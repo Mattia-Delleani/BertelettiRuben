@@ -1,6 +1,5 @@
 package it.polito.tdp.simulatoreNBA.model;
 
-import java.time.LocalTime;
 
 public class Evento implements Comparable<Evento>{
 	
@@ -13,10 +12,9 @@ public class Evento implements Comparable<Evento>{
 		FIELD_GOAL_ATTEMPT,
 		
 		/*
-		 * cambio giocatori
+		 * infortunio
 		 */
-		ON_THE_BENCH,
-		IN_FIELD
+		INJURED
 		
 	}
 	
@@ -24,8 +22,6 @@ public class Evento implements Comparable<Evento>{
 	private TipoEvento type;
 	private Team team;
 	private Player player;
-	private Player assistman;
-	private Player stopper;
 	
 	
 	public Evento(Integer time, TipoEvento type, Team team, Player player) {
@@ -70,8 +66,8 @@ public class Evento implements Comparable<Evento>{
 
 	@Override
 	public String toString() {
-		return String.format("Evento -> time = %s, type = %s, player = %s, assistman = %s, stopper = %s\n", time, type,
-				player, assistman, stopper);
+		return String.format("Evento -> time = %s, type = %s, player = %s\n", time, type,
+				player);
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package it.polito.tdp.simulatoreNBA.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Team {//CLASSE PER TIRARE DENTRO DAL DB I RIFERIMENTI SQUADRA PER PERMETTERE L'INSERIMENTO NEL TABELLONE
 	
@@ -8,12 +10,14 @@ public class Team {//CLASSE PER TIRARE DENTRO DAL DB I RIFERIMENTI SQUADRA PER P
 	private String name;
 	private String conference;
 	private List<Player> players;
+	private Map<String, Integer> injured ;
 	
 	public Team(String abbreviation, String name, String conference) {
 		super();
 		this.abbreviation = abbreviation;
 		this.name = name;
 		this.conference = conference;
+		this.injured = new HashMap<String, Integer>();
 	}
 
 	public String getAbbreviation() {
@@ -47,6 +51,14 @@ public class Team {//CLASSE PER TIRARE DENTRO DAL DB I RIFERIMENTI SQUADRA PER P
 
 	public void setPlayers(List<Player> players) {
 		this.players = players;
+	}
+
+	public Map<String, Integer> getInjured() {
+		return injured;
+	}
+
+	public void setInjured(Map<String, Integer> injured) {
+		this.injured = injured;
 	}
 
 	@Override

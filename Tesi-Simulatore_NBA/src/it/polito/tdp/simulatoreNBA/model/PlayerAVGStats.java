@@ -3,21 +3,25 @@ package it.polito.tdp.simulatoreNBA.model;
 public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 	
 	private String name;
-	private Integer nGames;
+	private Integer ngames;
 	private Double point;
 	private Double assist;
 	private Double rebounds;
 	private Double steal;
 	private Double block;
+	private Integer injuredTime;
+	private Integer recuperati;
 	
 	public PlayerAVGStats(String name, Integer nGames, Double point, Double assist, Double rebounds, Double block) {
 		super();
 		this.name = name;
-		this.nGames = nGames;
+		this.ngames = nGames;
 		this.point = point;
 		this.assist = assist;
 		this.rebounds = rebounds;
 		this.block = block;
+		this.injuredTime = 0;
+		this.recuperati = 0;
 	}
 
 	public String getName() {
@@ -28,12 +32,12 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 		this.name = name;
 	}
 
-	public Integer getnGames() {
-		return nGames;
+	public Integer getNgames() {
+		return ngames;
 	}
 
-	public void setnGames(Integer nGames) {
-		this.nGames = nGames;
+	public void setNgames(Integer nGames) {
+		this.ngames = nGames;
 	}
 
 	public Double getPoint() {
@@ -76,6 +80,22 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 		this.block = block;
 	}
 
+	public Integer getInjuredTime() {
+		return injuredTime;
+	}
+
+	public void setInjuredTime(Integer injuredTime) {
+		this.injuredTime = injuredTime;
+	}
+
+	public Integer getRecuperati() {
+		return recuperati;
+	}
+
+	public void setRecuperati(Integer recuperati) {
+		this.recuperati = recuperati;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,11 +121,13 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 		return true;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return String.format(
-				"PlayerAVGStats -> name = %s, nGames = %s, point = %s, assist = %s, rebounds = %s, steal = %s, block = %s",
-				name, nGames, point, assist, rebounds, steal, block);
+				"PlayerAVGStats -> name = %s, nGames = %s, point = %s, assist = %s, rebounds = %s, block = %s",
+				name, ngames, point, assist, rebounds, block);
 	}
 
 	@Override

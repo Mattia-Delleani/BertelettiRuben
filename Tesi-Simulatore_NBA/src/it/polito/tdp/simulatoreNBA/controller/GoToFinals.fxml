@@ -36,6 +36,7 @@
             <TableView fx:id="tableWest" prefHeight="260.0" prefWidth="260.0">
               <columns>
                 <TableColumn fx:id="columnPlayerWest" prefWidth="140.0" text="Giocatore" />
+                  <TableColumn fx:id="columnGameWest" prefWidth="50.0" text="nGame" />
                 <TableColumn fx:id="columnPointsWest" minWidth="9.0" prefWidth="40.0" text="Punti" />
                   <TableColumn fx:id="columnAssistsWest" prefWidth="40.0" text="Assist" />
                   <TableColumn fx:id="columnStopWest" prefWidth="40.0" text="Reb" />
@@ -66,6 +67,7 @@
             <TableView fx:id="tableEast" prefHeight="260.0" prefWidth="260.0">
                <columns>
                   <TableColumn fx:id="columnPlayerEast" prefWidth="140.0" text="Giocatore" />
+                  <TableColumn fx:id="columnGameEast" prefWidth="50.0" text="nGame" />
                   <TableColumn fx:id="columnPointsEast" minWidth="9.0" prefWidth="40.0" text="Punti" />
                   <TableColumn fx:id="columnAssistsEast" prefWidth="40.0" text="Assist" />
                   <TableColumn fx:id="columnStopEast" prefWidth="40.0" text="Reb" />

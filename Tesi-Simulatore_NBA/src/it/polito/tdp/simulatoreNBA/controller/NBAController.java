@@ -353,7 +353,7 @@ public class NBAController {
     	model.saveEastWinner(eastWinner);//salvataggio in Model
     	
     	btnFinalsEast.setDisable(true);
-    	if(btnFinalsWest.isDisabled()) {
+    	if(btnFinalsWest.isDisabled() && btn2West.isDisabled() && btn4West.isDisabled()) {
     		btnToFinals.setDisable(false);
     	}
 
@@ -376,7 +376,7 @@ public class NBAController {
     	model.saveWestWinner(westWinner);//salvataggio in Model
     	
     	btnFinalsWest.setDisable(true);
-    	if(btnFinalsEast.isDisabled()) {
+    	if(btnFinalsEast.isDisabled() && btn2East.isDisabled() && btn4East.isDisabled()) {
     		btnToFinals.setDisable(false);
     	}
 

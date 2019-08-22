@@ -17,9 +17,11 @@ public class Model {
 	private Team westWinner;
 	private Integer winH;
 	private Integer winA;
+	private Team globalWinner;
 	private List<String> result;
 	private List<Match> matchs;
-	private List<PlayerAVGStats> prova;
+	private List<PlayerAVGStats> totalStats;
+	private List<PlayerAVGStats> finalStats;
 		
 	private NBADao dao;
 	
@@ -31,8 +33,13 @@ public class Model {
 		this.EastTeams = dao.getEastTeams();
 		this.WestTeams = dao.getWestTeams();
 		this.matchs = new ArrayList<>();
-		this.prova = new ArrayList<>();
+		this.totalStats = new ArrayList<>();
+		this.finalStats = new ArrayList<PlayerAVGStats>();
 		this.winnerTeamMap = new HashMap<String, Team>();
+		
+		this.eastWinner = null;
+		this.westWinner = null;
+		this.globalWinner = null;
 	}
 	
 	public Team SimulationWinner(Team home, Team away) {
@@ -47,6 +54,7 @@ public class Model {
 			if(winA == 4 || winH == 4) {
 				break;
 			}else{
+				System.out.println("<<<Start Game "+i+">>>\n\n");
 				sim.init(home, away);
 				sim.run();
 				if(sim.getMatch().getWinner().equals(home)) {
@@ -60,7 +68,10 @@ public class Model {
 				}
 				
 				this.matchs.add(sim.getMatch());
-				this.prova.addAll(sim.getMatch().getPlayerStats());
+				this.totalStats.addAll(sim.getMatch().getPlayerStats());//salvo le statistiche dei match
+				if(this.eastWinner != null && this.westWinner != null) {
+					this.finalStats.addAll(sim.getMatch().getPlayerStats());
+				}
 				
 				
 			}
@@ -88,20 +99,36 @@ public class Model {
 		Double rebounds = 0.0;
 		Double blocks = 0.0;
 		
-		for(PlayerAVGStats pas : this.prova) {
-			if(player.getName().equals(pas.getName())) {
-				ngame++;
-				points = points + pas.getPoint();
-				assists = assists + pas.getAssist();
-				rebounds = rebounds + pas.getRebounds();
-				blocks = blocks + pas.getBlock();
+		if(this.eastWinner == null && this.westWinner == null) {
+			for(PlayerAVGStats pas : this.totalStats) {
+				if(player.getName().equals(pas.getName()) && pas.getNgames() == 1) {
+					ngame ++;
+					points = points + pas.getPoint();
+					assists = assists + pas.getAssist();
+					rebounds = rebounds + pas.getRebounds();
+					blocks = blocks + pas.getBlock();
+					
+				}
+			}
+		}else {
+			
+			for(PlayerAVGStats pas : this.finalStats) {
+				if(player.getName().equals(pas.getName()) && pas.getNgames() == 1) {
+					ngame ++;
+					points = points + pas.getPoint();
+					assists = assists + pas.getAssist();
+					rebounds = rebounds + pas.getRebounds();
+					blocks = blocks + pas.getBlock();
+					
+				}
 			}
 		}
 		
+		
 		PlayerAVGStats avg = new PlayerAVGStats(player.getName(), ngame, points / ngame, assists / ngame, rebounds / ngame, blocks / ngame);
+		
 		return avg;
 	}
-
 	
 	public List<String> getResult() {
 		return result;
@@ -143,6 +170,27 @@ public class Model {
 		return westWinner;
 	}
 
+	public List<Match> getMatchs() {
+		return matchs;
+	}
+
+	public Team getGlobalWinner() {
+		return globalWinner;
+	}
+
+	public void setGlobalWinner(Team globalWinner) {
+		this.globalWinner = globalWinner;
+	}
+
+	public List<PlayerAVGStats> getFinalStats() {
+		return finalStats;
+	}
+	
+	
+	
+	
+	
+	
 	
 
 	

@@ -18,6 +18,7 @@ public class Player {
 	private Double fieldGoalsPercentage;
 	private Double fieldGoalAttempts;
 	private Double minutePlayed;
+	private Boolean injured;
 	
 	public Player(String name, String team, Integer age, Double points, Double blocks, Double steals, Double assists,
 			Double rebounds, Double freeThrowsPercentage, Double freeThrowsAttempts, Double threePointsPercentage,
@@ -38,6 +39,7 @@ public class Player {
 		this.fieldGoalsPercentage = fieldGoalsPercentage;
 		this.fieldGoalAttempts = fieldGoalAttempts;
 		this.minutePlayed = minutePlayed;
+		this.injured = false;
 	}
 
 	public String getName() {
@@ -158,6 +160,14 @@ public class Player {
 
 	public void setMinutePlayed(Double minutePlayed) {
 		this.minutePlayed = minutePlayed;
+	}
+
+	public Boolean getInjured() {
+		return injured;
+	}
+
+	public void setInjured(Boolean injured) {
+		this.injured = injured;
 	}
 
 	@Override
