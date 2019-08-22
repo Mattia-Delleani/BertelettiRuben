@@ -54,7 +54,7 @@ public class Model {
 			if(winA == 4 || winH == 4) {
 				break;
 			}else{
-				System.out.println("<<<Start Game "+i+">>>\n\n");
+				//System.out.println("<<<Start Game "+i+">>>\n\n");
 				sim.init(home, away);
 				sim.run();
 				if(sim.getMatch().getWinner().equals(home)) {

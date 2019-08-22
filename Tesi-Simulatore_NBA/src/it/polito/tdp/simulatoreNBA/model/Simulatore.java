@@ -86,12 +86,12 @@ public class Simulatore {
 				if(home.getInjured().containsKey(homeP.getName()) && home.getInjured().get(homeP.getName()) > 0){
 				
 					home.getInjured().put(homeP.getName(), home.getInjured().get(homeP.getName()) -1);
-					System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
+					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
 					
 				}else if(away.getInjured().containsKey(homeP.getName()) && away.getInjured().get(homeP.getName()) > 0) {
 					
 					away.getInjured().put(homeP.getName(), away.getInjured().get(homeP.getName()) -1);
-					System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
+					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
 				}else {
 					
 					for(PlayerAVGStats pas : match.getPlayerStats()) {

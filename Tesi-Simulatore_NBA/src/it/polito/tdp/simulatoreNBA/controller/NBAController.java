@@ -189,7 +189,7 @@ public class NBAController {
 			controller.setModel(model, stage);
 			
 			stage.setScene(scene);
-			stage.setTitle("prova");
+			stage.setTitle("Simulazione Finali Assolute NBA");
 			stage.setAlwaysOnTop(true);
 			stage.show();
 		
