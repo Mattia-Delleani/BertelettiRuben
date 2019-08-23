@@ -130,18 +130,23 @@ public class FinalsController {
         		txtAreaResults.appendText(s + "\n");
         	}
         	
-        	txtAreaResults.appendText("\nGiocatori infortunati:\n");{
-        		for(Match m : model.getMatchs()) {
-        			if(m.getHome().equals(model.getWestWinner()) && m.getAway().equals(model.getEastWinner())) {
-        				if(!m.getInjured().isEmpty()) {
-        					for(Player p : m.getInjured()) {
-        						txtAreaResults.appendText("- " + p.getName() + " ha subito un infortunio nel match "+
-        					(model.getMatchs().indexOf(m) + 1) + "\n");
-        					}
-        				}
-        			}
-        		}
-        	}
+        	txtAreaResults.appendText("\nGiocatori infortunati:\n");
+    		for(Match m : model.getMatchs()) {
+    			if(m.getHome().equals(model.getWestWinner()) && m.getAway().equals(model.getEastWinner())) {
+    				if(!m.getInjured().isEmpty()) {
+    					for(Player p : m.getInjured()) {
+    						txtAreaResults.appendText("- " + p.getName() + " ha subito un infortunio nel match "+
+    					(model.getMatchs().indexOf(m) + 1) + "\n");
+    					}
+    				}
+    			}
+    		}
+    		
+    		txtAreaResults.appendText("\nMiglior Giocatore delle finali:\n");
+    		txtAreaResults.appendText(model.findMVP().getName().toUpperCase());
+        	
+        	
+        	
     		
     	}else {
     		

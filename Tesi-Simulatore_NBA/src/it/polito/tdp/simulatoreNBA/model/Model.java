@@ -130,6 +130,38 @@ public class Model {
 		return avg;
 	}
 	
+	public PlayerAVGStats findMVP() {
+		
+		List<PlayerAVGStats> east = new ArrayList<>();
+		List<PlayerAVGStats> west = new ArrayList<>();
+		List<PlayerAVGStats> all = new ArrayList<>();
+		
+		for(Player p1 : this.eastWinner.getPlayers()) {
+			east.add(this.avgByPlayer(p1));
+		}
+		
+		for(Player p2 : this.westWinner.getPlayers()) {
+			west.add(this.avgByPlayer(p2));
+		}
+		
+		all.addAll(west);
+		all.addAll(east);
+		
+		PlayerAVGStats best = null;
+		Double bestTotal = Double.MIN_VALUE;
+		
+		for(PlayerAVGStats pas : all) {
+			Double tot = pas.getPoint() + pas.getAssist() + pas.getBlock() +pas.getRebounds();
+			if(tot > bestTotal) {
+				best = pas;
+				bestTotal = tot;
+			}
+		}
+		
+		return best;
+		
+	}
+	
 	public List<String> getResult() {
 		return result;
 	}
