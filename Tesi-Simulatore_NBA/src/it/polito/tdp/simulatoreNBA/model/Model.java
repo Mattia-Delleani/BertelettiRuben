@@ -22,6 +22,21 @@ public class Model {
 	private List<Match> matchs;
 	private List<PlayerAVGStats> totalStats;
 	private List<PlayerAVGStats> finalStats;
+	
+	/**
+	 * prima prova, metto come chiave un id match:
+	 * - parte da 1 per il primo quarto ovest a scendere;
+	 * - dal 5 al 8 saranno i quarti est
+	 * - 9 e 10 le semifinali ovest
+	 * - 11 e 12 le semifinali est
+	 * - 13 la finale ovest
+	 * - 14 la finale est
+	 * - 15 la finale assoluta.
+	 */
+	private Map<Integer, Series> seriesMap;
+	private Integer idSeries = 1;
+	
+
 		
 	private NBADao dao;
 	
@@ -35,6 +50,8 @@ public class Model {
 		this.matchs = new ArrayList<>();
 		this.totalStats = new ArrayList<>();
 		this.finalStats = new ArrayList<PlayerAVGStats>();
+		this.seriesMap = new HashMap<>();
+		
 		this.winnerTeamMap = new HashMap<String, Team>();
 		
 		this.eastWinner = null;
@@ -43,6 +60,8 @@ public class Model {
 	}
 	
 	public Team SimulationWinner(Team home, Team away) {
+		
+		Series series = new Series(home, away);
 		
 		this.winA = 0;
 		this.winH = 0;
@@ -57,12 +76,16 @@ public class Model {
 				//System.out.println("<<<Start Game "+i+">>>\n\n");
 				sim.init(home, away);
 				sim.run();
-				if(sim.getMatch().getWinner().equals(home)) {
+				if(sim.getMatch().getWinner().equals(home)) {//vince home
 					this.winH++;
+					series.setWinHome(series.getWinHome() + 1);
+					series.getMatches().add(sim.getMatch()); //aggiungo il match alla serie
 					String res = this.sim.getMatch().toString();
 					this.result.add(res);
-				}else {
+				}else {//vince away
 					this.winA++;
+					series.setWinAway(series.getWinAway() + 1);
+					series.getMatches().add(sim.getMatch());
 					String res = this.sim.getMatch().toString();
 					this.result.add(res);
 				}
@@ -81,13 +104,20 @@ public class Model {
 		
 		if(winA > winH) {
 			this.winnerTeamMap.put(away.getAbbreviation(), away);
+			series.setWinner(away);
+			this.seriesMap.put(idSeries, series);
+			this.idSeries ++;
 			return away;
 		}
 			
 		else {
 			this.winnerTeamMap.put(home.getAbbreviation(), home);
+			series.setWinner(home);
+			this.seriesMap.put(idSeries, series);
+			this.idSeries ++;
 			return home;
 		}
+		
 					
 		
 	}
@@ -217,6 +247,12 @@ public class Model {
 	public List<PlayerAVGStats> getFinalStats() {
 		return finalStats;
 	}
+
+	public Map<Integer, Series> getSeriesMap() {
+		return seriesMap;
+	}
+	
+	
 	
 	
 	

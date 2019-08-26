@@ -146,6 +146,9 @@ public class NBAController {
     @FXML
     private Button btn4East;
     
+    @FXML
+    private Button doViewStats;
+    
 
 
     @FXML
@@ -212,15 +215,15 @@ public class NBAController {
     	
     	Team finalist1East = model.SimulationWinner(winner1v8, winner4v5);
     	txtFinalist1East.appendText(finalist1East.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team finalist2East = model.SimulationWinner(winner3v6, winner2v7);
     	txtFinalist2East.appendText(finalist2East.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	btn2East.setDisable(true);
     	btnFinalsEast.setDisable(false);
@@ -241,15 +244,15 @@ public class NBAController {
     	
     	Team finalist1West = model.SimulationWinner(winner1v8, winner4v5);
     	txtFinalist1West.appendText(finalist1West.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team finalist2West = model.SimulationWinner(winner3v6, winner2v7);
     	txtFinalist2West.appendText(finalist2West.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	btn2West.setDisable(true);
     	btnFinalsWest.setDisable(false);
@@ -309,27 +312,27 @@ public class NBAController {
     	
     	Team winner1vs8 = model.SimulationWinner(team1, team8);
     	txt1vs8East.appendText(winner1vs8.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team winner2vs7 = model.SimulationWinner(team2, team7);
     	txt2vs7East.appendText(winner2vs7.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team winner3vs6 = model.SimulationWinner(team3, team6);
     	txt3vs6East.appendText(winner3vs6.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team winner4vs5 = model.SimulationWinner(team4, team5);
     	txt4vs5East.appendText(winner4vs5.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	btn4East.setDisable(true);
     	btn2East.setDisable(false);
@@ -346,9 +349,9 @@ public class NBAController {
     	
     	Team eastWinner = model.SimulationWinner(finalist1East, finalist2East);
     	txtEastWinner.appendText(eastWinner.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	model.saveEastWinner(eastWinner);//salvataggio in Model
     	
@@ -369,9 +372,9 @@ public class NBAController {
     	
     	Team westWinner = model.SimulationWinner(finalist1West, finalist2West);
     	txtWestWinner.appendText(westWinner.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	model.saveWestWinner(westWinner);//salvataggio in Model
     	
@@ -436,27 +439,27 @@ public class NBAController {
     	
     	Team winner1vs8 = model.SimulationWinner(team1, team8);
     	txt1vs8West.appendText(winner1vs8.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team winner2vs7 = model.SimulationWinner(team2, team7);
     	txt2vs7West.appendText(winner2vs7.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team winner3vs6 = model.SimulationWinner(team3, team6);
     	txt3vs6West.appendText(winner3vs6.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	Team winner4vs5 = model.SimulationWinner(team4, team5);
     	txt4vs5West.appendText(winner4vs5.getAbbreviation());
-    	for(String s : model.getResult()) {
+    	/*for(String s : model.getResult()) {
     		txtLog.appendText(s + "\n");
-    	}
+    	}*/
     	
     	btn4West.setDisable(true);
     	btn2West.setDisable(false);
@@ -464,6 +467,31 @@ public class NBAController {
     	
     	
     	
+
+    }
+    
+    @FXML
+    void doViewStats(ActionEvent event) {
+    	
+    	try {
+    		
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsForGame.fxml"));
+			BorderPane root = (BorderPane) loader.load();
+			Scene scene = new Scene(root);
+			
+			StatsController controller = loader.getController();
+			controller.setModel(model, stage);
+			
+			stage.setScene(scene);
+			stage.setTitle("Statistiche Serie");
+			//stage.setAlwaysOnTop(true);
+			stage.show();
+		
+		
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -507,6 +535,8 @@ public class NBAController {
         assert btnFinalsEast != null : "fx:id=\"btnFinalsEast\" was not injected: check your FXML file 'Table.fxml'.";
         assert btn2East != null : "fx:id=\"btn2East\" was not injected: check your FXML file 'Table.fxml'.";
         assert btn4East != null : "fx:id=\"btn4East\" was not injected: check your FXML file 'Table.fxml'.";
+        assert doViewStats != null : "fx:id=\"doViewStats\" was not injected: check your FXML file 'Table.fxml'.";
+
 
     }
     
@@ -530,4 +560,8 @@ public class NBAController {
     	this.cmbBoxWest7.getItems().addAll(model.getWestTeams());
     	this.cmbBoxWest8.getItems().addAll(model.getWestTeams());
     }
+    
+    
+    
+    
 }

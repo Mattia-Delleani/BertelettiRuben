@@ -99,6 +99,32 @@ public class Match {
 			playerStats.add(new PlayerAVGStats(ap.getName(), 0, 0.0, 0.0, 0.0, 0.0));
 		}
 	}
+	
+	public List<PlayerAVGStats> getHomeStats(){
+		List<PlayerAVGStats> home = new ArrayList<>();
+		for(PlayerAVGStats pas : this.playerStats) {
+			for(Player p : this.home.getPlayers()) {
+				if(p.getName().equals(pas.getName())) {
+					home.add(pas);
+				}
+			}
+		}
+		
+		return home;
+	}
+	
+	public List<PlayerAVGStats> getAwayStats(){
+		List<PlayerAVGStats> away = new ArrayList<>();
+		for(PlayerAVGStats pas : this.playerStats) {
+			for(Player p : this.away.getPlayers()) {
+				if(p.getName().equals(pas.getName())) {
+					away.add(pas);
+				}
+			}
+		}
+		
+		return away;
+	}
 
 	@Override
 	public int hashCode() {

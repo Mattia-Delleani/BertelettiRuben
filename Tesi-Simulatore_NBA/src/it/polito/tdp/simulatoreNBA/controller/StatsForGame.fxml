@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="it.polito.tdp.simulatoreNBA.controller.StatsController">
+   <top>
+      <Label text="Statistiche serie" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <VBox BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox prefHeight="381.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <children>
+                  <TextField fx:id="txtTeamHome" editable="false" prefHeight="25.0" prefWidth="328.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text="VS">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtTeamAway" editable="false" prefHeight="25.0" prefWidth="322.0">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <TextArea fx:id="txtAreaResult" editable="false" prefHeight="110.0" prefWidth="154.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextArea>
+            <HBox>
+               <children>
+                  <TableView fx:id="tableHome" prefHeight="191.0">
+                     <columns>
+                        <TableColumn fx:id="colPlayerH" prefWidth="75.0" text="Giocatore" />
+                        <TableColumn fx:id="colGameH" prefWidth="50.0" text="nGame" />
+                        <TableColumn fx:id="colPointH" prefWidth="40.0" text="Punti" />
+                        <TableColumn fx:id="colAssistH" prefWidth="40.0" text="Assist" />
+                        <TableColumn fx:id="colRebH" prefWidth="60.0" text="Rimbalzi" />
+                        <TableColumn fx:id="colStopH" prefWidth="60.0" text="Stoppate" />
+                     </columns>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TableView>
+                  <TableView fx:id="tableAway" prefHeight="191.0">
+                     <columns>
+                        <TableColumn fx:id="colPlayerA" prefWidth="75.0" text="Giocatore" />
+                        <TableColumn fx:id="colGameA" prefWidth="50.0" text="nGame" />
+                        <TableColumn fx:id="colPointA" prefWidth="40.0" text="Punti" />
+                        <TableColumn fx:id="colAssistA" prefWidth="40.0" text="Assist" />
+                        <TableColumn fx:id="colRebA" prefWidth="60.0" text="Rimbalzi" />
+                        <TableColumn fx:id="colStopA" prefWidth="60.0" text="Stoppate" />
+                     </columns>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TableView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
