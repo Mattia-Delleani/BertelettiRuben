@@ -36,6 +36,7 @@ public class Simulatore {
 	private Integer PROB_TENTATIVO_FISSA = 70;
 	private Integer PROB_TENTATIVO_RANDOM = 50;	
 	private Double PROB_INJURED = 0.008;
+	private Integer MAX_INJURED_TIME = 3;
 	
 	
 	public void init(Team home, Team away) {
@@ -119,6 +120,12 @@ public class Simulatore {
 								
 							}
 							
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//aggiornamento tentativi
+								if(pas.getName().equals(homeP.getName())) {
+									pas.setThreeAttempts(pas.getThreeAttempts() + 1);
+								}
+							}
+							
 						}
 						
 						Integer attempt2 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) + this.PROB_TENTATIVO_FISSA) * homeP.getFieldGoalAttempts()) / 100));
@@ -134,6 +141,12 @@ public class Simulatore {
 								
 							}
 							
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//aggiornamento tentativi
+								if(pas.getName().equals(homeP.getName())) {
+									pas.setFgAttempts(pas.getFgAttempts() + 1);
+								}
+							}
+							
 						}
 						
 						Integer freeT = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) + this.PROB_TENTATIVO_FISSA) * homeP.getFreeThrowsAttempts()) / 100));
@@ -146,6 +159,12 @@ public class Simulatore {
 								
 								this.eventList.add(new Evento(null, TipoEvento.FREE_THROW_ATTEMPT, away, homeP));
 								
+							}
+							
+							for(PlayerAVGStats pas : match.getPlayerStats()) {//aggiornamento tentativi
+								if(pas.getName().equals(homeP.getName())) {
+									pas.setFreeAttempts(pas.getFreeAttempts() + 1);
+								}
 							}
 							
 						}
@@ -223,7 +242,8 @@ public class Simulatore {
 						String name = "";
 						for(PlayerAVGStats pas : match.getPlayerStats()) {
 							if(pas.getName().equals(ev.getPlayer().getName())) {
-								pas.setPoint(pas.getPoint() + 2);
+								pas.setPoint(pas.getPoint() + 2);//update punti
+								pas.setFgDone(pas.getFgDone() + 1);//update successi
 								name = pas.getName();
 							}
 							if(!name.equals("") && !pas.getName().equals(name)) {//MODELLAZIONE ASSIST
@@ -302,6 +322,8 @@ public class Simulatore {
 						for(PlayerAVGStats pas : match.getPlayerStats()) {
 							if(pas.getName().equals(ev.getPlayer().getName())) {
 								pas.setPoint(pas.getPoint() + 3);
+								pas.setThreeDone(pas.getThreeDone() + 1);//update successi
+								name = pas.getName();
 							}
 							if(!name.equals("") && !pas.getName().equals(name)) {//MODELLAZIONE ASSIST
 								//seleziono un giocatore dello stesso team
@@ -383,6 +405,7 @@ public class Simulatore {
 						for(PlayerAVGStats pas : match.getPlayerStats()) {
 							if(pas.getName().equals(ev.getPlayer().getName())) {
 								pas.setPoint(pas.getPoint() + 1);
+								pas.setFreeDone(pas.getFreeDone() + 1);//update successi
 							}
 						}
 						
@@ -404,8 +427,8 @@ public class Simulatore {
 						if(toConsider.equals(p)) {
 							p.setInjured(true);
 							Map<String, Integer> teamInjured = team.getInjured();
-							Integer time =  rand.nextInt(2) + 1;
-							teamInjured.put(toConsider.getName(), time);//al max 3 giornate	, lo aggiungo al team
+							Integer time =  rand.nextInt(this.MAX_INJURED_TIME) + 1;
+							teamInjured.put(toConsider.getName(), time);//al max 4 giornate	, lo aggiungo al team
 							this.match.getInjured().add(toConsider);//aggiungo infornutato al match
 							//System.out.println("Giocatore " + toConsider.getName() + "INFORTUNATO per "+time);
 						}

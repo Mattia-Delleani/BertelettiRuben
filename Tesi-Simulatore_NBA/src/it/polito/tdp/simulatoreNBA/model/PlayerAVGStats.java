@@ -9,8 +9,15 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 	private Double rebounds;
 	private Double steal;
 	private Double block;
-	private Integer injuredTime;
-	private Integer recuperati;
+	private Integer fgAttempts;
+	private Integer fgDone;
+	private Integer threeAttempts;
+	private Integer threeDone;
+	private Integer freeAttempts;
+	private Integer freeDone;
+	private Double fgAvg;
+	private Double threeAvg;
+	private Double freeAvg;
 	
 	public PlayerAVGStats(String name, Integer nGames, Double point, Double assist, Double rebounds, Double block) {
 		super();
@@ -20,8 +27,12 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 		this.assist = assist;
 		this.rebounds = rebounds;
 		this.block = block;
-		this.injuredTime = 0;
-		this.recuperati = 0;
+		this.fgAttempts = 0;
+		this.fgDone = 0;
+		this.freeDone = 0;
+		this.freeAttempts = 0;
+		this.threeAttempts = 0;
+		this.threeDone = 0;
 	}
 
 	public String getName() {
@@ -78,22 +89,78 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 
 	public void setBlock(Double block) {
 		this.block = block;
+	}	
+
+	public Integer getFgAttempts() {
+		return fgAttempts;
 	}
 
-	public Integer getInjuredTime() {
-		return injuredTime;
+	public void setFgAttempts(Integer fgAttempts) {
+		this.fgAttempts = fgAttempts;
 	}
 
-	public void setInjuredTime(Integer injuredTime) {
-		this.injuredTime = injuredTime;
+	public Integer getFgDone() {
+		return fgDone;
 	}
 
-	public Integer getRecuperati() {
-		return recuperati;
+	public void setFgDone(Integer fgDone) {
+		this.fgDone = fgDone;
 	}
 
-	public void setRecuperati(Integer recuperati) {
-		this.recuperati = recuperati;
+	public Integer getThreeAttempts() {
+		return threeAttempts;
+	}
+
+	public void setThreeAttempts(Integer threeAttempts) {
+		this.threeAttempts = threeAttempts;
+	}
+
+	public Integer getThreeDone() {
+		return threeDone;
+	}
+
+	public void setThreeDone(Integer threeDone) {
+		this.threeDone = threeDone;
+	}
+
+	public Integer getFreeAttempts() {
+		return freeAttempts;
+	}
+
+	public void setFreeAttempts(Integer freeAttempts) {
+		this.freeAttempts = freeAttempts;
+	}
+
+	public Integer getFreeDone() {
+		return freeDone;
+	}
+
+	public void setFreeDone(Integer freeDone) {
+		this.freeDone = freeDone;
+	}
+
+	public Double getFgAvg() {
+		return fgAvg;
+	}
+
+	public void setFgAvg(Double fgAvg) {
+		this.fgAvg = fgAvg;
+	}
+
+	public Double getThreeAvg() {
+		return threeAvg;
+	}
+
+	public void setThreeAvg(Double threeAvg) {
+		this.threeAvg = threeAvg;
+	}
+
+	public Double getFreeAvg() {
+		return freeAvg;
+	}
+
+	public void setFreeAvg(Double freeAvg) {
+		this.freeAvg = freeAvg;
 	}
 
 	@Override
@@ -120,14 +187,13 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 			return false;
 		return true;
 	}
-
 	
 
 	@Override
 	public String toString() {
 		return String.format(
-				"PlayerAVGStats -> name = %s, nGames = %s, point = %s, assist = %s, rebounds = %s, block = %s",
-				name, ngames, point, assist, rebounds, block);
+				"PlayerAVGStats -> name = %s, ngames = %s, point = %s, assist = %s, rebounds = %s, steal = %s, block = %s, fgAvg = %s, threeAvg = %s, freeAvg = %s",
+				name, ngames, point, assist, rebounds, steal, block, fgAvg, threeAvg, freeAvg);
 	}
 
 	@Override
