@@ -1,1 +1,17 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root{
+	-fx-background-color: darkgray    ;
+}
+
+.txtResultSeries{
+	-fx-background-color: darkgray   ;
+	-fx-text-fill: crimson  ;
+}
+
+.labelTeam{
+	-fx-text-fill: white ;
+}
+
+.controlPanel{
+	-fx-background-color: burlywood ;
+}

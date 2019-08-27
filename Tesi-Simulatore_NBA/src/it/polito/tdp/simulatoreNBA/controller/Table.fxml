@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -14,18 +14,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="473.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.simulatoreNBA.controller.NBAController">
+<BorderPane onMouseClicked="#doViewStats" prefHeight="600.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.simulatoreNBA.controller.NBAController">
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
             <VBox spacing="6.0">
                <children>
-                  <Label text="1">
+                  <Label styleClass="labelTeam" text="1">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="8">
+                  <Label styleClass="labelTeam" text="8">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -33,12 +33,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="4">
+                  <Label styleClass="labelTeam" text="4">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="5">
+                  <Label styleClass="labelTeam" text="5">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -46,12 +46,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="3">
+                  <Label styleClass="labelTeam" text="3">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="6">
+                  <Label styleClass="labelTeam" text="6">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -59,12 +59,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="2">
+                  <Label styleClass="labelTeam" text="2">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="7">
+                  <Label styleClass="labelTeam" text="7">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -79,46 +79,77 @@
             </VBox>
             <VBox fx:id="vBoxWest" spacing="5.0">
                <children>
-                  <ComboBox fx:id="cmbBoxWest1" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest1" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest8" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest8" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest4" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest4" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="3.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest5" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest5" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest3" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest3" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest6" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest6" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest2" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest2" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxWest7" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxWest7" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <TextField fx:id="txtResult1West" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets top="6.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult8West" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets bottom="22.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult4West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult5West" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets bottom="22.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult3West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult6We" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets bottom="22.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult2West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult7West" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -129,28 +160,55 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
                <children>
-                  <TextField fx:id="txt1vs8West" editable="false" prefHeight="25.0" prefWidth="80.0">
+                  <TextField fx:id="txt1vs8West" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txt4vs5West" editable="false" prefWidth="80.0" />
-                  <TextField fx:id="txt3vs6West" editable="false" prefWidth="80.0" />
-                  <TextField fx:id="txt2vs7West" editable="false" prefWidth="80.0" />
+                  <TextField fx:id="txt4vs5West" editable="false" onMouseClicked="#doViewStats" prefWidth="60.0" />
+                  <TextField fx:id="txt3vs6West" editable="false" onMouseClicked="#doViewStats" prefWidth="60.0" />
+                  <TextField fx:id="txt2vs7West" editable="false" onMouseClicked="#doViewStats" prefWidth="60.0" />
                </children>
             </VBox>
-            <VBox>
+            <VBox spacing="58.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#doViewStats" text="prova" />
-                  <TextField fx:id="txtFinalist1West" editable="false" prefHeight="25.0" prefWidth="80.0">
+                  <TextField fx:id="txtResult18West" prefHeight="25.0" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
-                        <Insets top="35.0" />
+                        <Insets top="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtFinalist2West" editable="false" prefHeight="25.0" prefWidth="80.0">
+                  <TextField fx:id="txtResult45West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult36West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult27West" prefWidth="25.0" styleClass="txtResultSeries" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox spacing="142.0">
+               <children>
+                  <TextField fx:id="txtFinalist1West" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0">
                      <VBox.margin>
-                        <Insets top="140.0" />
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtFinalist2West" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0">
+                     <VBox.margin>
+                        <Insets />
                      </VBox.margin></TextField>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox spacing="142.0">
+               <children>
+                  <TextField fx:id="txtResult1fFinalWest" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult2FinalWest" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -164,15 +222,43 @@
          <children>
             <VBox spacing="142.0">
                <children>
-                  <TextField fx:id="txtFinalist1East" editable="false" prefHeight="25.0" prefWidth="80.0">
+                  <TextField fx:id="txtResult1FinalEst" minWidth="20.0" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="60.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtFinalist2East" editable="false" prefHeight="25.0" prefWidth="80.0" />
+                  <TextField fx:id="txtResult2FinalEst" minWidth="20.0" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox spacing="142.0">
+               <children>
+                  <TextField fx:id="txtFinalist1East" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0">
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtFinalist2East" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox spacing="58.0">
+               <children>
+                  <TextField fx:id="txtResult18Est" prefHeight="25.0" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult45Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult36Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult27Est" prefWidth="25.0" styleClass="txtResultSeries" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </VBox>
             <VBox spacing="58.0">
@@ -180,54 +266,85 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
                <children>
-                  <TextField fx:id="txt1vs8East" editable="false" prefHeight="25.0" prefWidth="80.0">
+                  <TextField fx:id="txt1vs8East" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txt4vs5East" editable="false" prefHeight="25.0" prefWidth="80.0" />
-                  <TextField fx:id="txt3vs6East" editable="false" prefWidth="80.0" />
-                  <TextField fx:id="txt2vs7East" editable="false" prefWidth="80.0" />
+                  <TextField fx:id="txt4vs5East" editable="false" onMouseClicked="#doViewStats" prefHeight="25.0" prefWidth="60.0" />
+                  <TextField fx:id="txt3vs6East" editable="false" onMouseClicked="#doViewStats" prefWidth="60.0" />
+                  <TextField fx:id="txt2vs7East" editable="false" onMouseClicked="#doViewStats" prefWidth="60.0" />
                </children>
             </VBox>
             <VBox spacing="5.0">
                <children>
-                  <ComboBox fx:id="cmbBoxEast1" prefHeight="25.0" prefWidth="80.0">
+                  <TextField fx:id="txtResult1Est" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets top="6.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult8Est" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets bottom="22.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult4Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult5Est" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets bottom="22.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult3Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult6Est" prefWidth="25.0" styleClass="txtResultSeries">
+                     <VBox.margin>
+                        <Insets bottom="22.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtResult2Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult7Est" prefWidth="25.0" styleClass="txtResultSeries" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <ComboBox fx:id="cmbBoxEast1" prefHeight="25.0" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast8" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast8" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast4" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast4" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="3.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast5" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast5" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast3" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast3" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast6" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast6" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast2" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast2" prefWidth="70.0">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="cmbBoxEast7" prefWidth="80.0">
+                  <ComboBox fx:id="cmbBoxEast7" prefWidth="70.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -239,12 +356,12 @@
             </VBox>
             <VBox spacing="6.0">
                <children>
-                  <Label text="1">
+                  <Label styleClass="labelTeam" text="1">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="8">
+                  <Label styleClass="labelTeam" text="8">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -252,12 +369,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="4">
+                  <Label styleClass="labelTeam" text="4">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="5">
+                  <Label styleClass="labelTeam" text="5">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -265,12 +382,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="3">
+                  <Label styleClass="labelTeam" text="3">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="6">
+                  <Label styleClass="labelTeam" text="6">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -278,12 +395,12 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="2">
+                  <Label styleClass="labelTeam" text="2">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label text="7">
+                  <Label styleClass="labelTeam" text="7">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -307,9 +424,9 @@
       </ImageView>
    </top>
    <center>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox prefHeight="402.0" prefWidth="346.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="376.0" prefWidth="100.0">
                <children>
                   <Label prefHeight="60.0" prefWidth="60.0" text="WEST WINNER" textAlignment="CENTER" textFill="#0105f5" wrapText="true">
                      <font>
@@ -319,7 +436,7 @@
                         <Insets left="10.0" right="10.0" top="80.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtWestWinner" editable="false" prefWidth="80.0" styleClass="txtWwinner">
+                  <TextField fx:id="txtWestWinner" editable="false" prefHeight="25.0" prefWidth="60.0" styleClass="txtWwinner">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -339,7 +456,7 @@
                         <Insets left="10.0" right="10.0" top="80.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtEastWinner" editable="false" prefWidth="80.0">
+                  <TextField fx:id="txtEastWinner" editable="false" prefWidth="60.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -355,61 +472,52 @@
    <bottom>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox spacing="7.0" styleClass="controlPanel">
                <children>
-                  <TextArea fx:id="txtLog" editable="false" prefHeight="50.0" prefWidth="755.0" promptText="Benvenuto nel simulatore playoff NBA">
+                  <Button mnemonicParsing="false" onAction="#doSimulaOvest" prefHeight="30.0" prefWidth="140.0" text="Simulazione Ovest">
                      <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
                      </HBox.margin>
-                  </TextArea>
-                  <Button mnemonicParsing="false" onAction="#doReset" prefHeight="50.0" prefWidth="185.0" text="RESET">
-                     <HBox.margin>
-                        <Insets bottom="15.0" right="15.0" top="15.0" />
-                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Button>
-               </children>
-            </HBox>
-            <HBox spacing="7.0" styleClass="hboxBottom">
-               <children>
-                  <Button fx:id="btn4West" mnemonicParsing="false" onAction="#simula4West" prefHeight="60.0" prefWidth="80.0" text="QUARTI WEST" textAlignment="CENTER" textFill="#0105f5" wrapText="true">
+                  <CheckBox fx:id="checkWset" mnemonicParsing="false" prefHeight="35.0" prefWidth="96.0" text="Simulazione veloce" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="btnToFinals" disable="true" mnemonicParsing="false" onAction="#doGoToFinals" prefHeight="17.0" prefWidth="130.0" text="GO TO FINALS" textAlignment="CENTER" textFill="#ff2f00" wrapText="true">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="35.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <rotationAxis>
-                        <Point3D x="-10.0" z="1.0" />
-                     </rotationAxis>
-                  </Button>
-                  <Button fx:id="btn2West" disable="true" mnemonicParsing="false" onAction="#doSimula2West" prefHeight="60.0" prefWidth="80.0" text="SEMIFINALI WEST" textAlignment="CENTER" textFill="#0105f5" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnFinalsWest" disable="true" mnemonicParsing="false" onAction="#doSimulaFinalsWest" prefHeight="60.0" prefWidth="80.0" text="FINALS WEST" textAlignment="CENTER" textFill="#0105f5" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnToFinals" disable="true" mnemonicParsing="false" onAction="#doGoToFinals" prefHeight="60.0" prefWidth="130.0" text="GO TO FINALS" textAlignment="CENTER" textFill="#ff2f00" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="25.0" right="25.0" top="5.0" />
+                        <Insets bottom="5.0" left="90.0" right="90.0" top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnFinalsEast" disable="true" mnemonicParsing="false" onAction="#doSimulaFinalsEast" prefHeight="60.0" prefWidth="80.0" text="FINALS EAST" textAlignment="CENTER" textFill="#16c913" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btn2East" disable="true" mnemonicParsing="false" onAction="#doSimula2East" prefHeight="60.0" prefWidth="80.0" text="SEMIFINALI EAST" textAlignment="CENTER" textFill="#16c913" wrapText="true">
+                  <Button mnemonicParsing="false" onAction="#doSimulaEst" prefHeight="30.0" prefWidth="140.0" text="Simulazione Est">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="btn4East" mnemonicParsing="false" onAction="#doSimula4East" prefHeight="60.0" prefWidth="80.0" text="QUARTI EAST" textAlignment="CENTER" textFill="#16c913" wrapText="true">
+                  <CheckBox fx:id="checkEast" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" text="Simulazione veloce" textAlignment="CENTER" wrapText="true" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <HBox styleClass="controlPanel">
+               <children>
+                  <TextArea fx:id="txtLog" editable="false" prefHeight="50.0" prefWidth="631.0" promptText="Benvenuto nel simulatore playoff NBA">
                      <HBox.margin>
-                        <Insets bottom="5.0" right="35.0" top="5.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </TextArea>
+                  <Button mnemonicParsing="false" onAction="#doReset" prefHeight="50.0" prefWidth="81.0" text="RESET">
+                     <HBox.margin>
+                        <Insets bottom="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
                   </Button>
                </children>
