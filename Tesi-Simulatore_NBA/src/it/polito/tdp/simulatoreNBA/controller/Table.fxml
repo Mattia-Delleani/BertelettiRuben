@@ -203,7 +203,7 @@
             </VBox>
             <VBox spacing="142.0">
                <children>
-                  <TextField fx:id="txtResult1fFinalWest" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult1FinalWest" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="60.0" />
                      </VBox.margin>

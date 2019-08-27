@@ -294,6 +294,13 @@ public class NBAController {
         	 * Simulazione quarti
         	 */
         	
+        	Integer index;
+        	if(model.getSeriesMap().isEmpty()) {
+        		index = 1;
+        	}else {
+        		index = model.getSeriesMap().size() + 1;
+        	}
+        	
         	Team winner1vs8 = model.SimulationWinner(team1, team8);
         	txt1vs8East.appendText(winner1vs8.getAbbreviation());
         	
@@ -306,17 +313,25 @@ public class NBAController {
         	Team winner4vs5 = model.SimulationWinner(team4, team5);
         	txt4vs5East.appendText(winner4vs5.getAbbreviation());
         	
-        	txtResult1Est.appendText(model.getSeriesMap().get(1).getWinHome().toString());
-        	txtResult8Est.appendText(model.getSeriesMap().get(1).getWinAway().toString());
+        	txtResult1Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
+        	txtResult8Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
         	
-        	txtResult4Est.appendText(model.getSeriesMap().get(2).getWinHome().toString());
-        	txtResult5Est.appendText(model.getSeriesMap().get(2).getWinAway().toString());
+        	index++;
         	
-        	txtResult3Est.appendText(model.getSeriesMap().get(3).getWinHome().toString());        	
-        	txtResult6Est.appendText(model.getSeriesMap().get(3).getWinAway().toString());
+        	txtResult4Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
+        	txtResult5Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
         	
-        	txtResult2Est.appendText(model.getSeriesMap().get(4).getWinHome().toString());
-        	txtResult7Est.appendText(model.getSeriesMap().get(4).getWinAway().toString());
+        	index++;
+        	
+        	txtResult3Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());        	
+        	txtResult6Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
+        	
+        	index++;
+        	
+        	txtResult2Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
+        	txtResult7Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
+        	
+        	index++;
         	
         	/*
         	 * Simulazione semifinale
@@ -334,11 +349,15 @@ public class NBAController {
         	Team finalist2East = model.SimulationWinner(winner3v6, winner2v7);
         	txtFinalist2East.appendText(finalist2East.getAbbreviation());
         	
-        	txtResult18Est.appendText(model.getSeriesMap().get(5).getWinHome().toString());
-        	txtResult45Est.appendText(model.getSeriesMap().get(5).getWinAway().toString());
+        	txtResult18Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
+        	txtResult45Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
         	
-        	txtResult36Est.appendText(model.getSeriesMap().get(6).getWinHome().toString());
-        	txtResult27Est.appendText(model.getSeriesMap().get(6).getWinAway().toString());
+        	index++;
+        	
+        	txtResult36Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
+        	txtResult27Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
+        	
+        	index++;
         	
         	/*
         	 * Simulazione finale
@@ -351,12 +370,13 @@ public class NBAController {
         	Team eastWinner = model.SimulationWinner(finalisti1East, finalisti2East);
         	txtEastWinner.appendText(eastWinner.getAbbreviation());
         	
-        	txtResult1FinalEst.appendText(model.getSeriesMap().get(7).getWinHome().toString());
-        	txtResult2FinalEst.appendText(model.getSeriesMap().get(7).getWinAway().toString());
+        	txtResult1FinalEst.appendText(model.getSeriesMap().get(index).getWinHome().toString());
+        	txtResult2FinalEst.appendText(model.getSeriesMap().get(index).getWinAway().toString());
         	        	
         	model.saveEastWinner(eastWinner);//salvataggio in Model
         	
-        	
+        	txtLog.appendText("Simulazione veloce EST avvenuta con successo!\n "
+        			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
         	
     		
     	}else {
@@ -422,9 +442,6 @@ public class NBAController {
         	 * Simulazione quarti
         	 */
         	
-        	Team winner1vs8 = model.SimulationWinner(team1, team8);
-        	txt1vs8West.appendText(winner1vs8.getAbbreviation());
-        	
         	Integer index;
         	if(model.getSeriesMap().isEmpty()) {
         		index = 1;
@@ -432,6 +449,8 @@ public class NBAController {
         		index = model.getSeriesMap().size() + 1;
         	}
         	
+        	Team winner1vs8 = model.SimulationWinner(team1, team8);
+        	txt1vs8West.appendText(winner1vs8.getAbbreviation());
         	
         	Team winner2vs7 = model.SimulationWinner(team2, team7);
         	txt2vs7West.appendText(winner2vs7.getAbbreviation());
@@ -492,8 +511,8 @@ public class NBAController {
         	 * Simulazione finale
         	 */
         	
-        	Team finalisti1West = model.getWinnerTeamMap().get(txtFinalist1East.getText());
-        	Team finalisti2West = model.getWinnerTeamMap().get(txtFinalist2East.getText());
+        	Team finalisti1West = model.getWinnerTeamMap().get(txtFinalist1West.getText());
+        	Team finalisti2West = model.getWinnerTeamMap().get(txtFinalist2West.getText());
         	
         	
         	Team westWinner = model.SimulationWinner(finalisti1West, finalisti2West);
@@ -502,10 +521,10 @@ public class NBAController {
         	txtResult1FinalWest.appendText(model.getSeriesMap().get(index).getWinHome().toString());
         	txtResult2FinalWest.appendText(model.getSeriesMap().get(index).getWinAway().toString());
         	
-        	        	
         	model.saveWestWinner(westWinner);//salvataggio in Model
         	
-        	
+        	txtLog.appendText("Simulazione veloce OVEST avvenuta con successo!\n "
+        			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
         	
     		
     	}else {
@@ -624,7 +643,7 @@ public class NBAController {
         assert txtResult27West != null : "fx:id=\"txtResult27West\" was not injected: check your FXML file 'Table.fxml'.";
         assert txtFinalist1West != null : "fx:id=\"txtFinalist1West\" was not injected: check your FXML file 'Table.fxml'.";
         assert txtFinalist2West != null : "fx:id=\"txtFinalist2West\" was not injected: check your FXML file 'Table.fxml'.";
-        assert txtResult1FinalWest != null : "fx:id=\"txtResult1fFinalWest\" was not injected: check your FXML file 'Table.fxml'.";
+        assert txtResult1FinalWest != null : "fx:id=\"txtResult1FinalWest\" was not injected: check your FXML file 'Table.fxml'.";
         assert txtResult2FinalWest != null : "fx:id=\"txtResult2FinalWest\" was not injected: check your FXML file 'Table.fxml'.";
         assert txtResult1FinalEst != null : "fx:id=\"txtResult1FinalEst\" was not injected: check your FXML file 'Table.fxml'.";
         assert txtResult2FinalEst != null : "fx:id=\"txtResult2FinalEst\" was not injected: check your FXML file 'Table.fxml'.";
