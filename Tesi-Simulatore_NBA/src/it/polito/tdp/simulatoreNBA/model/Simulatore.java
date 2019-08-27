@@ -31,7 +31,7 @@ public class Simulatore {
 	private Integer TEMPO_RANDOM_AZIONE = 15;
 	private Double PROB_RIMBALZO = 0.8;
 	private Double PROB_STOPPATA = 0.5;
-	private Double PROB_PLUS_RANDOM_ASSIST = 0.5;
+	private Double PROB_RANDOM_ASSIST = 0.15;
 	private Double PROB_PLUS_RANDOM_STOPPATA = 0.3;
 	private Integer PROB_TENTATIVO_FISSA = 70;
 	private Integer PROB_TENTATIVO_RANDOM = 50;	
@@ -231,8 +231,8 @@ public class Simulatore {
 								if(team.equals(match.getHome())) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + this.PROB_PLUS_RANDOM_ASSIST * rand.nextDouble())) {
-											if(!toConsider.getInjured())
+										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())
 												pas2.setAssist(pas2.getAssist() + 1);
 										}
 									}
@@ -240,8 +240,8 @@ public class Simulatore {
 								}else {
 									Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
 									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + this.PROB_PLUS_RANDOM_ASSIST * rand.nextDouble())) {
-											if(!toConsider.getInjured())
+										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())
 												pas2.setAssist(pas2.getAssist() + 1);
 										}
 									}
@@ -257,8 +257,8 @@ public class Simulatore {
 						
 					}else {//se non fanno canestro il team avversario può prendere un rimbalzo o stoppare casi separati per team
 						if(team.equals(this.match.getHome())) {
-							if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 50%
-								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));//prendo un giocatore a caso dal team avversario
+							if(rand.nextDouble() < this.PROB_RIMBALZO) {
+								Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));//prendo un giocatore a caso dal team avversario
 								for(PlayerAVGStats pas : match.getPlayerStats()) {
 									if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
 										pas.setRebounds(pas.getRebounds() + 1);	
@@ -274,7 +274,7 @@ public class Simulatore {
 							}						
 						}else {													
 								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
-									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+									Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
 											pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
@@ -308,16 +308,16 @@ public class Simulatore {
 								if(team.equals(match.getHome())) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + this.PROB_PLUS_RANDOM_ASSIST * rand.nextDouble())) {
-											if(!toConsider.getInjured())
+										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())
 												pas2.setAssist(pas2.getAssist() + 1);
 										}
 									}
 								}else {
 									Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
 									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() + this.PROB_PLUS_RANDOM_ASSIST * rand.nextDouble())) {
-											if(!toConsider.getInjured())	
+										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())	
 												pas2.setAssist(pas2.getAssist() + 1);
 										}
 									}
@@ -340,10 +340,10 @@ public class Simulatore {
 	
 						if(team.equals(this.match.getHome())) {
 							if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 50%
-								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+								Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));
 								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 									if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
-										pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+										pas.setRebounds(pas.getRebounds() + 1);	
 									}
 								}
 							}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata 
@@ -356,7 +356,7 @@ public class Simulatore {
 							}						
 						}else {													
 								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
-									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+									Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
 											pas.setRebounds(pas.getRebounds() + 1);	

@@ -319,7 +319,7 @@
                         <Insets left="10.0" right="10.0" top="80.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtWestWinner" editable="false" prefWidth="80.0">
+                  <TextField fx:id="txtWestWinner" editable="false" prefWidth="80.0" styleClass="txtWwinner">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -369,7 +369,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox spacing="7.0">
+            <HBox spacing="7.0" styleClass="hboxBottom">
                <children>
                   <Button fx:id="btn4West" mnemonicParsing="false" onAction="#simula4West" prefHeight="60.0" prefWidth="80.0" text="QUARTI WEST" textAlignment="CENTER" textFill="#0105f5" wrapText="true">
                      <HBox.margin>
