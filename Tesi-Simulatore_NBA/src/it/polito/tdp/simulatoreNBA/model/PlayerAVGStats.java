@@ -15,9 +15,9 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 	private Integer threeDone;
 	private Integer freeAttempts;
 	private Integer freeDone;
-	private Double fgAvg;
-	private Double threeAvg;
-	private Double freeAvg;
+	private String fgAvg;
+	private String threeAvg;
+	private String freeAvg;
 	
 	public PlayerAVGStats(String name, Integer nGames, Double point, Double assist, Double rebounds, Double block) {
 		super();
@@ -139,27 +139,27 @@ public class PlayerAVGStats implements Comparable<PlayerAVGStats>{
 		this.freeDone = freeDone;
 	}
 
-	public Double getFgAvg() {
+	public String getFgAvg() {
 		return fgAvg;
 	}
 
-	public void setFgAvg(Double fgAvg) {
+	public void setFgAvg(String fgAvg) {
 		this.fgAvg = fgAvg;
 	}
 
-	public Double getThreeAvg() {
+	public String getThreeAvg() {
 		return threeAvg;
 	}
 
-	public void setThreeAvg(Double threeAvg) {
+	public void setThreeAvg(String threeAvg) {
 		this.threeAvg = threeAvg;
 	}
 
-	public Double getFreeAvg() {
+	public String getFreeAvg() {
 		return freeAvg;
 	}
 
-	public void setFreeAvg(Double freeAvg) {
+	public void setFreeAvg(String freeAvg) {
 		this.freeAvg = freeAvg;
 	}
 

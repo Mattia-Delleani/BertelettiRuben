@@ -68,6 +68,8 @@ public class Series {
 	public void setWinAway(Integer winAway) {
 		this.winAway = winAway;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

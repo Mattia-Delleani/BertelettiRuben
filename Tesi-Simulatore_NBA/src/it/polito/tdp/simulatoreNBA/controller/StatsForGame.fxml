@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -15,8 +16,11 @@
    <top>
       <Label styleClass="titleLabel" text="Statistiche serie" BorderPane.alignment="CENTER">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
       </Label>
    </top>
    <left>
@@ -25,22 +29,31 @@
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox spacing="47.0">
                <children>
-                  <TextField fx:id="txtTeamHome" editable="false" prefHeight="25.0" prefWidth="328.0">
+                  <TextField fx:id="txtTeamHome" editable="false" prefHeight="40.0" prefWidth="420.0">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </TextField>
-                  <Label text="VS">
+                  <Label prefHeight="30.0" text="VS">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </Label>
-                  <TextField fx:id="txtTeamAway" editable="false" prefHeight="25.0" prefWidth="322.0">
+                  <TextField fx:id="txtTeamAway" editable="false" prefHeight="40.0" prefWidth="420.0">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </TextField>
                </children>
             </HBox>
@@ -49,36 +62,313 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TextArea>
-            <HBox styleClass="controlPanel">
-               <children>
-                  <TableView fx:id="tableHome" prefHeight="191.0">
-                     <columns>
-                        <TableColumn fx:id="colPlayerH" prefWidth="75.0" text="Giocatore" />
-                        <TableColumn fx:id="colGameH" prefWidth="50.0" text="nGame" />
-                        <TableColumn fx:id="colPointH" prefWidth="40.0" text="Punti" />
-                        <TableColumn fx:id="colAssistH" prefWidth="40.0" text="Assist" />
-                        <TableColumn fx:id="colRebH" prefWidth="60.0" text="Rimbalzi" />
-                        <TableColumn fx:id="colStopH" prefWidth="60.0" text="Stoppate" />
-                     </columns>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </TableView>
-                  <TableView fx:id="tableAway" prefHeight="191.0">
-                     <columns>
-                        <TableColumn fx:id="colPlayerA" prefWidth="75.0" text="Giocatore" />
-                        <TableColumn fx:id="colGameA" prefWidth="50.0" text="nGame" />
-                        <TableColumn fx:id="colPointA" prefWidth="40.0" text="Punti" />
-                        <TableColumn fx:id="colAssistA" prefWidth="40.0" text="Assist" />
-                        <TableColumn fx:id="colRebA" prefWidth="60.0" text="Rimbalzi" />
-                        <TableColumn fx:id="colStopA" prefWidth="60.0" text="Stoppate" />
-                     </columns>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </TableView>
-               </children>
-            </HBox>
+            <ScrollPane fx:id="scrollPane" maxHeight="300.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <content>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE MEDIE" textAlignment="CENTER" />
+                        <HBox fx:id="hBoxAvg" styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHomeAvg" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAwayAvg" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 1" textAlignment="CENTER" />
+                        <HBox styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome1" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH1" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH1" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH1" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH1" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH1" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH1" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH1" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH1" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH1" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway1" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA1" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA1" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA1" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA1" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA1" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA1" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA1" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA1" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA1" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 2" textAlignment="CENTER" />
+                        <HBox styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome2" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH2" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH2" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH2" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH2" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH2" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH2" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH2" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH2" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH2" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway2" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA2" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA2" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA2" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA2" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA2" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA2" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA2" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA2" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA2" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 3" textAlignment="CENTER" />
+                        <HBox styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome3" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH3" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH3" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH3" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH3" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH3" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH3" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH3" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH3" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH3" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway3" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA3" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA3" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA3" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA3" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA3" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA3" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA3" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA3" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA3" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 4" textAlignment="CENTER" />
+                        <HBox styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome4" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH4" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH4" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH4" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH4" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH4" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH4" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH4" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH4" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH4" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway4" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA4" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA4" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA4" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA4" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA4" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA4" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA4" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA4" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA4" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 5" textAlignment="CENTER" />
+                        <HBox fx:id="hBoxGame5" disable="true" styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome5" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH5" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH5" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH5" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH5" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH5" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH5" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH5" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH5" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH5" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway5" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA5" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA5" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA5" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA5" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA5" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA5" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA5" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA5" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA5" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 6" textAlignment="CENTER" />
+                        <HBox fx:id="hBoxGame6" disable="true" styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome6" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH6" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH6" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH6" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH6" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH6" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH6" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH6" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH6" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH6" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway6" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA6" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA6" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA6" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA6" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA6" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA6" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA6" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA6" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA6" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 7" textAlignment="CENTER" />
+                        <HBox fx:id="hBoxGame7" disable="true" styleClass="controlPanel">
+                           <children>
+                              <TableView fx:id="tableHome7" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerH7" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameH7" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointH7" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistH7" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebH7" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopH7" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtH7" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtH7" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtH7" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                              <TableView fx:id="tableAway7" prefHeight="191.0">
+                                 <columns>
+                                    <TableColumn fx:id="colPlayerA7" prefWidth="75.0" text="Giocatore" />
+                                    <TableColumn fx:id="colGameA7" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPointA7" prefWidth="40.0" text="Punti" />
+                                    <TableColumn fx:id="colAssistA7" prefWidth="40.0" text="Assist" />
+                                    <TableColumn fx:id="colRebA7" prefWidth="60.0" text="Rimbalzi" />
+                                    <TableColumn fx:id="colStopA7" prefWidth="60.0" text="Stoppate" />
+                                    <TableColumn fx:id="col2PtA7" prefWidth="45.0" text="2PT %" />
+                                    <TableColumn fx:id="col3PtA7" prefWidth="45.0" text="3PT %" />
+                                    <TableColumn fx:id="colFtA7" prefWidth="45.0" text="FT %" />
+                                 </columns>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
    </center>

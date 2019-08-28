@@ -75,6 +75,7 @@ public class Model {
 				//System.out.println("<<<Start Game "+i+">>>\n\n");
 				sim.init(home, away);
 				sim.run();
+				
 				if(sim.getMatch().getWinner().equals(home)) {//vince home
 					this.winH++;
 					series.setWinHome(series.getWinHome() + 1);
@@ -183,9 +184,9 @@ public class Model {
 		
 		
 		PlayerAVGStats avg = new PlayerAVGStats(player.getName(), ngame, points / ngame, assists / ngame, rebounds / ngame, blocks / ngame);
-		avg.setFgAvg((double)fgOk / fgAt);
-		avg.setThreeAvg((double)threeOk / threeAt);
-		avg.setFreeAvg((double)freeOk / freeAt);
+		avg.setFgAvg(fgOk+"/"+fgAt);
+		avg.setThreeAvg(threeOk +"/"+ threeAt);
+		avg.setFreeAvg(freeOk +"/"+ freeAt);
 		return avg;
 	}
 	

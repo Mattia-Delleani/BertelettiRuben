@@ -450,6 +450,12 @@ public class Simulatore {
 			this.match.setWinner(this.match.getAway());
 		}
 		
+		for(PlayerAVGStats pas : match.getPlayerStats()) {
+			pas.setFgAvg(pas.getFgDone()+"/"+pas.getFgAttempts());
+			pas.setThreeAvg(pas.getThreeDone()+"/"+pas.getThreeAttempts());
+			pas.setFreeAvg(pas.getFreeDone()+"/"+pas.getFreeAttempts());
+		}
+		
 		
 		
 	}

@@ -421,7 +421,7 @@
          <children>
             <VBox prefHeight="376.0" prefWidth="100.0">
                <children>
-                  <Label prefHeight="60.0" prefWidth="60.0" text="WEST WINNER" textAlignment="CENTER" textFill="#0105f5" wrapText="true">
+                  <Label prefHeight="60.0" prefWidth="60.0" text="WEST WINNER" textAlignment="CENTER" textFill="#e31037" wrapText="true">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -441,7 +441,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label prefHeight="60.0" prefWidth="60.0" text="EAST WINNER" textAlignment="CENTER" textFill="#16c913" wrapText="true">
+                  <Label prefHeight="60.0" prefWidth="60.0" text="EAST WINNER" textAlignment="CENTER" textFill="#0c398d" wrapText="true">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
