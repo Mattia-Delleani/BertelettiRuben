@@ -126,30 +126,30 @@
             </VBox>
             <VBox spacing="5.0">
                <children>
-                  <TextField fx:id="txtResult1West" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult1West" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="6.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult8West" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult8West" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets bottom="22.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult4West" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult5West" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult4West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult5West" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets bottom="22.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult3West" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult6We" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult3West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult6We" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets bottom="22.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult2West" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult7West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult2West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult7West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -172,14 +172,14 @@
             </VBox>
             <VBox spacing="58.0">
                <children>
-                  <TextField fx:id="txtResult18West" prefHeight="25.0" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult18West" editable="false" prefHeight="25.0" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult45West" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult36West" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult27West" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult45West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult36West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult27West" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -203,12 +203,12 @@
             </VBox>
             <VBox spacing="142.0">
                <children>
-                  <TextField fx:id="txtResult1FinalWest" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult1FinalWest" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="60.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult2FinalWest" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult2FinalWest" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -222,12 +222,12 @@
          <children>
             <VBox spacing="142.0">
                <children>
-                  <TextField fx:id="txtResult1FinalEst" minWidth="20.0" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult1FinalEst" editable="false" minWidth="20.0" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="60.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult2FinalEst" minWidth="20.0" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult2FinalEst" editable="false" minWidth="20.0" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -248,14 +248,14 @@
             </VBox>
             <VBox spacing="58.0">
                <children>
-                  <TextField fx:id="txtResult18Est" prefHeight="25.0" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult18Est" editable="false" prefHeight="25.0" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult45Est" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult36Est" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult27Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult45Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult36Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult27Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -278,30 +278,30 @@
             </VBox>
             <VBox spacing="5.0">
                <children>
-                  <TextField fx:id="txtResult1Est" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult1Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets top="6.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult8Est" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult8Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets bottom="22.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult4Est" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult5Est" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult4Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult5Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets bottom="22.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult3Est" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult6Est" prefWidth="25.0" styleClass="txtResultSeries">
+                  <TextField fx:id="txtResult3Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult6Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries">
                      <VBox.margin>
                         <Insets bottom="22.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtResult2Est" prefWidth="25.0" styleClass="txtResultSeries" />
-                  <TextField fx:id="txtResult7Est" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult2Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
+                  <TextField fx:id="txtResult7Est" editable="false" prefWidth="25.0" styleClass="txtResultSeries" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -474,7 +474,7 @@
          <children>
             <HBox spacing="7.0" styleClass="controlPanel">
                <children>
-                  <Button mnemonicParsing="false" onAction="#doSimulaOvest" prefHeight="30.0" prefWidth="140.0" text="Simulazione Ovest">
+                  <Button fx:id="btnSimulaOvest" mnemonicParsing="false" onAction="#doSimulaOvest" prefHeight="30.0" prefWidth="140.0" text="Simulazione Ovest">
                      <HBox.margin>
                         <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -491,7 +491,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#doSimulaEst" prefHeight="30.0" prefWidth="140.0" text="Simulazione Est">
+                  <Button fx:id="btnSimulaEst" mnemonicParsing="false" onAction="#doSimulaEst" prefHeight="30.0" prefWidth="140.0" text="Simulazione Est">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>

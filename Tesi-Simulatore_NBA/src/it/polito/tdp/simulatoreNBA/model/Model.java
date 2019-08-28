@@ -24,17 +24,15 @@ public class Model {
 	private List<PlayerAVGStats> finalStats;
 	
 	/**
-	 * prima prova, metto come chiave un id match:
-	 * - parte da 1 per il primo quarto ovest a scendere;
-	 * - dal 5 al 8 saranno i quarti est
-	 * - 9 e 10 le semifinali ovest
-	 * - 11 e 12 le semifinali est
-	 * - 13 la finale ovest
-	 * - 14 la finale est
-	 * - 15 la finale assoluta.
+	 * Mappe che tengono traccia delle serie:
+	 * -l'indice Integer parte da 1 in alto a sx per l'ovest a scendere
+	 * 	e da 1 in alto a dx per l'est
 	 */
-	private Map<Integer, Series> seriesMap;
-	private Integer idSeries = 1;
+	private Map<Integer, Series> seriesMapWest;
+	private Integer idSeriesWest = 1;
+	
+	private Map<Integer, Series> seriesMapEast;
+	private Integer idSeriesEast = 1;
 	
 
 		
@@ -50,7 +48,8 @@ public class Model {
 		this.matchs = new ArrayList<>();
 		this.totalStats = new ArrayList<>();
 		this.finalStats = new ArrayList<PlayerAVGStats>();
-		this.seriesMap = new HashMap<>();
+		this.seriesMapWest = new HashMap<>();
+		this.seriesMapEast = new HashMap<>();
 		
 		this.winnerTeamMap = new HashMap<String, Team>();
 		
@@ -105,16 +104,27 @@ public class Model {
 		if(winA > winH) {
 			this.winnerTeamMap.put(away.getAbbreviation(), away);
 			series.setWinner(away);
-			this.seriesMap.put(idSeries, series);
-			this.idSeries ++;
+			if(this.WestTeams.contains(home)) {
+				this.seriesMapWest.put(idSeriesWest, series);
+				this.idSeriesWest ++;
+			}else {
+				this.seriesMapEast.put(idSeriesEast, series);
+				this.idSeriesEast ++;
+			}
+			
 			return away;
 		}
 			
 		else {
 			this.winnerTeamMap.put(home.getAbbreviation(), home);
 			series.setWinner(home);
-			this.seriesMap.put(idSeries, series);
-			this.idSeries ++;
+			if(this.WestTeams.contains(home)) {
+				this.seriesMapWest.put(idSeriesWest, series);
+				this.idSeriesWest ++;
+			}else {
+				this.seriesMapEast.put(idSeriesEast, series);
+				this.idSeriesEast ++;
+			}
 			return home;
 		}
 		
@@ -267,9 +277,17 @@ public class Model {
 		return finalStats;
 	}
 
-	public Map<Integer, Series> getSeriesMap() {
-		return seriesMap;
+	public Map<Integer, Series> getSeriesMapWest() {
+		return seriesMapWest;
 	}
+
+	public Map<Integer, Series> getSeriesMapEast() {
+		return seriesMapEast;
+	}
+
+	
+	
+	
 	
 	
 	

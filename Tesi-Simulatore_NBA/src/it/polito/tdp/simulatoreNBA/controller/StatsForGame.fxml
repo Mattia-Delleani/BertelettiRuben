@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="it.polito.tdp.simulatoreNBA.controller.StatsController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.simulatoreNBA.controller.StatsController">
    <top>
-      <Label text="Statistiche serie" BorderPane.alignment="CENTER">
+      <Label styleClass="titleLabel" text="Statistiche serie" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -23,9 +22,6 @@
    <left>
       <VBox BorderPane.alignment="CENTER" />
    </left>
-   <right>
-      <VBox prefHeight="381.0" BorderPane.alignment="CENTER" />
-   </right>
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -53,7 +49,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TextArea>
-            <HBox>
+            <HBox styleClass="controlPanel">
                <children>
                   <TableView fx:id="tableHome" prefHeight="191.0">
                      <columns>

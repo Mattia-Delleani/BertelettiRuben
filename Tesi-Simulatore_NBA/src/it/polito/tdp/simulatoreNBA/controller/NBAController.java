@@ -24,7 +24,6 @@ import javafx.scene.control.ComboBox;
 public class NBAController {
 	
 	private Model model;
-	
 	private Stage stage;
 
     @FXML
@@ -218,316 +217,374 @@ public class NBAController {
     private TextArea txtLog;
     
     @FXML
-    private Button btn4West;
-
-    @FXML
-    private Button btn2West;
-
-    @FXML
-    private Button btnFinalsWest;
-
-    @FXML
     private Button btnToFinals;
-
+    
     @FXML
-    private Button btnFinalsEast;
-
+    private Button btnSimulaOvest;
+    
     @FXML
-    private Button btn2East;
+    private Button btnSimulaEst;
 
-    @FXML
-    private Button btn4East;
     
     @FXML
     void doSimulaEst(ActionEvent event) {
     	
+    	txtLog.clear();
+    	
+    	Team team1 = cmbBoxEast1.getValue();
+    	Team team2 = cmbBoxEast2.getValue();
+    	Team team3 = cmbBoxEast3.getValue();
+    	Team team4 = cmbBoxEast4.getValue();
+    	Team team5 = cmbBoxEast5.getValue();
+    	Team team6 = cmbBoxEast6.getValue();
+    	Team team7 = cmbBoxEast7.getValue();
+    	Team team8 = cmbBoxEast8.getValue();
+    	
+    	List<Team> teams = new ArrayList<Team>();
+    	teams.add(team1);
+    	teams.add(team2);
+    	teams.add(team3);
+    	teams.add(team4);
+    	teams.add(team5);
+    	teams.add(team6);
+    	teams.add(team7);
+    	teams.add(team8);
+    	
+    	/*
+    	 * Controllo input -> tutte le squadre selezionate
+    	 */
+    	for(Team team : teams) {
+    		if(team == null) {
+    			txtLog.appendText("ERRORE SIMULAZIONE EAST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
+    			return;
+    		}
+    	}
+    	
+    	/*
+    	 * Controllo input -> squadre tutte differenti
+    	 */
+    	for(Team t1 : teams) {   
+    		int count = 0;
+    		for(Team t2 : teams) {
+    			if(t1.equals(t2)) {
+    				count ++;
+    				if(count > 1) {
+    					txtLog.appendText("ERRORE SIMULAZIONE EAST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
+        				return;
+    				}
+    			}
+    		}
+    		
+    	}
+    	
+    	/*
+    	 * Simulazione quarti
+    	 */
+    	
+    	Team winner1vs8 = model.SimulationWinner(team1, team8);
+    	Team winner4vs5 = model.SimulationWinner(team4, team5);
+    	Team winner3vs6 = model.SimulationWinner(team3, team6);
+    	Team winner2vs7 = model.SimulationWinner(team2, team7);
+    	
+    	/*
+    	 * Simulazione semifinale
+    	 */
+    	
+    	Team finalist1East = model.SimulationWinner(winner1vs8, winner4vs5);
+    	Team finalist2East = model.SimulationWinner(winner3vs6, winner2vs7);
+    	
+    	/*
+    	 * Simulazione finale
+    	 */
+    	
+    	Team eastWinner = model.SimulationWinner(finalist1East, finalist2East);
+    	model.saveEastWinner(eastWinner);//salvataggio in Model
+    	
     	if(checkEast.isSelected()) {
     		//Simulazione veloce
     		txtLog.clear();
-        	
-        	Team team1 = cmbBoxEast1.getValue();
-        	Team team2 = cmbBoxEast2.getValue();
-        	Team team3 = cmbBoxEast3.getValue();
-        	Team team4 = cmbBoxEast4.getValue();
-        	Team team5 = cmbBoxEast5.getValue();
-        	Team team6 = cmbBoxEast6.getValue();
-        	Team team7 = cmbBoxEast7.getValue();
-        	Team team8 = cmbBoxEast8.getValue();
-        	
-        	List<Team> teams = new ArrayList<Team>();
-        	teams.add(team1);
-        	teams.add(team2);
-        	teams.add(team3);
-        	teams.add(team4);
-        	teams.add(team5);
-        	teams.add(team6);
-        	teams.add(team7);
-        	teams.add(team8);
-        	
-        	/*
-        	 * Controllo input -> tutte le squadre selezionate
-        	 */
-        	for(Team team : teams) {
-        		if(team == null) {
-        			txtLog.appendText("ERRORE SIMULAZIONE EAST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
-        			return;
-        		}
-        	}
-        	
-        	/*
-        	 * Controllo input -> squadre tutte differenti
-        	 */
-        	for(Team t1 : teams) {   
-        		int count = 0;
-        		for(Team t2 : teams) {
-        			if(t1.equals(t2)) {
-        				count ++;
-        				if(count > 1) {
-        					txtLog.appendText("ERRORE SIMULAZIONE EAST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
-            				return;
-        				}
-        			}
-        		}
-        		
-        	}
-        	/*
-        	 * Simulazione quarti
-        	 */
-        	
-        	Integer index;
-        	if(model.getSeriesMap().isEmpty()) {
-        		index = 1;
-        	}else {
-        		index = model.getSeriesMap().size() + 1;
-        	}
-        	
-        	Team winner1vs8 = model.SimulationWinner(team1, team8);
+    
+    		//OUTPUT QUARTI
         	txt1vs8East.appendText(winner1vs8.getAbbreviation());
-        	
-        	Team winner2vs7 = model.SimulationWinner(team2, team7);
         	txt2vs7East.appendText(winner2vs7.getAbbreviation());
-        	
-        	Team winner3vs6 = model.SimulationWinner(team3, team6);
-        	txt3vs6East.appendText(winner3vs6.getAbbreviation());
-        	
-        	Team winner4vs5 = model.SimulationWinner(team4, team5);
+          	txt3vs6East.appendText(winner3vs6.getAbbreviation());
         	txt4vs5East.appendText(winner4vs5.getAbbreviation());
         	
-        	txtResult1Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult8Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
+        	txtResult1Est.appendText(model.getSeriesMapEast().get(1).getWinHome().toString());
+        	txtResult8Est.appendText(model.getSeriesMapEast().get(1).getWinAway().toString());
         	
-        	index++;
+        	txtResult4Est.appendText(model.getSeriesMapEast().get(2).getWinHome().toString());
+        	txtResult5Est.appendText(model.getSeriesMapEast().get(2).getWinAway().toString());
         	
-        	txtResult4Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult5Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
+        	txtResult3Est.appendText(model.getSeriesMapEast().get(3).getWinHome().toString());        	
+        	txtResult6Est.appendText(model.getSeriesMapEast().get(3).getWinAway().toString());
         	
-        	index++;
+        	txtResult2Est.appendText(model.getSeriesMapEast().get(4).getWinHome().toString());
+        	txtResult7Est.appendText(model.getSeriesMapEast().get(4).getWinAway().toString());
         	
-        	txtResult3Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());        	
-        	txtResult6Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	txtResult2Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult7Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	/*
-        	 * Simulazione semifinale
-        	 */
-        	
-        	Team winner1v8 = model.getWinnerTeamMap().get(txt1vs8East.getText());
-        	Team winner2v7 = model.getWinnerTeamMap().get(txt2vs7East.getText());
-        	Team winner3v6 = model.getWinnerTeamMap().get(txt3vs6East.getText());
-        	Team winner4v5 = model.getWinnerTeamMap().get(txt4vs5East.getText());
-        
-        	
-        	Team finalist1East = model.SimulationWinner(winner1v8, winner4v5);
+        	//OUTPUT SEMIFINALI
         	txtFinalist1East.appendText(finalist1East.getAbbreviation());
+         	txtFinalist2East.appendText(finalist2East.getAbbreviation());
+        	
+        	txtResult18Est.appendText(model.getSeriesMapEast().get(5).getWinHome().toString());
+        	txtResult45Est.appendText(model.getSeriesMapEast().get(5).getWinAway().toString());
         	        	
-        	Team finalist2East = model.SimulationWinner(winner3v6, winner2v7);
-        	txtFinalist2East.appendText(finalist2East.getAbbreviation());
-        	
-        	txtResult18Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult45Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	txtResult36Est.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult27Est.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	/*
-        	 * Simulazione finale
-        	 */
-        	
-        	Team finalisti1East = model.getWinnerTeamMap().get(txtFinalist1East.getText());
-        	Team finalisti2East = model.getWinnerTeamMap().get(txtFinalist2East.getText());
-        	
-        	
-        	Team eastWinner = model.SimulationWinner(finalisti1East, finalisti2East);
+        	txtResult36Est.appendText(model.getSeriesMapEast().get(6).getWinHome().toString());
+        	txtResult27Est.appendText(model.getSeriesMapEast().get(6).getWinAway().toString());
+        	        	
+        	//OUTPUT FINALE
         	txtEastWinner.appendText(eastWinner.getAbbreviation());
         	
-        	txtResult1FinalEst.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult2FinalEst.appendText(model.getSeriesMap().get(index).getWinAway().toString());
+        	txtResult1FinalEst.appendText(model.getSeriesMapEast().get(7).getWinHome().toString());
+        	txtResult2FinalEst.appendText(model.getSeriesMapEast().get(7).getWinAway().toString());
         	        	
-        	model.saveEastWinner(eastWinner);//salvataggio in Model
         	
         	txtLog.appendText("Simulazione veloce EST avvenuta con successo!\n "
         			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
         	
+        	this.btnSimulaEst.setDisable(true);
+        	this.checkEast.setDisable(true);
+        	if(this.btnSimulaOvest.isDisabled()) {
+        		this.btnToFinals.setDisable(false);
     		
-    	}else {
+    	}else {//Mostro un risultato alla volta
+    		
+    		txtLog.clear();
+    		
+    		this.checkEast.setDisable(true);
+    		
+    		if(txt1vs8East.getText().equals("")) {
+    			txt1vs8East.appendText(winner1vs8.getAbbreviation());
+    			txtResult1Est.appendText(model.getSeriesMapEast().get(1).getWinHome().toString());
+            	txtResult8Est.appendText(model.getSeriesMapEast().get(1).getWinAway().toString());
+            	txtLog.appendText("Simulazione 1 vs 8 EST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txt4vs5East.getText().equals("")) {
+    			txt4vs5East.appendText(winner3vs6.getAbbreviation());
+    			txtResult4Est.appendText(model.getSeriesMapEast().get(2).getWinHome().toString());        	
+            	txtResult5Est.appendText(model.getSeriesMapEast().get(2).getWinAway().toString());
+            	txtLog.appendText("Simulazione 4 vs 5 EST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txt3vs6East.getText().equals("")) {
+    			txt3vs6East.appendText(winner3vs6.getAbbreviation());
+    			txtResult3Est.appendText(model.getSeriesMapEast().get(3).getWinHome().toString());        	
+            	txtResult6Est.appendText(model.getSeriesMapEast().get(3).getWinAway().toString());
+            	txtLog.appendText("Simulazione 3 vs 6 avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txt2vs7East.getText().equals("")) {
+    			txt2vs7East.appendText(winner2vs7.getAbbreviation());
+    			txtResult2Est.appendText(model.getSeriesMapEast().get(4).getWinHome().toString());
+            	txtResult7Est.appendText(model.getSeriesMapEast().get(4).getWinAway().toString());
+            	txtLog.appendText("Simulazione 2 vs 7 avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txtFinalist1East.getText().equals("")) {
+    			txtFinalist1East.appendText(finalist1East.getAbbreviation());
+    			txtResult18Est.appendText(model.getSeriesMapEast().get(5).getWinHome().toString());
+            	txtResult45Est.appendText(model.getSeriesMapEast().get(5).getWinAway().toString());
+            	txtLog.appendText("Simulazione Semifinale 1 EST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txtFinalist2East.getText().equals("")) {
+    			txtFinalist2East.appendText(finalist2East.getAbbreviation());
+    			txtResult36Est.appendText(model.getSeriesMapEast().get(6).getWinHome().toString());
+            	txtResult27Est.appendText(model.getSeriesMapEast().get(6).getWinAway().toString());
+            	txtLog.appendText("Simulazione Semifinale 2 EST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txtEastWinner.getText().equals("")) {
+    			txtEastWinner.appendText(eastWinner.getAbbreviation());            	
+            	txtResult1FinalEst.appendText(model.getSeriesMapEast().get(7).getWinHome().toString());
+            	txtResult2FinalEst.appendText(model.getSeriesMapEast().get(7).getWinAway().toString());
+            	txtLog.appendText("Simulazione Finale EST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+            	
+            	
+            	this.btnSimulaEst.setDisable(true);
+            	this.checkEast.setDisable(true);
+            	if(this.btnSimulaOvest.isDisabled())
+            		this.btnToFinals.setDisable(false);
+    		}
+    		
     		
     	}
-    	
+        	
+    	}
 
     }
 
     @FXML
     void doSimulaOvest(ActionEvent event) {
     	
+    	txtLog.clear();
+    	
+    	Team team1 = cmbBoxWest1.getValue();
+    	Team team2 = cmbBoxWest2.getValue();
+    	Team team3 = cmbBoxWest3.getValue();
+    	Team team4 = cmbBoxWest4.getValue();
+    	Team team5 = cmbBoxWest5.getValue();
+    	Team team6 = cmbBoxWest6.getValue();
+    	Team team7 = cmbBoxWest7.getValue();
+    	Team team8 = cmbBoxWest8.getValue();
+    	
+    	List<Team> teams = new ArrayList<Team>();
+    	teams.add(team1);
+    	teams.add(team2);
+    	teams.add(team3);
+    	teams.add(team4);
+    	teams.add(team5);
+    	teams.add(team6);
+    	teams.add(team7);
+    	teams.add(team8);
+    	
+    	/*
+    	 * Controllo input -> tutte le squadre selezionate
+    	 */
+    	for(Team team : teams) {
+    		if(team == null) {
+    			txtLog.appendText("ERRORE SIMULAZIONE WEST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
+    			return;
+    		}
+    	}
+    	
+    	/*
+    	 * Controllo input -> squadre tutte differenti
+    	 */
+    	for(Team t1 : teams) {   
+    		int count = 0;
+    		for(Team t2 : teams) {
+    			if(t1.equals(t2)) {
+    				count ++;
+    				if(count > 1) {
+    					txtLog.appendText("ERRORE SIMULAZIONE WEST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
+        				return;
+    				}
+    			}
+    		}
+    		
+    	}
+    	/*
+    	 * Simulazione quarti
+    	 */
+    	
+    	Team winner1vs8 = model.SimulationWinner(team1, team8);
+    	Team winner4vs5 = model.SimulationWinner(team4, team5);
+    	Team winner3vs6 = model.SimulationWinner(team3, team6);
+    	Team winner2vs7 = model.SimulationWinner(team2, team7);
+    	
+    	
+    	
+    	/*
+    	 * Simulazione semifinale
+    	 */
+    	        	
+    	Team finalist1West = model.SimulationWinner(winner1vs8, winner4vs5);
+    	Team finalist2West = model.SimulationWinner(winner3vs6, winner2vs7);
+    	
+    	/*
+    	 * Simulazione finale
+    	 */
+    	Team westWinner = model.SimulationWinner(finalist1West, finalist2West);
+    	model.saveWestWinner(westWinner);//salvataggio in Model
+    	
     	if(checkWset.isSelected()) {
     		//Simulazione veloce
     		txtLog.clear();
         	
-        	Team team1 = cmbBoxWest1.getValue();
-        	Team team2 = cmbBoxWest2.getValue();
-        	Team team3 = cmbBoxWest3.getValue();
-        	Team team4 = cmbBoxWest4.getValue();
-        	Team team5 = cmbBoxWest5.getValue();
-        	Team team6 = cmbBoxWest6.getValue();
-        	Team team7 = cmbBoxWest7.getValue();
-        	Team team8 = cmbBoxWest8.getValue();
-        	
-        	List<Team> teams = new ArrayList<Team>();
-        	teams.add(team1);
-        	teams.add(team2);
-        	teams.add(team3);
-        	teams.add(team4);
-        	teams.add(team5);
-        	teams.add(team6);
-        	teams.add(team7);
-        	teams.add(team8);
-        	
-        	/*
-        	 * Controllo input -> tutte le squadre selezionate
-        	 */
-        	for(Team team : teams) {
-        		if(team == null) {
-        			txtLog.appendText("ERRORE SIMULAZIONE WEST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
-        			return;
-        		}
-        	}
-        	
-        	/*
-        	 * Controllo input -> squadre tutte differenti
-        	 */
-        	for(Team t1 : teams) {   
-        		int count = 0;
-        		for(Team t2 : teams) {
-        			if(t1.equals(t2)) {
-        				count ++;
-        				if(count > 1) {
-        					txtLog.appendText("ERRORE SIMULAZIONE WEST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
-            				return;
-        				}
-        			}
-        		}
-        		
-        	}
-        	/*
-        	 * Simulazione quarti
-        	 */
-        	
-        	Integer index;
-        	if(model.getSeriesMap().isEmpty()) {
-        		index = 1;
-        	}else {
-        		index = model.getSeriesMap().size() + 1;
-        	}
-        	
-        	Team winner1vs8 = model.SimulationWinner(team1, team8);
-        	txt1vs8West.appendText(winner1vs8.getAbbreviation());
-        	
-        	Team winner2vs7 = model.SimulationWinner(team2, team7);
+        	//OUTPUT QUARTI
+        	txt1vs8West.appendText(winner1vs8.getAbbreviation());     	
         	txt2vs7West.appendText(winner2vs7.getAbbreviation());
+           	txt3vs6West.appendText(winner3vs6.getAbbreviation());
+           	txt4vs5West.appendText(winner4vs5.getAbbreviation());
         	
-        	Team winner3vs6 = model.SimulationWinner(team3, team6);
-        	txt3vs6West.appendText(winner3vs6.getAbbreviation());
-        	
-        	Team winner4vs5 = model.SimulationWinner(team4, team5);
-        	txt4vs5West.appendText(winner4vs5.getAbbreviation());
-        	
-        	txtResult1West.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult8West.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	txtResult4West.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult5West.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	txtResult3West.appendText(model.getSeriesMap().get(index).getWinHome().toString());        	
-        	txtResult6We.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	txtResult2West.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult7West.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	/*
-        	 * Simulazione semifinale
-        	 */
-        	
-        	Team winner1v8 = model.getWinnerTeamMap().get(txt1vs8West.getText());
-        	Team winner2v7 = model.getWinnerTeamMap().get(txt2vs7West.getText());
-        	Team winner3v6 = model.getWinnerTeamMap().get(txt3vs6West.getText());
-        	Team winner4v5 = model.getWinnerTeamMap().get(txt4vs5West.getText());
-        
-        	
-        	Team finalist1West = model.SimulationWinner(winner1v8, winner4v5);
-        	txtFinalist1West.appendText(finalist1West.getAbbreviation());
+        	txtResult1West.appendText(model.getSeriesMapWest().get(1).getWinHome().toString());
+        	txtResult8West.appendText(model.getSeriesMapWest().get(1).getWinAway().toString());
         	        	
-        	Team finalist2West = model.SimulationWinner(winner3v6, winner2v7);
+        	txtResult4West.appendText(model.getSeriesMapWest().get(2).getWinHome().toString());
+        	txtResult5West.appendText(model.getSeriesMapWest().get(2).getWinAway().toString());
+        	        	
+        	txtResult3West.appendText(model.getSeriesMapWest().get(3).getWinHome().toString());        	
+        	txtResult6We.appendText(model.getSeriesMapWest().get(3).getWinAway().toString());
+        	        	
+        	txtResult2West.appendText(model.getSeriesMapWest().get(4).getWinHome().toString());
+        	txtResult7West.appendText(model.getSeriesMapWest().get(4).getWinAway().toString());
+        	        	
+        	//OUTPUT SEMIFINALI
+        	txtFinalist1West.appendText(finalist1West.getAbbreviation());
         	txtFinalist2West.appendText(finalist2West.getAbbreviation());
         	
-        	txtResult18West.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult45West.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	txtResult36West.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult27West.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	index++;
-        	
-        	/*
-        	 * Simulazione finale
-        	 */
-        	
-        	Team finalisti1West = model.getWinnerTeamMap().get(txtFinalist1West.getText());
-        	Team finalisti2West = model.getWinnerTeamMap().get(txtFinalist2West.getText());
-        	
-        	
-        	Team westWinner = model.SimulationWinner(finalisti1West, finalisti2West);
+        	txtResult18West.appendText(model.getSeriesMapWest().get(5).getWinHome().toString());
+        	txtResult45West.appendText(model.getSeriesMapWest().get(5).getWinAway().toString());
+        	        	
+        	txtResult36West.appendText(model.getSeriesMapWest().get(6).getWinHome().toString());
+        	txtResult27West.appendText(model.getSeriesMapWest().get(6).getWinAway().toString());
+        	        	
+        	//OUTPUT FINALE
         	txtWestWinner.appendText(westWinner.getAbbreviation());
         	
-        	txtResult1FinalWest.appendText(model.getSeriesMap().get(index).getWinHome().toString());
-        	txtResult2FinalWest.appendText(model.getSeriesMap().get(index).getWinAway().toString());
-        	
-        	model.saveWestWinner(westWinner);//salvataggio in Model
-        	
+        	txtResult1FinalWest.appendText(model.getSeriesMapWest().get(7).getWinHome().toString());
+        	txtResult2FinalWest.appendText(model.getSeriesMapWest().get(7).getWinAway().toString());   	
+        
         	txtLog.appendText("Simulazione veloce OVEST avvenuta con successo!\n "
         			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
         	
+        	this.btnSimulaOvest.setDisable(true);
+        	this.checkWset.setDisable(true);
+        	if(this.btnSimulaEst.isDisabled())
+        		this.btnToFinals.setDisable(false);
+        	
     		
-    	}else {
+    	}else {//modificare con west
+    		
+    		txtLog.clear();
+    		
+    		this.checkWset.setDisable(true);
+    		
+    		if(txt1vs8West.getText().equals("")) {
+    			txt1vs8West.appendText(winner1vs8.getAbbreviation());
+    			txtResult1West.appendText(model.getSeriesMapWest().get(1).getWinHome().toString());
+            	txtResult8West.appendText(model.getSeriesMapWest().get(1).getWinAway().toString());
+            	txtLog.appendText("Simulazione 1 vs 8 OVEST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txt4vs5West.getText().equals("")) {
+    			txt4vs5West.appendText(winner3vs6.getAbbreviation());
+    			txtResult4West.appendText(model.getSeriesMapWest().get(2).getWinHome().toString());        	
+            	txtResult5West.appendText(model.getSeriesMapWest().get(2).getWinAway().toString());
+            	txtLog.appendText("Simulazione 4 vs 5 OVEST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txt3vs6West.getText().equals("")) {
+    			txt3vs6West.appendText(winner3vs6.getAbbreviation());
+    			txtResult3West.appendText(model.getSeriesMapWest().get(3).getWinHome().toString());        	
+            	txtResult6We.appendText(model.getSeriesMapWest().get(3).getWinAway().toString());
+            	txtLog.appendText("Simulazione 3 vs 6 OVEST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txt2vs7West.getText().equals("")) {
+    			txt2vs7West.appendText(winner2vs7.getAbbreviation());
+    			txtResult2West.appendText(model.getSeriesMapWest().get(4).getWinHome().toString());
+            	txtResult7West.appendText(model.getSeriesMapWest().get(4).getWinAway().toString());
+            	txtLog.appendText("Simulazione 2 vs 7 OVEST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txtFinalist1West.getText().equals("")) {
+    			txtFinalist1West.appendText(finalist1West.getAbbreviation());
+    			txtResult18West.appendText(model.getSeriesMapWest().get(5).getWinHome().toString());
+            	txtResult45West.appendText(model.getSeriesMapWest().get(5).getWinAway().toString());
+            	txtLog.appendText("Simulazione Semifinale 1 OVEST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txtFinalist2West.getText().equals("")) {
+    			txtFinalist2West.appendText(finalist2West.getAbbreviation());
+    			txtResult36West.appendText(model.getSeriesMapWest().get(6).getWinHome().toString());
+            	txtResult27West.appendText(model.getSeriesMapWest().get(6).getWinAway().toString());
+            	txtLog.appendText("Simulazione Semifinale 2 OVEST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+    		}else if(txtWestWinner.getText().equals("")) {
+    			txtWestWinner.appendText(westWinner.getAbbreviation());            	
+            	txtResult1FinalWest.appendText(model.getSeriesMapWest().get(7).getWinHome().toString());
+            	txtResult2FinalWest.appendText(model.getSeriesMapWest().get(7).getWinAway().toString());
+            	txtLog.appendText("Simulazione Finale EST avvenuta con successo!\n "
+            			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
+            	//qui disabilitare bottone
+            	this.btnSimulaOvest.setDisable(true);
+            	this.checkWset.setDisable(true);
+            	if(this.btnSimulaEst.isDisabled())
+            		this.btnToFinals.setDisable(false);
+    		}
     		
     	}
 
@@ -553,12 +610,6 @@ public class NBAController {
     	txtFinalist2West.clear();
     	txtEastWinner.clear();
     	txtWestWinner.clear();
-    	btn4East.setDisable(false);
-    	btn4West.setDisable(false);
-    	btn2West.setDisable(true);
-    	btn2East.setDisable(true);
-    	btnFinalsEast.setDisable(true);
-    	btnFinalsWest.setDisable(true);
     	btnToFinals.setDisable(true);
 
     }
@@ -571,7 +622,7 @@ public class NBAController {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("GoToFinals.fxml"));
 			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root);
-			
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			FinalsController controller = loader.getController();
 			controller.setModel(model, stage);
 			
@@ -593,19 +644,33 @@ public class NBAController {
     @FXML
     void doViewStats(MouseEvent event) {
     	
+    	txtLog.clear();
+    	
     	try {
     		
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsForGame.fxml"));
 			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root);
 			
+			TextField source = (TextField) event.getSource();
+			
+			if(source.getText().equals("")) {
+				txtLog.appendText("Prima di accedere alle statistiche, è necessario simulare la partita.");
+				return;
+			}
+			
+			String idField = source.getId();
+			
 			StatsController controller = loader.getController();
-			controller.setModel(model, stage);
+			controller.setModel(model, stage, idField);
 			
 			stage.setScene(scene);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setTitle("Statistiche Serie");
 			//stage.setAlwaysOnTop(true);
 			stage.show();
+			
+			
 		
 		
 			
@@ -678,6 +743,8 @@ public class NBAController {
         assert checkWset != null : "fx:id=\"checkWset\" was not injected: check your FXML file 'Table.fxml'.";
         assert btnToFinals != null : "fx:id=\"btnToFinals\" was not injected: check your FXML file 'Table.fxml'.";
         assert checkEast != null : "fx:id=\"checkEast\" was not injected: check your FXML file 'Table.fxml'.";
+        assert btnSimulaOvest != null : "fx:id=\"btnSimulaOvest\" was not injected: check your FXML file 'Table.fxml'.";
+        assert btnSimulaEst != null : "fx:id=\"btnSimulaEst\" was not injected: check your FXML file 'Table.fxml'.";
         assert txtLog != null : "fx:id=\"txtLog\" was not injected: check your FXML file 'Table.fxml'.";
 
 

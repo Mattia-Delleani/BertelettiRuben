@@ -119,11 +119,57 @@ public class StatsController {
       
     }
     
-    public void setModel(Model model, Stage stage) {
+    public void setModel(Model model, Stage stage, String sourceId) {
 		this.model = model;
 		this.stage = stage;
 		
-		Series toShow = model.getSeriesMap().get(1);
+		Series toShow = null;
+		
+		//OUTPUT OVEST
+		if(sourceId.equals("txt1vs8West")) {
+			toShow = model.getSeriesMapWest().get(1);
+			
+		}else if(sourceId.equals("txt4vs5West")) {
+			toShow = model.getSeriesMapWest().get(2);			
+			
+		}else if(sourceId.equals("txt3vs6West")) {
+			toShow = model.getSeriesMapWest().get(3);
+			
+		}else if(sourceId.equals("txt2vs7West")) {
+			toShow = model.getSeriesMapWest().get(4);
+			
+		}else if(sourceId.equals("txtFinalist1West")) {
+			toShow = model.getSeriesMapWest().get(5);
+			
+		}else if(sourceId.equals("txtFinalist2West")) {
+			toShow = model.getSeriesMapWest().get(6);
+			
+		}else if(sourceId.equals("txtWestWinner")) {
+			toShow = model.getSeriesMapWest().get(7);
+			
+		}else if(sourceId.equals("txt1vs8East")) {//DA QUI OUTPUT EST
+			toShow = model.getSeriesMapEast().get(1);
+			
+		}else if(sourceId.equals("txt4vs5East")) {
+			toShow = model.getSeriesMapEast().get(2);
+			
+		}else if(sourceId.equals("txt3vs6East")) {
+			toShow = model.getSeriesMapEast().get(3);
+			
+		}else if(sourceId.equals("txt2vs7East")) {
+			toShow = model.getSeriesMapEast().get(4);
+			
+		}else if(sourceId.equals("txtFinalist1East")) {
+			toShow = model.getSeriesMapEast().get(5);
+			
+		}else if(sourceId.equals("txtFinalist2East")) {
+			toShow = model.getSeriesMapEast().get(6);
+			
+		}else if(sourceId.equals("txtEastWinner")) {
+			toShow = model.getSeriesMapEast().get(7);
+			
+		}
+		
 		List<PlayerAVGStats> homeTeam = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(0).getHomeStats());
 		List<PlayerAVGStats> awayTeam = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(0).getAwayStats());
 		
@@ -146,6 +192,7 @@ public class StatsController {
 		for(Match m : toShow.getMatches()) {
 			txtAreaResult.appendText(m + "\n");
 		}
+		
 		
 	}
 }
