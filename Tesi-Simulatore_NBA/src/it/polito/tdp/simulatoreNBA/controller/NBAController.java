@@ -664,11 +664,13 @@ public class NBAController {
 			StatsController controller = loader.getController();
 			controller.setModel(model, stage, idField);
 			
-			stage.setScene(scene);
+			Stage s= new Stage();
+			
+			s.setScene(scene);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			stage.setTitle("Statistiche Serie");
+			s.setTitle("Statistiche Serie");
 			//stage.setAlwaysOnTop(true);
-			stage.show();
+			s.show();
 			
 			
 		
