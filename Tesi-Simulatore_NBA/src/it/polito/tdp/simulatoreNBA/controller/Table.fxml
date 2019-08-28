@@ -416,13 +416,6 @@
          </children>
       </HBox>
    </right>
-   <top>
-      <ImageView fitHeight="136.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../../../../../../img/nbalogo.png" />
-         </image>
-      </ImageView>
-   </top>
    <center>
       <HBox prefHeight="402.0" prefWidth="346.0" BorderPane.alignment="CENTER">
          <children>
@@ -525,4 +518,34 @@
          </children>
       </VBox>
    </bottom>
+   <top>
+      <HBox spacing="114.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="236.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/8135__nba_western_conference-primary_on_dark-2018.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/nbalogo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/9110__nba_eastern_conference-primary_on_dark-2018.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
