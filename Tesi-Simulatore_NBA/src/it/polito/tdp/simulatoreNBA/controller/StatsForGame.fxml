@@ -69,43 +69,6 @@
                <content>
                   <VBox>
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE MEDIE" textAlignment="CENTER" />
-                        <HBox fx:id="hBoxAvg" styleClass="controlPanel">
-                           <children>
-                              <TableView fx:id="tableHomeAvg" prefHeight="191.0">
-                                 <columns>
-                                    <TableColumn fx:id="colPlayerH" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH" prefWidth="50.0" text="nGame" />
-                                    <TableColumn fx:id="colPointH" prefWidth="40.0" text="Punti" />
-                                    <TableColumn fx:id="colAssistH" prefWidth="40.0" text="Assist" />
-                                    <TableColumn fx:id="colRebH" prefWidth="60.0" text="Rimbalzi" />
-                                    <TableColumn fx:id="colStopH" prefWidth="60.0" text="Stoppate" />
-                                    <TableColumn fx:id="col2PtH" prefWidth="45.0" text="2PT %" />
-                                    <TableColumn fx:id="col3PtH" prefWidth="45.0" text="3PT %" />
-                                    <TableColumn fx:id="colFtH" prefWidth="45.0" text="FT %" />
-                                 </columns>
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </TableView>
-                              <TableView fx:id="tableAwayAvg" prefHeight="191.0">
-                                 <columns>
-                                    <TableColumn fx:id="colPlayerA" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA" prefWidth="50.0" text="nGame" />
-                                    <TableColumn fx:id="colPointA" prefWidth="40.0" text="Punti" />
-                                    <TableColumn fx:id="colAssistA" prefWidth="40.0" text="Assist" />
-                                    <TableColumn fx:id="colRebA" prefWidth="60.0" text="Rimbalzi" />
-                                    <TableColumn fx:id="colStopA" prefWidth="60.0" text="Stoppate" />
-                                    <TableColumn fx:id="col2PtA" prefWidth="45.0" text="2PT %" />
-                                    <TableColumn fx:id="col3PtA" prefWidth="45.0" text="3PT %" />
-                                    <TableColumn fx:id="colFtA" prefWidth="45.0" text="FT %" />
-                                 </columns>
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </TableView>
-                           </children>
-                        </HBox>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 1" textAlignment="CENTER" />
                         <HBox styleClass="controlPanel">
                            <children>

@@ -44,7 +44,7 @@ public class StatsController {
     @FXML
     private TextArea txtAreaResult;
 
-    @FXML
+   /* @FXML
     private HBox hBoxAvg;
 
     @FXML
@@ -105,7 +105,7 @@ public class StatsController {
     private TableColumn<PlayerAVGStats, String> col3PtA;
 
     @FXML
-    private TableColumn<PlayerAVGStats, String> colFtA;
+    private TableColumn<PlayerAVGStats, String> colFtA;*/
 
     @FXML
     private TableView<PlayerAVGStats> tableHome1;
@@ -546,27 +546,6 @@ public class StatsController {
         assert txtTeamAway != null : "fx:id=\"txtTeamAway\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert txtAreaResult != null : "fx:id=\"txtAreaResult\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert scrollPane != null : "fx:id=\"scrollPane\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert hBoxAvg != null : "fx:id=\"hBoxAvg\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert tableHomeAvg != null : "fx:id=\"tableHomeAvg\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colPlayerH != null : "fx:id=\"colPlayerH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colGameH != null : "fx:id=\"colGameH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colPointH != null : "fx:id=\"colPointH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colAssistH != null : "fx:id=\"colAssistH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colRebH != null : "fx:id=\"colRebH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colStopH != null : "fx:id=\"colStopH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert col2PtH != null : "fx:id=\"col2PtH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert col3PtH != null : "fx:id=\"col3PtH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colFtH != null : "fx:id=\"colFtH\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert tableAwayAvg != null : "fx:id=\"tableAwayAvg\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colPlayerA != null : "fx:id=\"colPlayerA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colGameA != null : "fx:id=\"colGameA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colPointA != null : "fx:id=\"colPointA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colAssistA != null : "fx:id=\"colAssistA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colRebA != null : "fx:id=\"colRebA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colStopA != null : "fx:id=\"colStopA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert col2PtA != null : "fx:id=\"col2PtA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert col3PtA != null : "fx:id=\"col3PtA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        assert colFtA != null : "fx:id=\"colFtA\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert tableHome1 != null : "fx:id=\"tableHome1\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert colPlayerH1 != null : "fx:id=\"colPlayerH1\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert colGameH1 != null : "fx:id=\"colGameH1\" was not injected: check your FXML file 'StatsForGame.fxml'.";
@@ -710,26 +689,7 @@ public class StatsController {
         assert col2PtA7 != null : "fx:id=\"col2PtA7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert col3PtA7 != null : "fx:id=\"col3PtA7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert colFtA7 != null : "fx:id=\"colFtA7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
-        
-        colPlayerH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
-        colGameH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Integer>("ngames"));
-        colPointH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("point"));      
-        colAssistH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("assist"));
-        colRebH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("rebounds")); 
-        colStopH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("block"));
-        col2PtH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("fgavg"));
-        col3PtH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("threeavg"));
-        colFtH.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("freeavg"));
-        
-        colPlayerA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
-        colGameA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Integer>("ngames"));
-        colPointA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("point"));      
-        colAssistA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("assist"));
-        colRebA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("rebounds")); 
-        colStopA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Double>("block")); 
-        col2PtA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("fgAvg"));
-        col3PtA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("threeavg"));
-        colFtA.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("freeavg"));
+       
         
         
         colPlayerH1.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
@@ -930,6 +890,8 @@ public class StatsController {
 		}else if(sourceId.equals("txtEastWinner")) {
 			toShow = model.getSeriesMapEast().get(7);
 			
+		}else if(sourceId.equals("finale")) {
+			toShow = model.getSeriesMapWest().get(8);//la finale viene salvata nella mappa ovest
 		}
 	
 		//inserimento valori tabella 1

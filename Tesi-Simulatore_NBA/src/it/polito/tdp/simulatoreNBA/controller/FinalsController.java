@@ -15,11 +15,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class FinalsController {
@@ -88,6 +92,9 @@ public class FinalsController {
 
     @FXML
     private TextArea txtAreaResults;
+    
+    @FXML
+    private Button btnStats;
 
     @FXML
     void doSimulaFinals(ActionEvent event) {
@@ -153,7 +160,44 @@ public class FinalsController {
     		txtAreaResults.appendText("\nAttenzione: è già stato decretato il vincitore.");
     	}
     	
+    	btnStats.setDisable(false);
     	
+    	
+
+    }
+    
+    @FXML
+    void doViewStats(ActionEvent event) {
+    	
+    	try {
+    		
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsForGame.fxml"));
+			BorderPane root = (BorderPane) loader.load();
+			Scene scene = new Scene(root);
+			
+			if(txtChamp.getText().equals("")) {
+				txtAreaResults.appendText("Prima di accedere alle statistiche, è necessario simulare la partita.");
+				return;
+			}
+			
+			StatsController controller = loader.getController();
+			controller.setModel(model, stage, "finale");
+			
+			Stage s= new Stage();
+			
+			s.setScene(scene);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			s.setTitle("Statistiche Serie");
+			//stage.setAlwaysOnTop(true);
+			s.show();
+			
+			
+		
+		
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -177,6 +221,8 @@ public class FinalsController {
         assert columnStealsEast != null : "fx:id=\"columnStealsEast\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert txtChamp != null : "fx:id=\"txtChamp\" was not injected: check your FXML file 'GoToFinals.fxml'.";
         assert txtAreaResults != null : "fx:id=\"txtAreaResults\" was not injected: check your FXML file 'GoToFinals.fxml'.";
+        assert btnStats != null : "fx:id=\"btnStats\" was not injected: check your FXML file 'GoToFinals.fxml'.";
+
         
         columnPlayerWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, String>("name"));
         columnGameWest.setCellValueFactory(new PropertyValueFactory<PlayerAVGStats, Integer>("ngames"));

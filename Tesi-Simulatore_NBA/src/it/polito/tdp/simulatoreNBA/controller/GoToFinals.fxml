@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.simulatoreNBA.controller.FinalsController">
+<BorderPane prefHeight="575.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.simulatoreNBA.controller.FinalsController">
    <top>
       <ImageView fitHeight="197.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -26,21 +26,21 @@
          <children>
             <Label text="WEST WINNER">
                <VBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="120.0" />
                </VBox.margin>
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtWestWinner" alignment="CENTER" editable="false" />
-            <TableView fx:id="tableWest" prefHeight="260.0" prefWidth="260.0">
+            <TableView fx:id="tableWest">
               <columns>
                 <TableColumn fx:id="columnPlayerWest" prefWidth="140.0" text="Giocatore" />
                   <TableColumn fx:id="columnGameWest" prefWidth="50.0" text="nGame" />
                 <TableColumn fx:id="columnPointsWest" minWidth="9.0" prefWidth="40.0" text="Punti" />
                   <TableColumn fx:id="columnAssistsWest" prefWidth="40.0" text="Assist" />
                   <TableColumn fx:id="columnStopWest" prefWidth="40.0" text="Reb" />
-                  <TableColumn fx:id="columnStealsWest" prefWidth="40.0" text="Blocks" />
+                  <TableColumn fx:id="columnStealsWest" prefWidth="40.0" text="Stop" />
               </columns>
                <VBox.margin>
                   <Insets />
@@ -57,21 +57,21 @@
          <children>
             <Label text="EAST WINNER">
                <VBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="120.0" />
                </VBox.margin>
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <TextField fx:id="txtEastWinner" alignment="CENTER" editable="false" />
-            <TableView fx:id="tableEast" prefHeight="260.0" prefWidth="260.0">
+            <TableView fx:id="tableEast" prefHeight="302.0">
                <columns>
                   <TableColumn fx:id="columnPlayerEast" prefWidth="140.0" text="Giocatore" />
                   <TableColumn fx:id="columnGameEast" prefWidth="50.0" text="nGame" />
                   <TableColumn fx:id="columnPointsEast" minWidth="9.0" prefWidth="40.0" text="Punti" />
                   <TableColumn fx:id="columnAssistsEast" prefWidth="40.0" text="Assist" />
                   <TableColumn fx:id="columnStopEast" prefWidth="40.0" text="Reb" />
-                  <TableColumn fx:id="columnStealsEast" prefWidth="40.0" text="Blocks" />
+                  <TableColumn fx:id="columnStealsEast" prefWidth="40.0" text="Stop" />
                </columns>
             </TableView>
          </children>
@@ -105,6 +105,11 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnStats" disable="true" mnemonicParsing="false" onAction="#doViewStats" prefHeight="30.0" prefWidth="200.0" text="Accedi alle Statistiche">
                <VBox.margin>
                   <Insets left="50.0" />
                </VBox.margin>

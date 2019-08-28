@@ -628,7 +628,6 @@ public class NBAController {
 			
 			stage.setScene(scene);
 			stage.setTitle("Simulazione Finali Assolute NBA");
-			stage.setAlwaysOnTop(true);
 			stage.show();
 		
 		
@@ -669,7 +668,6 @@ public class NBAController {
 			s.setScene(scene);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			s.setTitle("Statistiche Serie");
-			//stage.setAlwaysOnTop(true);
 			s.show();
 			
 			
