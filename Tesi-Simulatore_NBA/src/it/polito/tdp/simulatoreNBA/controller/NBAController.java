@@ -344,7 +344,7 @@ public class NBAController {
         	
         	this.btnSimulaEst.setDisable(true);
         	this.checkEast.setDisable(true);
-        	if(this.btnSimulaOvest.isDisabled()) {
+        	if(this.btnSimulaOvest.isDisabled()) 
         		this.btnToFinals.setDisable(false);
     		
     	}else {//Mostro un risultato alla volta
@@ -356,41 +356,41 @@ public class NBAController {
     		if(txt1vs8East.getText().equals("")) {
     			txt1vs8East.appendText(winner1vs8.getAbbreviation());
     			txtResult1Est.appendText(model.getSeriesMapEast().get(1).getWinHome().toString());
-            	txtResult8Est.appendText(model.getSeriesMapEast().get(1).getWinAway().toString());
+            	txtResult8Est.appendText(model.getSeriesMapEast().get(1).getWinAway().toString());            	
             	txtLog.appendText("Simulazione 1 vs 8 EST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txt4vs5East.getText().equals("")) {
-    			txt4vs5East.appendText(winner3vs6.getAbbreviation());
+    			txt4vs5East.appendText(model.getSeriesMapEast().get(2).getWinner().getAbbreviation());
     			txtResult4Est.appendText(model.getSeriesMapEast().get(2).getWinHome().toString());        	
             	txtResult5Est.appendText(model.getSeriesMapEast().get(2).getWinAway().toString());
             	txtLog.appendText("Simulazione 4 vs 5 EST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txt3vs6East.getText().equals("")) {
-    			txt3vs6East.appendText(winner3vs6.getAbbreviation());
+    			txt3vs6East.appendText(model.getSeriesMapEast().get(3).getWinner().getAbbreviation());
     			txtResult3Est.appendText(model.getSeriesMapEast().get(3).getWinHome().toString());        	
             	txtResult6Est.appendText(model.getSeriesMapEast().get(3).getWinAway().toString());
             	txtLog.appendText("Simulazione 3 vs 6 avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txt2vs7East.getText().equals("")) {
-    			txt2vs7East.appendText(winner2vs7.getAbbreviation());
+    			txt2vs7East.appendText(model.getSeriesMapEast().get(4).getWinner().getAbbreviation());
     			txtResult2Est.appendText(model.getSeriesMapEast().get(4).getWinHome().toString());
             	txtResult7Est.appendText(model.getSeriesMapEast().get(4).getWinAway().toString());
             	txtLog.appendText("Simulazione 2 vs 7 avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txtFinalist1East.getText().equals("")) {
-    			txtFinalist1East.appendText(finalist1East.getAbbreviation());
+    			txtFinalist1East.appendText(model.getSeriesMapEast().get(5).getWinner().getAbbreviation());
     			txtResult18Est.appendText(model.getSeriesMapEast().get(5).getWinHome().toString());
             	txtResult45Est.appendText(model.getSeriesMapEast().get(5).getWinAway().toString());
             	txtLog.appendText("Simulazione Semifinale 1 EST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txtFinalist2East.getText().equals("")) {
-    			txtFinalist2East.appendText(finalist2East.getAbbreviation());
+    			txtFinalist2East.appendText(model.getSeriesMapEast().get(6).getWinner().getAbbreviation());
     			txtResult36Est.appendText(model.getSeriesMapEast().get(6).getWinHome().toString());
             	txtResult27Est.appendText(model.getSeriesMapEast().get(6).getWinAway().toString());
             	txtLog.appendText("Simulazione Semifinale 2 EST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txtEastWinner.getText().equals("")) {
-    			txtEastWinner.appendText(eastWinner.getAbbreviation());            	
+    			txtEastWinner.appendText(model.getSeriesMapEast().get(7).getWinner().getAbbreviation());            	
             	txtResult1FinalEst.appendText(model.getSeriesMapEast().get(7).getWinHome().toString());
             	txtResult2FinalEst.appendText(model.getSeriesMapEast().get(7).getWinAway().toString());
             	txtLog.appendText("Simulazione Finale EST avvenuta con successo!\n "
@@ -398,14 +398,10 @@ public class NBAController {
             	
             	
             	this.btnSimulaEst.setDisable(true);
-            	this.checkEast.setDisable(true);
             	if(this.btnSimulaOvest.isDisabled())
             		this.btnToFinals.setDisable(false);
     		}
-    		
-    		
-    	}
-        	
+          	
     	}
 
     }
@@ -531,50 +527,50 @@ public class NBAController {
         		this.btnToFinals.setDisable(false);
         	
     		
-    	}else {//modificare con west
+    	}else {
     		
     		txtLog.clear();
     		
     		this.checkWset.setDisable(true);
     		
     		if(txt1vs8West.getText().equals("")) {
-    			txt1vs8West.appendText(winner1vs8.getAbbreviation());
+    			txt1vs8West.appendText(model.getSeriesMapWest().get(1).getWinner().getAbbreviation());
     			txtResult1West.appendText(model.getSeriesMapWest().get(1).getWinHome().toString());
             	txtResult8West.appendText(model.getSeriesMapWest().get(1).getWinAway().toString());
             	txtLog.appendText("Simulazione 1 vs 8 OVEST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txt4vs5West.getText().equals("")) {
-    			txt4vs5West.appendText(winner3vs6.getAbbreviation());
+    			txt4vs5West.appendText(model.getSeriesMapWest().get(2).getWinner().getAbbreviation());
     			txtResult4West.appendText(model.getSeriesMapWest().get(2).getWinHome().toString());        	
             	txtResult5West.appendText(model.getSeriesMapWest().get(2).getWinAway().toString());
             	txtLog.appendText("Simulazione 4 vs 5 OVEST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txt3vs6West.getText().equals("")) {
-    			txt3vs6West.appendText(winner3vs6.getAbbreviation());
+    			txt3vs6West.appendText(model.getSeriesMapWest().get(3).getWinner().getAbbreviation());
     			txtResult3West.appendText(model.getSeriesMapWest().get(3).getWinHome().toString());        	
             	txtResult6We.appendText(model.getSeriesMapWest().get(3).getWinAway().toString());
             	txtLog.appendText("Simulazione 3 vs 6 OVEST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txt2vs7West.getText().equals("")) {
-    			txt2vs7West.appendText(winner2vs7.getAbbreviation());
+    			txt2vs7West.appendText(model.getSeriesMapWest().get(4).getWinner().getAbbreviation());
     			txtResult2West.appendText(model.getSeriesMapWest().get(4).getWinHome().toString());
             	txtResult7West.appendText(model.getSeriesMapWest().get(4).getWinAway().toString());
             	txtLog.appendText("Simulazione 2 vs 7 OVEST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txtFinalist1West.getText().equals("")) {
-    			txtFinalist1West.appendText(finalist1West.getAbbreviation());
+    			txtFinalist1West.appendText(model.getSeriesMapWest().get(5).getWinner().getAbbreviation());
     			txtResult18West.appendText(model.getSeriesMapWest().get(5).getWinHome().toString());
             	txtResult45West.appendText(model.getSeriesMapWest().get(5).getWinAway().toString());
             	txtLog.appendText("Simulazione Semifinale 1 OVEST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txtFinalist2West.getText().equals("")) {
-    			txtFinalist2West.appendText(finalist2West.getAbbreviation());
+    			txtFinalist2West.appendText(model.getSeriesMapWest().get(6).getWinner().getAbbreviation());
     			txtResult36West.appendText(model.getSeriesMapWest().get(6).getWinHome().toString());
             	txtResult27West.appendText(model.getSeriesMapWest().get(6).getWinAway().toString());
             	txtLog.appendText("Simulazione Semifinale 2 OVEST avvenuta con successo!\n "
             			+ "Premere sull'abbreviazione della squadra vincente per accedere alle statistiche delle partite.");
     		}else if(txtWestWinner.getText().equals("")) {
-    			txtWestWinner.appendText(westWinner.getAbbreviation());            	
+    			txtWestWinner.appendText(model.getSeriesMapWest().get(7).getWinner().getAbbreviation());            	
             	txtResult1FinalWest.appendText(model.getSeriesMapWest().get(7).getWinHome().toString());
             	txtResult2FinalWest.appendText(model.getSeriesMapWest().get(7).getWinAway().toString());
             	txtLog.appendText("Simulazione Finale EST avvenuta con successo!\n "

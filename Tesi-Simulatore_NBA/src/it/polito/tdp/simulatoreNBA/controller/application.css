@@ -8,10 +8,16 @@
 	-fx-text-fill: crimson  ;
 }
 
-.labelTeam, .titleLabel{
+.labelTeamNumber, .titleLabel{
 	-fx-text-fill: white ;
 }
 
 .controlPanel{
 	-fx-background-color: burlywood ;
 }
+
+.labelTeam:hover{
+	-fx-background-color: orange ;
+	-fx-text-fill: white;
+}
+
