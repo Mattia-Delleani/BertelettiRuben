@@ -84,19 +84,29 @@ public class Simulatore {
 				/**
 				 * Aggiornamento contegio infortuni
 				 */
+				
+				if(home.getInjured().containsKey(homeP.getName())){
+					if(home.getInjured().get(homeP.getName()) == 0)
+						home.getInjured().remove(homeP.getName());
+				}
+				
+				if(away.getInjured().containsKey(homeP.getName())) {
+					if(away.getInjured().get(homeP.getName()) == 0)
+						away.getInjured().remove(homeP.getName());
+				}				
+				
+				
 				if(home.getInjured().containsKey(homeP.getName()) && home.getInjured().get(homeP.getName()) > 0){
 				
 					home.getInjured().put(homeP.getName(), home.getInjured().get(homeP.getName()) -1);
 					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
-					if(home.getInjured().get(homeP.getName()) == 0)
-						home.getInjured().remove(homeP.getName());
+					
 					
 				}else if(away.getInjured().containsKey(homeP.getName()) && away.getInjured().get(homeP.getName()) > 0) {
 					
 					away.getInjured().put(homeP.getName(), away.getInjured().get(homeP.getName()) -1);
 					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
-					if(away.getInjured().get(homeP.getName()) == 0)
-						away.getInjured().remove(homeP.getName());
+					
 					
 				}else {
 					
@@ -259,6 +269,7 @@ public class Simulatore {
 										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
 											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
 												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
+													//System.out.println(random.getName()+" fa assist");
 													pas2.setAssist(pas2.getAssist() + 1);
 											}
 										}
@@ -270,6 +281,7 @@ public class Simulatore {
 										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
 											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
 												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
+													//System.out.println(random.getName()+" fa assist");
 													pas2.setAssist(pas2.getAssist() + 1);
 											}
 										}
@@ -291,6 +303,7 @@ public class Simulatore {
 								if(!match.getAway().getInjured().containsKey(random.getName())) {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {
 										if(pas.getName().equals(random.getName())) {
+											//System.out.println(random.getName()+" fa rimbalzo");
 											pas.setRebounds(pas.getRebounds() + 1);	
 										}
 									}
@@ -301,6 +314,7 @@ public class Simulatore {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 											pas.setBlock(pas.getBlock() + 1);
+											//System.out.println(random.getName()+" fa stoppata");
 										}
 									}
 								}
@@ -312,6 +326,7 @@ public class Simulatore {
 										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 											if(pas.getName().equals(random.getName())) {
 												pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+												//System.out.println(random.getName()+" fa rimbalzo");
 											}
 										}
 									}
@@ -321,6 +336,7 @@ public class Simulatore {
 										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 											if(!random.getInjured() && pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 												pas.setBlock(pas.getBlock() + 1);
+												//System.out.println(random.getName()+" fa stoppata");
 											}
 										}
 									}
@@ -351,6 +367,7 @@ public class Simulatore {
 											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
 												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
 													pas2.setAssist(pas2.getAssist() + 1);
+												//System.out.println(random.getName()+" fa assist");
 											}
 										}
 									}
@@ -361,6 +378,7 @@ public class Simulatore {
 											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
 												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())	
 													pas2.setAssist(pas2.getAssist() + 1);
+													//System.out.println(random.getName()+" fa assist");
 											}
 										}
 									}
@@ -388,6 +406,7 @@ public class Simulatore {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
 											pas.setRebounds(pas.getRebounds() + 1);	
+											//System.out.println(random.getName()+" fa rimbalzo");
 										}
 									}
 								}
@@ -397,6 +416,7 @@ public class Simulatore {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 											pas.setBlock(pas.getBlock() + 1);
+											//System.out.println(random.getName()+" fa stoppata");
 										}
 									}
 								}
@@ -406,8 +426,9 @@ public class Simulatore {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									if(!match.getHome().getInjured().containsKey(random.getName())) {
 										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-											if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+											if(pas.getName().equals(random.getName())) {
 												pas.setRebounds(pas.getRebounds() + 1);	
+												//System.out.println(random.getName()+" fa rimbalzo");
 											}
 										}
 									}
@@ -417,6 +438,7 @@ public class Simulatore {
 										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 											if(!random.getInjured() && pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 												pas.setBlock(pas.getBlock() + 1);
+												//System.out.println(random.getName()+" fa stoppata");
 											}
 										}
 									}
@@ -449,8 +471,9 @@ public class Simulatore {
 								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
 								if(!match.getAway().getInjured().containsKey(random.getName())) {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+										if(pas.getName().equals(random.getName())) {
 											pas.setRebounds(pas.getRebounds() + 1);	
+											//System.out.println(random.getName()+" fa rimbalzo");
 										}
 									}
 								}
@@ -461,8 +484,9 @@ public class Simulatore {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									if(!match.getHome().getInjured().containsKey(random.getName())) {
 										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-											if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+											if(pas.getName().equals(random.getName())) {
 												pas.setRebounds(pas.getRebounds() + 1);	
+												//System.out.println(random.getName()+" fa rimbalzo");
 											}
 										}
 									}

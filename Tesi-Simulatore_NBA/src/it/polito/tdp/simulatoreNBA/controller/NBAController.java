@@ -646,6 +646,8 @@ public class NBAController {
     	
     	checkEast.setDisable(false);
     	checkWset.setDisable(false);
+    	checkEast.setSelected(false);
+    	checkWset.setSelected(false);
     	btnSimulaEst.setDisable(false);
     	btnSimulaOvest.setDisable(false);
     	btnToFinals.setDisable(true);

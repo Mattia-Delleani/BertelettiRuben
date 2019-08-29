@@ -140,12 +140,6 @@ public class Model {
 		Double assists = 0.0;
 		Double rebounds = 0.0;
 		Double blocks = 0.0;
-		Integer fgAt = 0;
-		Integer fgOk = 0;
-		Integer threeAt = 0;
-		Integer threeOk = 0;
-		Integer freeAt = 0;
-		Integer freeOk = 0;
 		
 		if(this.eastWinner == null && this.westWinner == null) {
 			for(PlayerAVGStats pas : this.totalStats) {
@@ -155,12 +149,6 @@ public class Model {
 					assists = assists + pas.getAssist();
 					rebounds = rebounds + pas.getRebounds();
 					blocks = blocks + pas.getBlock();
-					fgAt = fgAt + pas.getFgAttempts();
-					fgOk = fgOk + pas.getFgDone();
-					threeAt = threeAt + pas.getThreeAttempts();
-					threeOk = threeOk + pas.getThreeDone();
-					freeAt = freeAt + pas.getFreeAttempts();
-					freeOk = freeOk + pas.getFreeDone();
 					
 				}
 			}
@@ -173,21 +161,14 @@ public class Model {
 					assists = assists + pas.getAssist();
 					rebounds = rebounds + pas.getRebounds();
 					blocks = blocks + pas.getBlock();
-					fgAt = fgAt + pas.getFgAttempts();
-					fgOk = fgOk + pas.getFgDone();
-					threeAt = threeAt + pas.getThreeAttempts();
-					threeOk = threeOk + pas.getThreeDone();
-					freeAt = freeAt + pas.getFreeAttempts();
-					freeOk = freeOk + pas.getFreeDone();					
+										
 				}
 			}
 		}
 		
 		
 		PlayerAVGStats avg = new PlayerAVGStats(player.getName(), ngame, points / ngame, assists / ngame, rebounds / ngame, blocks / ngame);
-		avg.setFgAvg(fgOk+"/"+fgAt);
-		avg.setThreeAvg(threeOk +"/"+ threeAt);
-		avg.setFreeAvg(freeOk +"/"+ freeAt);
+		
 		return avg;
 	}
 	
