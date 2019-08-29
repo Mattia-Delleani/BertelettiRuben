@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import it.polito.tdp.simulatoreNBA.model.Match;
 import it.polito.tdp.simulatoreNBA.model.Model;
 import it.polito.tdp.simulatoreNBA.model.Player;
 import it.polito.tdp.simulatoreNBA.model.PlayerAVGStats;
@@ -139,18 +138,6 @@ public class FinalsController {
         	for(String s : model.getResult()) {
         		txtAreaResults.appendText(s + "\n");
         	}
-        	
-        	txtAreaResults.appendText("\nGiocatori infortunati:\n");
-    		for(Match m : model.getMatchs()) {
-    			if(m.getHome().equals(model.getWestWinner()) && m.getAway().equals(model.getEastWinner())) {
-    				if(!m.getInjured().isEmpty()) {
-    					for(Player p : m.getInjured()) {
-    						txtAreaResults.appendText("- " + p.getName() + " ha subito un infortunio nel match "+
-    					(model.getMatchs().indexOf(m) + 1) + "\n");
-    					}
-    				}
-    			}
-    		}
     		
     		txtAreaResults.appendText("\nMiglior Giocatore delle finali:\n");
     		txtAreaResults.appendText(model.findMVP().getName().toUpperCase());

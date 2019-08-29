@@ -33,9 +33,9 @@ public class Simulatore {
 	private Double PROB_STOPPATA = 0.5;
 	private Double PROB_RANDOM_ASSIST = 0.15;
 	private Double PROB_PLUS_RANDOM_STOPPATA = 0.3;
-	private Integer PROB_TENTATIVO_FISSA = 70;
-	private Integer PROB_TENTATIVO_RANDOM = 50;	
-	private Double PROB_INJURED = 0.002;
+	private Integer PROB_TENTATIVO_FISSA = 10;
+	private Integer PROB_TENTATIVO_RANDOM = 140;	
+	private Double PROB_INJURED = 0.0015;
 	private Integer MAX_INJURED_TIME = 2;
 	
 	
@@ -112,7 +112,7 @@ public class Simulatore {
 					 */
 					
 					
-						Integer attempt3 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) + this.PROB_TENTATIVO_FISSA) * homeP.getThreePointsAttempts()) / 100));
+						Integer attempt3 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) - rand.nextInt(this.PROB_TENTATIVO_FISSA)) * homeP.getThreePointsAttempts()) / 100));
 						for(int i = 0; i < attempt3; i++) {
 							
 							if(homeP.getTeam().equals(home.getName())) {
@@ -133,7 +133,7 @@ public class Simulatore {
 							
 						}
 						
-						Integer attempt2 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) + this.PROB_TENTATIVO_FISSA) * homeP.getFieldGoalAttempts()) / 100));
+						Integer attempt2 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) - rand.nextInt(this.PROB_TENTATIVO_FISSA)) * homeP.getFieldGoalAttempts()) / 100));
 						for(int i = 0; i < attempt2; i++) {
 							
 							if(homeP.getTeam().equals(home.getName())) {
@@ -154,7 +154,7 @@ public class Simulatore {
 							
 						}
 						
-						Integer freeT = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) + this.PROB_TENTATIVO_FISSA) * homeP.getFreeThrowsAttempts()) / 100));
+						Integer freeT = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) - rand.nextInt(this.PROB_TENTATIVO_FISSA)) * homeP.getFreeThrowsAttempts()) / 100));
 						for(int i = 0; i < freeT; i++) {
 							if(homeP.getTeam().equals(home.getName())) {
 								

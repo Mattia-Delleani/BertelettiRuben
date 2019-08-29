@@ -904,11 +904,11 @@ public class StatsController {
 		}
 		
 		txtAreaResult.appendText("\nGiocatori infortunati:\n");
-		for(Match m : toShow.getMatches()) {
-			if(!m.getInjured().isEmpty()) {
-				for(Player p : m.getInjured()) {
+		for(int i = 0; i < toShow.getMatches().size(); i++) {
+			if(!toShow.getMatches().get(i).getInjured().isEmpty()) {
+				for(Player p : toShow.getMatches().get(i).getInjured()) {
 					txtAreaResult.appendText("- "+p.getTeam()+": " + p.getName() + " ha subito un infortunio nel match "+
-				(toShow.getMatches().lastIndexOf(m) + 1) + "\n");
+				(i + 1) + "\n");
 				}
 			}
 		
