@@ -305,10 +305,10 @@ public class NBAController {
     		txtLog.clear();
     
     		//OUTPUT QUARTI
-        	txt1vs8East.appendText(winner1vs8.getAbbreviation());
-        	txt2vs7East.appendText(winner2vs7.getAbbreviation());
-          	txt3vs6East.appendText(winner3vs6.getAbbreviation());
-        	txt4vs5East.appendText(winner4vs5.getAbbreviation());
+        	txt1vs8East.appendText(model.getSeriesMapEast().get(1).getWinner().getAbbreviation());
+        	txt4vs5East.appendText(model.getSeriesMapEast().get(2).getWinner().getAbbreviation());
+          	txt3vs6East.appendText(model.getSeriesMapEast().get(3).getWinner().getAbbreviation());        	
+        	txt2vs7East.appendText(model.getSeriesMapEast().get(4).getWinner().getAbbreviation());
         	
         	txtResult1Est.appendText(model.getSeriesMapEast().get(1).getWinHome().toString());
         	txtResult8Est.appendText(model.getSeriesMapEast().get(1).getWinAway().toString());
@@ -323,8 +323,8 @@ public class NBAController {
         	txtResult7Est.appendText(model.getSeriesMapEast().get(4).getWinAway().toString());
         	
         	//OUTPUT SEMIFINALI
-        	txtFinalist1East.appendText(finalist1East.getAbbreviation());
-         	txtFinalist2East.appendText(finalist2East.getAbbreviation());
+        	txtFinalist1East.appendText(model.getSeriesMapEast().get(5).getWinner().getAbbreviation());
+         	txtFinalist2East.appendText(model.getSeriesMapEast().get(6).getWinner().getAbbreviation());
         	
         	txtResult18Est.appendText(model.getSeriesMapEast().get(5).getWinHome().toString());
         	txtResult45Est.appendText(model.getSeriesMapEast().get(5).getWinAway().toString());
@@ -333,7 +333,7 @@ public class NBAController {
         	txtResult27Est.appendText(model.getSeriesMapEast().get(6).getWinAway().toString());
         	        	
         	//OUTPUT FINALE
-        	txtEastWinner.appendText(eastWinner.getAbbreviation());
+        	txtEastWinner.appendText(model.getSeriesMapEast().get(7).getWinner().getAbbreviation());
         	
         	txtResult1FinalEst.appendText(model.getSeriesMapEast().get(7).getWinHome().toString());
         	txtResult2FinalEst.appendText(model.getSeriesMapEast().get(7).getWinAway().toString());
@@ -354,7 +354,7 @@ public class NBAController {
     		this.checkEast.setDisable(true);
     		
     		if(txt1vs8East.getText().equals("")) {
-    			txt1vs8East.appendText(winner1vs8.getAbbreviation());
+    			txt1vs8East.appendText(model.getSeriesMapEast().get(1).getWinner().getAbbreviation());
     			txtResult1Est.appendText(model.getSeriesMapEast().get(1).getWinHome().toString());
             	txtResult8Est.appendText(model.getSeriesMapEast().get(1).getWinAway().toString());            	
             	txtLog.appendText("Simulazione 1 vs 8 EST avvenuta con successo!\n "
@@ -485,10 +485,10 @@ public class NBAController {
     		txtLog.clear();
         	
         	//OUTPUT QUARTI
-        	txt1vs8West.appendText(winner1vs8.getAbbreviation());     	
-        	txt2vs7West.appendText(winner2vs7.getAbbreviation());
-           	txt3vs6West.appendText(winner3vs6.getAbbreviation());
-           	txt4vs5West.appendText(winner4vs5.getAbbreviation());
+        	txt1vs8West.appendText(model.getSeriesMapWest().get(1).getWinner().getAbbreviation());     	
+        	txt4vs5West.appendText(model.getSeriesMapWest().get(2).getWinner().getAbbreviation());
+           	txt3vs6West.appendText(model.getSeriesMapWest().get(3).getWinner().getAbbreviation());
+            txt2vs7West.appendText(model.getSeriesMapWest().get(4).getWinner().getAbbreviation());
         	
         	txtResult1West.appendText(model.getSeriesMapWest().get(1).getWinHome().toString());
         	txtResult8West.appendText(model.getSeriesMapWest().get(1).getWinAway().toString());
@@ -503,8 +503,8 @@ public class NBAController {
         	txtResult7West.appendText(model.getSeriesMapWest().get(4).getWinAway().toString());
         	        	
         	//OUTPUT SEMIFINALI
-        	txtFinalist1West.appendText(finalist1West.getAbbreviation());
-        	txtFinalist2West.appendText(finalist2West.getAbbreviation());
+        	txtFinalist1West.appendText(model.getSeriesMapWest().get(5).getWinner().getAbbreviation());
+        	txtFinalist2West.appendText(model.getSeriesMapWest().get(6).getWinner().getAbbreviation());
         	
         	txtResult18West.appendText(model.getSeriesMapWest().get(5).getWinHome().toString());
         	txtResult45West.appendText(model.getSeriesMapWest().get(5).getWinAway().toString());
@@ -513,7 +513,7 @@ public class NBAController {
         	txtResult27West.appendText(model.getSeriesMapWest().get(6).getWinAway().toString());
         	        	
         	//OUTPUT FINALE
-        	txtWestWinner.appendText(westWinner.getAbbreviation());
+        	txtWestWinner.appendText(model.getSeriesMapWest().get(7).getWinner().getAbbreviation());
         	
         	txtResult1FinalWest.appendText(model.getSeriesMapWest().get(7).getWinHome().toString());
         	txtResult2FinalWest.appendText(model.getSeriesMapWest().get(7).getWinAway().toString());   	
@@ -647,24 +647,28 @@ public class NBAController {
 			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root);
 			
-			TextField source = (TextField) event.getSource();
-			
-			if(source.getText().equals("")) {
-				txtLog.appendText("Prima di accedere alle statistiche, è necessario simulare la partita.");
-				return;
+			if(event.getSource() instanceof TextField) {
+				TextField source = (TextField) event.getSource();
+				
+				if(source.getText().equals("")) {
+					txtLog.appendText("Prima di accedere alle statistiche, è necessario simulare la partita.");
+					return;
+				}
+				
+				String idField = source.getId();
+				
+				StatsController controller = loader.getController();
+				controller.setModel(model, stage, idField);
+				
+				Stage s= new Stage();
+				
+				s.setScene(scene);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				s.setTitle("Statistiche Serie");
+				s.show();
 			}
 			
-			String idField = source.getId();
 			
-			StatsController controller = loader.getController();
-			controller.setModel(model, stage, idField);
-			
-			Stage s= new Stage();
-			
-			s.setScene(scene);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			s.setTitle("Statistiche Serie");
-			s.show();
 			
 			
 		

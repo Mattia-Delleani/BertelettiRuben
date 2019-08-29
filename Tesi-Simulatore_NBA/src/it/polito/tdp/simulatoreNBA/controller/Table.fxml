@@ -521,7 +521,7 @@
                   <CheckBox fx:id="checkWset" mnemonicParsing="false" prefHeight="35.0" prefWidth="96.0" text="Simulazione veloce" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="btnToFinals" disable="true" mnemonicParsing="false" onAction="#doGoToFinals" prefHeight="17.0" prefWidth="130.0" text="GO TO FINALS" textAlignment="CENTER" textFill="#ff2f00" wrapText="true">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="90.0" right="90.0" top="5.0" />
+                        <Insets bottom="5.0" left="110.0" right="100.0" top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -546,7 +546,7 @@
             </HBox>
             <HBox styleClass="controlPanel">
                <children>
-                  <TextArea fx:id="txtLog" editable="false" prefHeight="50.0" prefWidth="631.0" promptText="Benvenuto nel simulatore playoff NBA">
+                  <TextArea fx:id="txtLog" editable="false" prefHeight="50.0" prefWidth="765.0" promptText="Benvenuto nel simulatore playoff NBA">
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
@@ -566,23 +566,23 @@
          <children>
             <ImageView fitHeight="130.0" fitWidth="236.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/8135__nba_western_conference-primary_on_dark-2018.png" />
+                  <Image url="@../../../../../../img/westernlogo.png" />
                </image>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                </HBox.margin>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/nbalogo.png" />
-               </image>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </HBox.margin>
+               <image>
+                  <Image url="@../../../../../../img/nbalogo.png" />
+               </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/9110__nba_eastern_conference-primary_on_dark-2018.png" />
+                  <Image url="@../../../../../../img/easternlogo.png" />
                </image>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />

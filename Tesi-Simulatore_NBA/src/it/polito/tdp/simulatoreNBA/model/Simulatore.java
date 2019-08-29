@@ -35,8 +35,8 @@ public class Simulatore {
 	private Double PROB_PLUS_RANDOM_STOPPATA = 0.3;
 	private Integer PROB_TENTATIVO_FISSA = 70;
 	private Integer PROB_TENTATIVO_RANDOM = 50;	
-	private Double PROB_INJURED = 0.008;
-	private Integer MAX_INJURED_TIME = 3;
+	private Double PROB_INJURED = 0.002;
+	private Integer MAX_INJURED_TIME = 2;
 	
 	
 	public void init(Team home, Team away) {
@@ -88,11 +88,16 @@ public class Simulatore {
 				
 					home.getInjured().put(homeP.getName(), home.getInjured().get(homeP.getName()) -1);
 					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
+					if(home.getInjured().get(homeP.getName()) == 0)
+						home.getInjured().remove(homeP.getName());
 					
 				}else if(away.getInjured().containsKey(homeP.getName()) && away.getInjured().get(homeP.getName()) > 0) {
 					
 					away.getInjured().put(homeP.getName(), away.getInjured().get(homeP.getName()) -1);
 					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
+					if(away.getInjured().get(homeP.getName()) == 0)
+						away.getInjured().remove(homeP.getName());
+					
 				}else {
 					
 					for(PlayerAVGStats pas : match.getPlayerStats()) {
@@ -250,19 +255,23 @@ public class Simulatore {
 								//seleziono un giocatore dello stesso team
 								if(team.equals(match.getHome())) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
-									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
-											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())
-												pas2.setAssist(pas2.getAssist() + 1);
+									if(!team.getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
+													pas2.setAssist(pas2.getAssist() + 1);
+											}
 										}
-									}
+									}								
 									
 								}else {
 									Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
-									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
-											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())
-												pas2.setAssist(pas2.getAssist() + 1);
+									if(!team.getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
+													pas2.setAssist(pas2.getAssist() + 1);
+											}
 										}
 									}
 								}
@@ -278,33 +287,41 @@ public class Simulatore {
 					}else {//se non fanno canestro il team avversario può prendere un rimbalzo o stoppare casi separati per team
 						if(team.equals(this.match.getHome())) {
 							if(rand.nextDouble() < this.PROB_RIMBALZO) {
-								Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));//prendo un giocatore a caso dal team avversario
-								for(PlayerAVGStats pas : match.getPlayerStats()) {
-									if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
-										pas.setRebounds(pas.getRebounds() + 1);	
+								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));//prendo un giocatore a caso dal team avversario
+								if(!match.getAway().getInjured().containsKey(random.getName())) {
+									for(PlayerAVGStats pas : match.getPlayerStats()) {
+										if(pas.getName().equals(random.getName())) {
+											pas.setRebounds(pas.getRebounds() + 1);	
+										}
 									}
 								}
 							}else if(rand.nextDouble() <= this.PROB_STOPPATA) {//stoppata 
 								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
-								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-									if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
-										pas.setBlock(pas.getBlock() + 1);
+								if(!match.getAway().getInjured().containsKey(random.getName())) {
+									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+										if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
+											pas.setBlock(pas.getBlock() + 1);
+										}
 									}
 								}
 							}						
 						}else {													
 								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
-									Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));
-									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
-											pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+									if(!match.getHome().getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+											if(pas.getName().equals(random.getName())) {
+												pas.setRebounds(pas.getRebounds() + 1);	//do uno scarto fino al 10% della edia rimbalzi
+											}
 										}
 									}
 								}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata al 10%
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
-									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-										if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
-											pas.setBlock(pas.getBlock() + 1);
+									if(!match.getHome().getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+											if(!random.getInjured() && pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
+												pas.setBlock(pas.getBlock() + 1);
+											}
 										}
 									}
 								}							
@@ -329,18 +346,22 @@ public class Simulatore {
 								//seleziono un giocatore dello stesso team
 								if(team.equals(match.getHome())) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
-									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
-											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())
-												pas2.setAssist(pas2.getAssist() + 1);
+									if(!team.getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
+													pas2.setAssist(pas2.getAssist() + 1);
+											}
 										}
 									}
 								}else {
 									Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
-									for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-										if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
-											if(!toConsider.getInjured() && this.PROB_RANDOM_ASSIST > rand.nextDouble())	
-												pas2.setAssist(pas2.getAssist() + 1);
+									if(!team.getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
+											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())	
+													pas2.setAssist(pas2.getAssist() + 1);
+											}
 										}
 									}
 								}
@@ -362,33 +383,41 @@ public class Simulatore {
 	
 						if(team.equals(this.match.getHome())) {
 							if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 50%
-								Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));
-								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-									if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
-										pas.setRebounds(pas.getRebounds() + 1);	
-									}
-								}
-							}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata 
 								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
-								for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-									if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
-										pas.setBlock(pas.getBlock() + 1);
-									}
-								}
-							}						
-						}else {													
-								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
-									Player random = playerRandom.get(rand.nextInt(this.playerRandom.size()));
+								if(!match.getAway().getInjured().containsKey(random.getName())) {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
 											pas.setRebounds(pas.getRebounds() + 1);	
 										}
 									}
-								}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata al 10%
-									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+								}
+							}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata 
+								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+								if(!match.getAway().getInjured().containsKey(random.getName())) {
 									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
 										if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 											pas.setBlock(pas.getBlock() + 1);
+										}
+									}
+								}
+							}						
+						}else {													
+								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
+									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+									if(!match.getHome().getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+											if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+												pas.setRebounds(pas.getRebounds() + 1);	
+											}
+										}
+									}
+								}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata al 10%
+									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+									if(!match.getHome().getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+											if(!random.getInjured() && pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
+												pas.setBlock(pas.getBlock() + 1);
+											}
 										}
 									}
 								}							
@@ -415,7 +444,31 @@ public class Simulatore {
 							this.awayPoints ++;
 						}
 					}else {
-						
+						if(team.equals(this.match.getHome())) {
+							if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 50%
+								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
+								if(!match.getAway().getInjured().containsKey(random.getName())) {
+									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+											pas.setRebounds(pas.getRebounds() + 1);	
+										}
+									}
+								}
+							}
+												
+						}else {													
+								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
+									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
+									if(!match.getHome().getInjured().containsKey(random.getName())) {
+										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+											if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+												pas.setRebounds(pas.getRebounds() + 1);	
+											}
+										}
+									}
+								}						
+							
+						}
 					}
 					break;
 					
@@ -428,7 +481,7 @@ public class Simulatore {
 							p.setInjured(true);
 							Map<String, Integer> teamInjured = team.getInjured();
 							Integer time =  rand.nextInt(this.MAX_INJURED_TIME) + 1;
-							teamInjured.put(toConsider.getName(), time);//al max 4 giornate	, lo aggiungo al team
+							teamInjured.put(toConsider.getName(), time);//al max 3 giornate	, lo aggiungo al team
 							this.match.getInjured().add(toConsider);//aggiungo infornutato al match
 							//System.out.println("Giocatore " + toConsider.getName() + "INFORTUNATO per "+time);
 						}

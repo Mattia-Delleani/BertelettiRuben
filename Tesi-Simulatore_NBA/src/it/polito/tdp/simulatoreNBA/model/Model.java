@@ -26,7 +26,8 @@ public class Model {
 	/**
 	 * Mappe che tengono traccia delle serie:
 	 * -l'indice Integer parte da 1 in alto a sx per l'ovest a scendere
-	 * 	e da 1 in alto a dx per l'est
+	 * 	e da 1 in alto a dx per l'est, 
+	 * la finale viene salvata nella mappa west
 	 */
 	private Map<Integer, Series> seriesMapWest;
 	private Integer idSeriesWest = 1;

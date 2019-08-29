@@ -29,11 +29,19 @@
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox spacing="47.0">
+            <HBox spacing="26.0">
                <children>
-                  <TextField fx:id="txtTeamHome" editable="false" prefHeight="40.0" prefWidth="420.0">
+                  <TextField fx:id="txtTeamHome" alignment="CENTER" editable="false" prefHeight="40.0" prefWidth="365.0">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="resultHome" editable="false" prefHeight="40.0" prefWidth="40.0" styleClass="txtResultSeries">
+                     <HBox.margin>
+                        <Insets top="10.0" />
                      </HBox.margin>
                      <font>
                         <Font size="18.0" />
@@ -47,7 +55,15 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTeamAway" editable="false" prefHeight="40.0" prefWidth="420.0">
+                  <TextField fx:id="resultAway" editable="false" prefHeight="40.0" prefWidth="40.0" styleClass="txtResultSeries">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtTeamAway" alignment="CENTER" editable="false" prefHeight="40.0" prefWidth="365.0">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -74,8 +90,7 @@
                            <children>
                               <TableView fx:id="tableHome1" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH1" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH1" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH1" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH1" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH1" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH1" prefWidth="60.0" text="Rimbalzi" />
@@ -90,8 +105,7 @@
                               </TableView>
                               <TableView fx:id="tableAway1" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA1" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA1" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA1" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA1" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA1" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA1" prefWidth="60.0" text="Rimbalzi" />
@@ -111,8 +125,7 @@
                            <children>
                               <TableView fx:id="tableHome2" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH2" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH2" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH2" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH2" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH2" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH2" prefWidth="60.0" text="Rimbalzi" />
@@ -127,8 +140,7 @@
                               </TableView>
                               <TableView fx:id="tableAway2" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA2" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA2" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA2" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA2" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA2" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA2" prefWidth="60.0" text="Rimbalzi" />
@@ -148,8 +160,7 @@
                            <children>
                               <TableView fx:id="tableHome3" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH3" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH3" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH3" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH3" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH3" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH3" prefWidth="60.0" text="Rimbalzi" />
@@ -164,8 +175,7 @@
                               </TableView>
                               <TableView fx:id="tableAway3" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA3" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA3" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA3" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA3" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA3" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA3" prefWidth="60.0" text="Rimbalzi" />
@@ -185,8 +195,7 @@
                            <children>
                               <TableView fx:id="tableHome4" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH4" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH4" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH4" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH4" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH4" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH4" prefWidth="60.0" text="Rimbalzi" />
@@ -201,8 +210,7 @@
                               </TableView>
                               <TableView fx:id="tableAway4" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA4" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA4" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA4" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA4" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA4" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA4" prefWidth="60.0" text="Rimbalzi" />
@@ -222,8 +230,7 @@
                            <children>
                               <TableView fx:id="tableHome5" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH5" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH5" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH5" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH5" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH5" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH5" prefWidth="60.0" text="Rimbalzi" />
@@ -238,8 +245,7 @@
                               </TableView>
                               <TableView fx:id="tableAway5" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA5" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA5" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA5" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA5" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA5" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA5" prefWidth="60.0" text="Rimbalzi" />
@@ -259,8 +265,7 @@
                            <children>
                               <TableView fx:id="tableHome6" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH6" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH6" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH6" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH6" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH6" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH6" prefWidth="60.0" text="Rimbalzi" />
@@ -275,8 +280,7 @@
                               </TableView>
                               <TableView fx:id="tableAway6" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA6" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA6" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA6" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA6" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA6" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA6" prefWidth="60.0" text="Rimbalzi" />
@@ -296,8 +300,7 @@
                            <children>
                               <TableView fx:id="tableHome7" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerH7" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameH7" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerH7" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointH7" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistH7" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebH7" prefWidth="60.0" text="Rimbalzi" />
@@ -312,8 +315,7 @@
                               </TableView>
                               <TableView fx:id="tableAway7" prefHeight="191.0">
                                  <columns>
-                                    <TableColumn fx:id="colPlayerA7" prefWidth="75.0" text="Giocatore" />
-                                    <TableColumn fx:id="colGameA7" prefWidth="50.0" text="nGame" />
+                                    <TableColumn fx:id="colPlayerA7" prefWidth="110.0" text="Giocatore" />
                                     <TableColumn fx:id="colPointA7" prefWidth="40.0" text="Punti" />
                                     <TableColumn fx:id="colAssistA7" prefWidth="40.0" text="Assist" />
                                     <TableColumn fx:id="colRebA7" prefWidth="60.0" text="Rimbalzi" />

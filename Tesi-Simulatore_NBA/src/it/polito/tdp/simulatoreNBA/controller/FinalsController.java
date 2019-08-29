@@ -131,6 +131,9 @@ public class FinalsController {
     		
     		ObservableList<PlayerAVGStats> valuesE = FXCollections.observableArrayList(eastStats);
     		tableEast.setItems(valuesE);
+    		
+    		txtAreaResults.appendText("<<< RISULTATI PARTITE >>>\n *** Vincente: " + champ.getName() +" ***\n");
+    		txtAreaResults.appendText(model.getSeriesMapWest().get(8).toString() + "\n");
 
         	
         	for(String s : model.getResult()) {
@@ -188,7 +191,6 @@ public class FinalsController {
 			s.setScene(scene);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			s.setTitle("Statistiche Serie");
-			//stage.setAlwaysOnTop(true);
 			s.show();
 			
 			

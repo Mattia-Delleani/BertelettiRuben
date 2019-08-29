@@ -17,7 +17,7 @@
    <top>
       <ImageView fitHeight="197.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../../../../../../../OneDrive/Desktop/Università/Tecniche%20di%20Programmazione/Tesi-Simulatore_NBA/img/finalsLogo.gif" />
+            <Image url="@../../../../../../img/finalsLogo.gif" />
          </image>
       </ImageView>
    </top>
@@ -32,7 +32,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtWestWinner" alignment="CENTER" editable="false" />
+            <TextField fx:id="txtWestWinner" alignment="CENTER" editable="false" pickOnBounds="false" />
             <TableView fx:id="tableWest">
               <columns>
                 <TableColumn fx:id="columnPlayerWest" prefWidth="140.0" text="Giocatore" />
