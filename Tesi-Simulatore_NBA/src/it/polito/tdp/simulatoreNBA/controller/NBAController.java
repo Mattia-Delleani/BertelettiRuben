@@ -231,74 +231,77 @@ public class NBAController {
     	
     	txtLog.clear();
     	
-    	Team team1 = cmbBoxEast1.getValue();
-    	Team team2 = cmbBoxEast2.getValue();
-    	Team team3 = cmbBoxEast3.getValue();
-    	Team team4 = cmbBoxEast4.getValue();
-    	Team team5 = cmbBoxEast5.getValue();
-    	Team team6 = cmbBoxEast6.getValue();
-    	Team team7 = cmbBoxEast7.getValue();
-    	Team team8 = cmbBoxEast8.getValue();
+    	if(model.getSeriesMapEast().isEmpty()) {
     	
-    	List<Team> teams = new ArrayList<Team>();
-    	teams.add(team1);
-    	teams.add(team2);
-    	teams.add(team3);
-    	teams.add(team4);
-    	teams.add(team5);
-    	teams.add(team6);
-    	teams.add(team7);
-    	teams.add(team8);
-    	
-    	/*
-    	 * Controllo input -> tutte le squadre selezionate
-    	 */
-    	for(Team team : teams) {
-    		if(team == null) {
-    			txtLog.appendText("ERRORE SIMULAZIONE EAST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
-    			return;
-    		}
+	    	Team team1 = cmbBoxEast1.getValue();
+	    	Team team2 = cmbBoxEast2.getValue();
+	    	Team team3 = cmbBoxEast3.getValue();
+	    	Team team4 = cmbBoxEast4.getValue();
+	    	Team team5 = cmbBoxEast5.getValue();
+	    	Team team6 = cmbBoxEast6.getValue();
+	    	Team team7 = cmbBoxEast7.getValue();
+	    	Team team8 = cmbBoxEast8.getValue();
+	    	
+	    	List<Team> teams = new ArrayList<Team>();
+	    	teams.add(team1);
+	    	teams.add(team2);
+	    	teams.add(team3);
+	    	teams.add(team4);
+	    	teams.add(team5);
+	    	teams.add(team6);
+	    	teams.add(team7);
+	    	teams.add(team8);
+	    	
+	    	/*
+	    	 * Controllo input -> tutte le squadre selezionate
+	    	 */
+	    	for(Team team : teams) {
+	    		if(team == null) {
+	    			txtLog.appendText("ERRORE SIMULAZIONE EAST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
+	    			return;
+	    		}
+	    	}
+	    	
+	    	/*
+	    	 * Controllo input -> squadre tutte differenti
+	    	 */
+	    	for(Team t1 : teams) {   
+	    		int count = 0;
+	    		for(Team t2 : teams) {
+	    			if(t1.equals(t2)) {
+	    				count ++;
+	    				if(count > 1) {
+	    					txtLog.appendText("ERRORE SIMULAZIONE EAST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
+	        				return;
+	    				}
+	    			}
+	    		}
+	    		
+	    	}
+	    	
+	    	/*
+	    	 * Simulazione quarti
+	    	 */
+	    	
+	    	Team winner1vs8 = model.SimulationWinner(team1, team8);
+	    	Team winner4vs5 = model.SimulationWinner(team4, team5);
+	    	Team winner3vs6 = model.SimulationWinner(team3, team6);
+	    	Team winner2vs7 = model.SimulationWinner(team2, team7);
+	    	
+	    	/*
+	    	 * Simulazione semifinale
+	    	 */
+	    	
+	    	Team finalist1East = model.SimulationWinner(winner1vs8, winner4vs5);
+	    	Team finalist2East = model.SimulationWinner(winner3vs6, winner2vs7);
+	    	
+	    	/*
+	    	 * Simulazione finale
+	    	 */
+	    	
+	    	Team eastWinner = model.SimulationWinner(finalist1East, finalist2East);
+	    	model.saveEastWinner(eastWinner);//salvataggio in Model
     	}
-    	
-    	/*
-    	 * Controllo input -> squadre tutte differenti
-    	 */
-    	for(Team t1 : teams) {   
-    		int count = 0;
-    		for(Team t2 : teams) {
-    			if(t1.equals(t2)) {
-    				count ++;
-    				if(count > 1) {
-    					txtLog.appendText("ERRORE SIMULAZIONE EAST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
-        				return;
-    				}
-    			}
-    		}
-    		
-    	}
-    	
-    	/*
-    	 * Simulazione quarti
-    	 */
-    	
-    	Team winner1vs8 = model.SimulationWinner(team1, team8);
-    	Team winner4vs5 = model.SimulationWinner(team4, team5);
-    	Team winner3vs6 = model.SimulationWinner(team3, team6);
-    	Team winner2vs7 = model.SimulationWinner(team2, team7);
-    	
-    	/*
-    	 * Simulazione semifinale
-    	 */
-    	
-    	Team finalist1East = model.SimulationWinner(winner1vs8, winner4vs5);
-    	Team finalist2East = model.SimulationWinner(winner3vs6, winner2vs7);
-    	
-    	/*
-    	 * Simulazione finale
-    	 */
-    	
-    	Team eastWinner = model.SimulationWinner(finalist1East, finalist2East);
-    	model.saveEastWinner(eastWinner);//salvataggio in Model
     	
     	if(checkEast.isSelected()) {
     		//Simulazione veloce
@@ -411,74 +414,78 @@ public class NBAController {
     	
     	txtLog.clear();
     	
-    	Team team1 = cmbBoxWest1.getValue();
-    	Team team2 = cmbBoxWest2.getValue();
-    	Team team3 = cmbBoxWest3.getValue();
-    	Team team4 = cmbBoxWest4.getValue();
-    	Team team5 = cmbBoxWest5.getValue();
-    	Team team6 = cmbBoxWest6.getValue();
-    	Team team7 = cmbBoxWest7.getValue();
-    	Team team8 = cmbBoxWest8.getValue();
+    	if(model.getSeriesMapWest().isEmpty()) {
     	
-    	List<Team> teams = new ArrayList<Team>();
-    	teams.add(team1);
-    	teams.add(team2);
-    	teams.add(team3);
-    	teams.add(team4);
-    	teams.add(team5);
-    	teams.add(team6);
-    	teams.add(team7);
-    	teams.add(team8);
-    	
-    	/*
-    	 * Controllo input -> tutte le squadre selezionate
-    	 */
-    	for(Team team : teams) {
-    		if(team == null) {
-    			txtLog.appendText("ERRORE SIMULAZIONE WEST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
-    			return;
-    		}
+	    	Team team1 = cmbBoxWest1.getValue();
+	    	Team team2 = cmbBoxWest2.getValue();
+	    	Team team3 = cmbBoxWest3.getValue();
+	    	Team team4 = cmbBoxWest4.getValue();
+	    	Team team5 = cmbBoxWest5.getValue();
+	    	Team team6 = cmbBoxWest6.getValue();
+	    	Team team7 = cmbBoxWest7.getValue();
+	    	Team team8 = cmbBoxWest8.getValue();
+	    	
+	    	List<Team> teams = new ArrayList<Team>();
+	    	teams.add(team1);
+	    	teams.add(team2);
+	    	teams.add(team3);
+	    	teams.add(team4);
+	    	teams.add(team5);
+	    	teams.add(team6);
+	    	teams.add(team7);
+	    	teams.add(team8);
+	    	
+	    	/*
+	    	 * Controllo input -> tutte le squadre selezionate
+	    	 */
+	    	for(Team team : teams) {
+	    		if(team == null) {
+	    			txtLog.appendText("ERRORE SIMULAZIONE WEST: Selezionare tutti i teams partecipanti ai playoff per procedere.");
+	    			return;
+	    		}
+	    	}
+	    	
+	    	/*
+	    	 * Controllo input -> squadre tutte differenti
+	    	 */
+	    	for(Team t1 : teams) {   
+	    		int count = 0;
+	    		for(Team t2 : teams) {
+	    			if(t1.equals(t2)) {
+	    				count ++;
+	    				if(count > 1) {
+	    					txtLog.appendText("ERRORE SIMULAZIONE WEST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
+	        				return;
+	    				}
+	    			}
+	    		}
+	    		
+	    	}
+	    	/*
+	    	 * Simulazione quarti
+	    	 */
+	    	
+	    	Team winner1vs8 = model.SimulationWinner(team1, team8);
+	    	Team winner4vs5 = model.SimulationWinner(team4, team5);
+	    	Team winner3vs6 = model.SimulationWinner(team3, team6);
+	    	Team winner2vs7 = model.SimulationWinner(team2, team7);
+	    	
+	    	
+	    	
+	    	/*
+	    	 * Simulazione semifinale
+	    	 */
+	    	        	
+	    	Team finalist1West = model.SimulationWinner(winner1vs8, winner4vs5);
+	    	Team finalist2West = model.SimulationWinner(winner3vs6, winner2vs7);
+	    	
+	    	/*
+	    	 * Simulazione finale
+	    	 */
+	    	Team westWinner = model.SimulationWinner(finalist1West, finalist2West);
+	    	model.saveWestWinner(westWinner);//salvataggio in Model
+	    	
     	}
-    	
-    	/*
-    	 * Controllo input -> squadre tutte differenti
-    	 */
-    	for(Team t1 : teams) {   
-    		int count = 0;
-    		for(Team t2 : teams) {
-    			if(t1.equals(t2)) {
-    				count ++;
-    				if(count > 1) {
-    					txtLog.appendText("ERRORE SIMULAZIONE WEST: Assicurarsi di aver selezionato ogni squadra una sola volta.");
-        				return;
-    				}
-    			}
-    		}
-    		
-    	}
-    	/*
-    	 * Simulazione quarti
-    	 */
-    	
-    	Team winner1vs8 = model.SimulationWinner(team1, team8);
-    	Team winner4vs5 = model.SimulationWinner(team4, team5);
-    	Team winner3vs6 = model.SimulationWinner(team3, team6);
-    	Team winner2vs7 = model.SimulationWinner(team2, team7);
-    	
-    	
-    	
-    	/*
-    	 * Simulazione semifinale
-    	 */
-    	        	
-    	Team finalist1West = model.SimulationWinner(winner1vs8, winner4vs5);
-    	Team finalist2West = model.SimulationWinner(winner3vs6, winner2vs7);
-    	
-    	/*
-    	 * Simulazione finale
-    	 */
-    	Team westWinner = model.SimulationWinner(finalist1West, finalist2West);
-    	model.saveWestWinner(westWinner);//salvataggio in Model
     	
     	if(checkWset.isSelected()) {
     		//Simulazione veloce
