@@ -607,12 +607,47 @@ public class NBAController {
     	txt3vs6West.clear();
     	txt4vs5East.clear();
     	txt4vs5West.clear();
+    	txtResult18Est.clear();
+    	txtResult18West.clear();
+    	txtResult1Est.clear();
+    	txtResult1FinalEst.clear();
+    	txtResult1FinalWest.clear();
+    	txtResult1West.clear();
+    	txtResult27Est.clear();
+    	txtResult27West.clear();
+    	txtResult2Est.clear();
+    	txtResult2FinalEst.clear();
+    	txtResult2FinalWest.clear();
+    	txtResult2West.clear();
+    	txtResult36Est.clear();
+    	txtResult36West.clear();
+    	txtResult3Est.clear();
+    	txtResult3West.clear();
+    	txtResult45Est.clear();
+    	txtResult45West.clear();
+    	txtResult4Est.clear();
+    	txtResult4West.clear();
+    	txtResult5Est.clear();
+    	txtResult5West.clear();
+    	txtResult6Est.clear();
+    	txtResult6We.clear();
+    	txtResult7Est.clear();
+    	txtResult7West.clear();
+    	txtResult8Est.clear();
+    	txtResult8West.clear();
     	txtFinalist1East.clear();
     	txtFinalist2East.clear();
     	txtFinalist1West.clear();
     	txtFinalist2West.clear();
     	txtEastWinner.clear();
     	txtWestWinner.clear();
+    	
+    	this.model = new Model();
+    	
+    	checkEast.setDisable(false);
+    	checkWset.setDisable(false);
+    	btnSimulaEst.setDisable(false);
+    	btnSimulaOvest.setDisable(false);
     	btnToFinals.setDisable(true);
 
     }
