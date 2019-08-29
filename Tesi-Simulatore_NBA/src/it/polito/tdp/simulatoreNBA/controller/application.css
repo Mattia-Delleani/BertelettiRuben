@@ -21,3 +21,15 @@
 	-fx-text-fill: white;
 }
 
+.scrollPaneLabel{
+	-fx-background-color:  #f4f6f6   ;
+	-fx-text-fill:  black ;
+	-fx-font-size: 14;
+}
+
+.scrollPaneTxt{
+	-fx-background-color:  #f4f6f6   ;
+	-fx-font-size: 13;
+	-fx-text-fill: #4db6ac ;
+}
+

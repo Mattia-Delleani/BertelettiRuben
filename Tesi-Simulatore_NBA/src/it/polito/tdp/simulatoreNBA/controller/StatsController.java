@@ -50,6 +50,27 @@ public class StatsController {
 
     @FXML
     private TextField resultAway;
+    
+    @FXML
+    private TextField txtGame1;
+    
+    @FXML
+    private TextField txtGame2;
+    
+    @FXML
+    private TextField txtGame3;
+    
+    @FXML
+    private TextField txtGame4;
+    
+    @FXML
+    private TextField txtGame5;
+    
+    @FXML
+    private TextField txtGame6;
+    
+    @FXML
+    private TextField txtGame7;
 
     @FXML
     private TableView<PlayerAVGStats> tableHome1;
@@ -579,6 +600,16 @@ public class StatsController {
         assert col2PtA7 != null : "fx:id=\"col2PtA7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert col3PtA7 != null : "fx:id=\"col3PtA7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
         assert colFtA7 != null : "fx:id=\"colFtA7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame1 != null : "fx:id=\"txtGame1\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame2 != null : "fx:id=\"txtGame2\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame3 != null : "fx:id=\"txtGame3\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame4 != null : "fx:id=\"txtGame4\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame5 != null : "fx:id=\"txtGame5\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame6 != null : "fx:id=\"txtGame6\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+        assert txtGame7 != null : "fx:id=\"txtGame7\" was not injected: check your FXML file 'StatsForGame.fxml'.";
+
+
+        
        
         
         
@@ -779,6 +810,8 @@ public class StatsController {
 		List<PlayerAVGStats> homeTeam1 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(0).getHomeStats());
 		List<PlayerAVGStats> awayTeam1 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(0).getAwayStats());
 		
+		txtGame1.appendText(toShow.getMatches().get(0).getScore());
+		
 		Collections.sort(homeTeam1);
 		Collections.sort(awayTeam1);
 		
@@ -791,6 +824,8 @@ public class StatsController {
 		//inserimento valori tabella 2
 		List<PlayerAVGStats> homeTeam2 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(1).getHomeStats());
 		List<PlayerAVGStats> awayTeam2 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(1).getAwayStats());
+		
+		txtGame2.appendText(toShow.getMatches().get(1).getScore());
 		
 		Collections.sort(homeTeam2);
 		Collections.sort(awayTeam2);
@@ -805,6 +840,8 @@ public class StatsController {
 		List<PlayerAVGStats> homeTeam3 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(2).getHomeStats());
 		List<PlayerAVGStats> awayTeam3 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(2).getAwayStats());
 		
+		txtGame3.appendText(toShow.getMatches().get(2).getScore());
+		
 		Collections.sort(homeTeam3);
 		Collections.sort(awayTeam3);
 		
@@ -817,6 +854,8 @@ public class StatsController {
 		//inserimento valori tabella 4
 		List<PlayerAVGStats> homeTeam4 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(3).getHomeStats());
 		List<PlayerAVGStats> awayTeam4 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(3).getAwayStats());
+		
+		txtGame4.appendText(toShow.getMatches().get(3).getScore());
 		
 		Collections.sort(homeTeam4);
 		Collections.sort(awayTeam4);
@@ -835,6 +874,8 @@ public class StatsController {
 			List<PlayerAVGStats> homeTeam5 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(4).getHomeStats());
 			List<PlayerAVGStats> awayTeam5 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(4).getAwayStats());
 			
+			txtGame5.appendText(toShow.getMatches().get(4).getScore());
+			
 			Collections.sort(homeTeam5);
 			Collections.sort(awayTeam5);
 			
@@ -852,6 +893,8 @@ public class StatsController {
 				List<PlayerAVGStats> homeTeam6 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(5).getHomeStats());
 				List<PlayerAVGStats> awayTeam6 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(5).getAwayStats());
 				
+				txtGame6.appendText(toShow.getMatches().get(5).getScore());
+				
 				Collections.sort(homeTeam6);
 				Collections.sort(awayTeam6);
 				
@@ -868,6 +911,8 @@ public class StatsController {
 					//inserimento valori tabella 7
 					List<PlayerAVGStats> homeTeam7 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(6).getHomeStats());
 					List<PlayerAVGStats> awayTeam7 = new ArrayList<PlayerAVGStats>(toShow.getMatches().get(6).getAwayStats());
+					
+					txtGame7.appendText(toShow.getMatches().get(6).getScore());
 					
 					Collections.sort(homeTeam7);
 					Collections.sort(awayTeam7);

@@ -85,7 +85,19 @@
                <content>
                   <VBox>
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 1" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 1" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame1" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome1" prefHeight="191.0">
@@ -120,7 +132,19 @@
                               </TableView>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 2" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 2" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame2" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome2" prefHeight="191.0">
@@ -155,7 +179,19 @@
                               </TableView>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 3" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 3" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame3" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome3" prefHeight="191.0">
@@ -190,7 +226,19 @@
                               </TableView>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 4" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 4" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame4" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome4" prefHeight="191.0">
@@ -225,7 +273,19 @@
                               </TableView>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 5" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 5" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame5" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox fx:id="hBoxGame5" disable="true" styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome5" prefHeight="191.0">
@@ -260,7 +320,19 @@
                               </TableView>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 6" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 6" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame6" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox fx:id="hBoxGame6" disable="true" styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome6" prefHeight="191.0">
@@ -295,7 +367,19 @@
                               </TableView>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="944.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 7" textAlignment="CENTER" />
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="532.0" styleClass="scrollPaneLabel" text="STATISTICHE GAME 7" textAlignment="CENTER" />
+                              <TextField fx:id="txtGame7" editable="false" prefHeight="30.0" prefWidth="170.0" styleClass="scrollPaneTxt">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                         <HBox fx:id="hBoxGame7" disable="true" styleClass="controlPanel">
                            <children>
                               <TableView fx:id="tableHome7" prefHeight="191.0">

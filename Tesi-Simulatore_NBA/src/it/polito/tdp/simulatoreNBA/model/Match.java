@@ -125,6 +125,10 @@ public class Match {
 		
 		return away;
 	}
+	
+	public String getScore(){
+		return this.home.getAbbreviation() + " " + this.homePoints+ " vs " + this.away.getAbbreviation() + " " + this.awayPoints;
+	}
 
 	@Override
 	public int hashCode() {
@@ -155,6 +159,8 @@ public class Match {
 	public String toString() {
 		return this.home.getAbbreviation() + " " + this.homePoints+ " vs " + this.away.getAbbreviation() + " " + this.awayPoints + " Winner: " + this.winner.getName();
 	}
+	
+	
 	
 	
 	
