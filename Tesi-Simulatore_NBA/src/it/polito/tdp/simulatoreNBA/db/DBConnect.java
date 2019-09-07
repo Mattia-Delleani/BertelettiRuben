@@ -31,7 +31,8 @@ public class DBConnect {
 			Connection c = ds.getConnection();
 			return c;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
+			System.out.println("Errore DB");
 			e.printStackTrace();
 			return null;
 		}

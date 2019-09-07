@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.simulatoreNBA.model.Match;
 import it.polito.tdp.simulatoreNBA.model.Model;
 import it.polito.tdp.simulatoreNBA.model.Player;
 import it.polito.tdp.simulatoreNBA.model.PlayerAVGStats;
@@ -133,10 +134,11 @@ public class FinalsController {
     		
     		txtAreaResults.appendText("<<< RISULTATI PARTITE >>>\n *** Vincente: " + champ.getName() +" ***\n");
     		txtAreaResults.appendText(model.getSeriesMapWest().get(8).toString() + "\n");
-
-        	
-        	for(String s : model.getResult()) {
-        		txtAreaResults.appendText(s + "\n");
+    		
+        	List<Match> finals = model.getSeriesMapWest().get(8).getMatches();
+    		
+        	for(Match m : finals) {
+        		txtAreaResults.appendText(m.toString() + "\n");
         	}
     		
     		txtAreaResults.appendText("\nMiglior Giocatore delle finali:\n");

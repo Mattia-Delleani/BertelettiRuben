@@ -99,13 +99,11 @@ public class Simulatore {
 				if(home.getInjured().containsKey(homeP.getName()) && home.getInjured().get(homeP.getName()) > 0){
 				
 					home.getInjured().put(homeP.getName(), home.getInjured().get(homeP.getName()) -1);
-					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
 					
 					
 				}else if(away.getInjured().containsKey(homeP.getName()) && away.getInjured().get(homeP.getName()) > 0) {
 					
 					away.getInjured().put(homeP.getName(), away.getInjured().get(homeP.getName()) -1);
-					//System.err.println(homeP.getName() + " ANCORA INFORTUNATO");
 					
 					
 				}else {
@@ -122,7 +120,8 @@ public class Simulatore {
 					 */
 					
 					
-						Integer attempt3 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) - rand.nextInt(this.PROB_TENTATIVO_FISSA)) * homeP.getThreePointsAttempts()) / 100));
+						Integer attempt3 = (int) ((((rand.nextInt(this.PROB_TENTATIVO_RANDOM) - rand.nextInt(this.PROB_TENTATIVO_FISSA)) 
+								* homeP.getThreePointsAttempts()) / 100));
 						for(int i = 0; i < attempt3; i++) {
 							
 							if(homeP.getTeam().equals(home.getName())) {
@@ -217,7 +216,8 @@ public class Simulatore {
 			
 			for(Evento ev : this.eventList) {
 				if(matchTime <= matchDurations) {
-					matchTime = matchTime + ((rand.nextInt(this.TEMPO_RANDOM_AZIONE)) + this.TEMPO_COSTANTE_AZIONE);
+					matchTime = matchTime + 
+							((rand.nextInt(this.TEMPO_RANDOM_AZIONE)) + this.TEMPO_COSTANTE_AZIONE);
 					ev.setTime(matchTime);
 					this.queue.add(ev);
 					
@@ -348,26 +348,23 @@ public class Simulatore {
 					break;
 					
 				case THREE_POINTS_ATTEMPT:
-					//System.out.println(toConsider.getName()+ " da 3");
 					if(ev.getPlayer().getThreePointsPercentage() > rand.nextDouble()) {
 						String name = "";
-						//aggiorno lo score punti player globale
 						for(PlayerAVGStats pas : match.getPlayerStats()) {
 							if(pas.getName().equals(ev.getPlayer().getName())) {
 								pas.setPoint(pas.getPoint() + 3);
-								pas.setThreeDone(pas.getThreeDone() + 1);//update successi
+								pas.setThreeDone(pas.getThreeDone() + 1);
 								name = pas.getName();
 							}
 							if(!name.equals("") && !pas.getName().equals(name)) {//MODELLAZIONE ASSIST
-								//seleziono un giocatore dello stesso team
 								if(team.equals(match.getHome())) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									if(!team.getInjured().containsKey(random.getName())) {
 										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+											if(pas2.getName().equals(random.getName())
+													&& pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
 												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())
 													pas2.setAssist(pas2.getAssist() + 1);
-												//System.out.println(random.getName()+" fa assist");
 											}
 										}
 									}
@@ -375,10 +372,10 @@ public class Simulatore {
 									Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
 									if(!team.getInjured().containsKey(random.getName())) {
 										for(PlayerAVGStats pas2 : match.getPlayerStats()) {
-											if(pas2.getName().equals(random.getName()) && pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
+											if(pas2.getName().equals(random.getName()) 
+													&& pas2.getAssist() < (random.getAssists() * (1 + rand.nextDouble()))) {
 												if(this.PROB_RANDOM_ASSIST > rand.nextDouble())	
 													pas2.setAssist(pas2.getAssist() + 1);
-													//System.out.println(random.getName()+" fa assist");
 											}
 										}
 									}
@@ -392,60 +389,50 @@ public class Simulatore {
 							this.awayPoints = this.awayPoints + 3;
 						}//FINO A QUI TENTATIVO RIUSCITO
 						
-					}else {
-						/*
-						 * Se il giocatore sbaglia il tiro, un giocatore random del team avversario ha la possibilità di prendere un rimbalzo;
-						 * altrimenti si assegna una stoppata oppure nulla
-						 */
-						
-	
+					}else {	
 						if(team.equals(this.match.getHome())) {
-							if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 50%
+							if(rand.nextDouble() < this.PROB_RIMBALZO) {
 								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
 								if(!match.getAway().getInjured().containsKey(random.getName())) {
-									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-										if(pas.getName().equals(random.getName()) /*&& pas.getRebounds() < (random.getRebounds() + this.PROB_PLUS_RANDOM_RIMBALZO * rand.nextDouble())*/) {
+									for(PlayerAVGStats pas : match.getPlayerStats()) {
+										if(pas.getName().equals(random.getName())) {
 											pas.setRebounds(pas.getRebounds() + 1);	
-											//System.out.println(random.getName()+" fa rimbalzo");
 										}
 									}
 								}
 							}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata 
 								Player random = aPlayers.get(rand.nextInt(this.aPlayers.size()));
 								if(!match.getAway().getInjured().containsKey(random.getName())) {
-									for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-										if(pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
+									for(PlayerAVGStats pas : match.getPlayerStats()) {
+										if(pas.getName().equals(random.getName()) 
+												&& pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 											pas.setBlock(pas.getBlock() + 1);
-											//System.out.println(random.getName()+" fa stoppata");
 										}
 									}
 								}
 							}						
 						}else {													
-								if(rand.nextDouble() < this.PROB_RIMBALZO) {//rimbalzo al 30%
+								if(rand.nextDouble() < this.PROB_RIMBALZO) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									if(!match.getHome().getInjured().containsKey(random.getName())) {
-										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
+										for(PlayerAVGStats pas : match.getPlayerStats()) {
 											if(pas.getName().equals(random.getName())) {
 												pas.setRebounds(pas.getRebounds() + 1);	
-												//System.out.println(random.getName()+" fa rimbalzo");
 											}
 										}
 									}
-								}else if(rand.nextDouble() < this.PROB_STOPPATA) {//stoppata al 10%
+								}else if(rand.nextDouble() < this.PROB_STOPPATA) {
 									Player random = hPlayers.get(rand.nextInt(this.hPlayers.size()));
 									if(!match.getHome().getInjured().containsKey(random.getName())) {
-										for(PlayerAVGStats pas : match.getPlayerStats()) {//prendo un giocatore a caso dal team avversario
-											if(!random.getInjured() && pas.getName().equals(random.getName()) && pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
+										for(PlayerAVGStats pas : match.getPlayerStats()) {
+											if(!random.getInjured() && pas.getName().equals(random.getName()) 
+													&& pas.getBlock() < (random.getBlocks() + this.PROB_PLUS_RANDOM_STOPPATA * rand.nextDouble())) {
 												pas.setBlock(pas.getBlock() + 1);
-												//System.out.println(random.getName()+" fa stoppata");
 											}
 										}
 									}
 								}							
-							
 						}
-						
 					}
 					break;
 					

@@ -712,12 +712,6 @@ public class NBAController {
 				s.show();
 			}
 			
-			
-			
-			
-		
-		
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
