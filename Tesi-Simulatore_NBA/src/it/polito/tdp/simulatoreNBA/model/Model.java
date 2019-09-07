@@ -18,7 +18,7 @@ public class Model {
 	private Integer winH;
 	private Integer winA;
 	private Team globalWinner;
-	private List<Match> matchs;
+	private List<Match> matches;
 	private List<PlayerAVGStats> finalStats;
 	
 	/**
@@ -44,7 +44,7 @@ public class Model {
 				
 		this.EastTeams = dao.getEastTeams();
 		this.WestTeams = dao.getWestTeams();
-		this.matchs = new ArrayList<>();
+		this.matches = new ArrayList<>();
 		this.finalStats = new ArrayList<PlayerAVGStats>();
 		this.seriesMapWest = new HashMap<>();
 		this.seriesMapEast = new HashMap<>();
@@ -80,7 +80,7 @@ public class Model {
 					series.getMatches().add(sim.getMatch());
 				}
 				
-				this.matchs.add(sim.getMatch());
+				this.matches.add(sim.getMatch());
 				if(this.eastWinner != null && this.westWinner != null) {
 					this.finalStats.addAll(sim.getMatch().getPlayerStats());
 				}
@@ -215,8 +215,8 @@ public class Model {
 		return westWinner;
 	}
 
-	public List<Match> getMatchs() {
-		return matchs;
+	public List<Match> getMatches() {
+		return matches;
 	}
 
 	public Team getGlobalWinner() {

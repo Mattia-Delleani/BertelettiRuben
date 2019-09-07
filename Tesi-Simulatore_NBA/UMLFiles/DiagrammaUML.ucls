@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="it.polito.tdp.simulatoreNBA.model.Model" project="Tesi-Simulatore_NBA" 
+    file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/Model.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="440" y="230"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="it.polito.tdp.simulatoreNBA.model.Simulatore" project="Tesi-Simulatore_NBA" 
+    file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/Simulatore.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="155" y="183"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="3" language="java" name="it.polito.tdp.simulatoreNBA.model.Evento.TipoEvento" 
+    project="Tesi-Simulatore_NBA" file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/Evento.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="151" width="209" x="282" y="621"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="4" language="java" name="it.polito.tdp.simulatoreNBA.model.Evento" project="Tesi-Simulatore_NBA" 
+    file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/Evento.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="313" width="216" x="33" y="508"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="it.polito.tdp.simulatoreNBA.model.PlayerAVGStats" project="Tesi-Simulatore_NBA" 
+    file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/PlayerAVGStats.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="371" width="319" x="594" y="-86"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="it.polito.tdp.simulatoreNBA.model.Series" project="Tesi-Simulatore_NBA" 
+    file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/Series.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="171" x="755" y="327"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="it.polito.tdp.simulatoreNBA.model.Match" project="Tesi-Simulatore_NBA" 
+    file="/Tesi-Simulatore_NBA/src/it/polito/tdp/simulatoreNBA/model/Match.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="260" width="249" x="549" y="543"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="8">    
+    <bendpoint x="592" y="472"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="9" name="matches"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="12" name="sim"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <bendpoint x="676" y="306"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="15" name="seriesMapEast"/>      
+      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <bendpoint x="608" y="407"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="18" name="seriesMapWest"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="21" name="type"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="24" name="finalStats"/>      
+      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="26">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <association id="27">    
+    <bendpoint x="339" y="559"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="28" name="match"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <bendpoint x="209" y="477"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="31" name="eventList"/>      
+      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <bendpoint x="607" y="372"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="34" name="playerStats"/>      
+      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="36">    
+    <bendpoint x="721" y="526"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="37" name="matches"/>      
+      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <bendpoint x="58" y="500"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="40" name="queue"/>      
+      <multiplicity id="41" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

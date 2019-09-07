@@ -26,6 +26,41 @@ public class Match {
 		this.injured = new ArrayList<>();
 		
 	}
+	
+	public void initStats() {
+		for(Player hp : home.getPlayers()) {
+			playerStats.add(new PlayerAVGStats(hp.getName(), 0, 0.0, 0.0, 0.0, 0.0));
+		}
+		for(Player ap : away.getPlayers()) {
+			playerStats.add(new PlayerAVGStats(ap.getName(), 0, 0.0, 0.0, 0.0, 0.0));
+		}
+	}
+	
+	public List<PlayerAVGStats> getHomeStats(){
+		List<PlayerAVGStats> home = new ArrayList<>();
+		for(PlayerAVGStats pas : this.playerStats) {
+			for(Player p : this.home.getPlayers()) {
+				if(p.getName().equals(pas.getName())) {
+					home.add(pas);
+				}
+			}
+		}
+		
+		return home;
+	}
+	
+	public List<PlayerAVGStats> getAwayStats(){
+		List<PlayerAVGStats> away = new ArrayList<>();
+		for(PlayerAVGStats pas : this.playerStats) {
+			for(Player p : this.away.getPlayers()) {
+				if(p.getName().equals(pas.getName())) {
+					away.add(pas);
+				}
+			}
+		}
+		
+		return away;
+	}
 
 	public Integer getIdMatch() {
 		return idMatch;
@@ -91,40 +126,7 @@ public class Match {
 		this.injured = injured;
 	}
 
-	public void initStats() {
-		for(Player hp : home.getPlayers()) {
-			playerStats.add(new PlayerAVGStats(hp.getName(), 0, 0.0, 0.0, 0.0, 0.0));
-		}
-		for(Player ap : away.getPlayers()) {
-			playerStats.add(new PlayerAVGStats(ap.getName(), 0, 0.0, 0.0, 0.0, 0.0));
-		}
-	}
 	
-	public List<PlayerAVGStats> getHomeStats(){
-		List<PlayerAVGStats> home = new ArrayList<>();
-		for(PlayerAVGStats pas : this.playerStats) {
-			for(Player p : this.home.getPlayers()) {
-				if(p.getName().equals(pas.getName())) {
-					home.add(pas);
-				}
-			}
-		}
-		
-		return home;
-	}
-	
-	public List<PlayerAVGStats> getAwayStats(){
-		List<PlayerAVGStats> away = new ArrayList<>();
-		for(PlayerAVGStats pas : this.playerStats) {
-			for(Player p : this.away.getPlayers()) {
-				if(p.getName().equals(pas.getName())) {
-					away.add(pas);
-				}
-			}
-		}
-		
-		return away;
-	}
 	
 	public String getScore(){
 		return this.home.getAbbreviation() + " " + this.homePoints+ " vs " + this.away.getAbbreviation() + " " + this.awayPoints;
