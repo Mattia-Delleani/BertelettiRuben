@@ -9,5 +9,7 @@ Istruzioni per l'uso:
 - All' interno della classe DBConnect modificare la password di accesso al database immettendo la propria;
 - Aprire il progetto con Eclipse e lanciare la classe Main per avviare l'applicazione.
 
+Link al video YouTube: https://www.youtube.com/watch?v=l4M1tCTtI_s
+
 
 
